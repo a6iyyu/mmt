@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Hero from "@/app/components/hero";
 import LatestCreation from "@/app/components/latest-creation";
+import Lecturer from "@/app/components/lecturer";
+import Course from "@/app/components/course";
 
 export const metadata: Metadata = {
   title: "Beranda | Lab Multimedia",
@@ -17,9 +19,11 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    <main className="container mx-auto w-[90%]">
       <Hero />
       <LatestCreation />
-    </>
+      <Lecturer />
+      <Course />
+    </main>
   );
 }

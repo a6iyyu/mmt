@@ -30,6 +30,7 @@
         "prettier-plugin-tailwindcss": "^0.6.14",
         "prisma": "^6.15.0",
         "react-icons": "^5.5.0",
+        "swiper": "^12.0.1",
         "tailwindcss": "^4",
         "tw-animate-css": "^1.3.8",
         "typescript": "^5",
@@ -4337,6 +4338,12 @@
       "",
       {},
       "sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w=="
+    ],
+    "swiper": [
+      "swiper@12.0.1",
+      "",
+      {},
+      "sha512-Fi+gNw/tfc4hsGowQU5tRC/f1HFknkh4Vz8PaDI4JTinLUMTwhZyaovcH/va+iXq98BNUHN5ok0c2lEI82Fsgw=="
     ],
     "tailwind-merge": [
       "tailwind-merge@3.3.1",
