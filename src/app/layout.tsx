@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import type { ReactNode } from "react";
+import { Header } from "@/components/common/header";
 import "@/app/globals.css";
 
 const fonts = Plus_Jakarta_Sans({
@@ -9,14 +10,14 @@ const fonts = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  icons: "/images/favicon.svg",
+  icons: "/images/favicon.ico",
   metadataBase: new URL("https://mmt.vercel.app/"),
   openGraph: {
-    images: "/images/favicon.svg",
+    images: "/images/favicon.ico",
     siteName: "MMT",
   },
   twitter: {
-    images: "/images/favicon.svg",
+    images: "/images/favicon.ico",
     card: "summary_large_image",
     site: "https://mmt.vercel.app",
   },
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className={`scroll-py-10 ${fonts.variable} max-[8192px]:opacity-0 max-[3120px]:m-0 max-[3120px]:box-border max-[3120px]:p-0 max-[3120px]:[font-family:'Plus_Jakarta_Sans',Times,sans-serif,serif] max-[3120px]:opacity-100 max-[324px]:hidden`}>
       <body className="flex h-full min-h-screen flex-col overflow-x-hidden">
+        <Header />
         {children}
       </body>
     </html>

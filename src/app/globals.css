@@ -122,15 +122,13 @@
 }
 
 @theme {
-  --color-primary: #2c9ab7;
-  --color-secondary: #b74660;
-  --color-accent: #f3d07b;
-  --color-background: #f3f7fa;
-  --color-text-primary: #1e2a32;
-  --color-heading: #2c9ab7;
-  --color-text-secondary: #4c5b67;
-  --color-primary-alt: #43a36d;
-  --color-hov-blue: #26798f;
+  --color-primary: #3a7ca5;        /* Biru utama untuk elemen primer */
+  --color-secondary: #28afb0;      /* Teal untuk highlight sekunder */
+  --color-accent: #ff7626;         /* Oranye terang untuk aksen dan tombol */
+  --color-background: #fff9ec;     /* Putih krem untuk latar belakang */
+  --color-heading: #314158;        /* Biru tua untuk heading */
+  --color-text-secondary: #6b7280; /* Abu-abu untuk teks sekunder */
+  --color-hover-blue: #81c3d7;     /* Biru muda untuk efek hover */
 }
 
 @font-face {
