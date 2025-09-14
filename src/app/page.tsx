@@ -3,6 +3,7 @@ import Hero from "@/app/components/hero";
 import LatestCreation from "@/app/components/latest-creation";
 import Lecturer from "@/app/components/lecturer";
 import Course from "@/app/components/course";
+import Member from "@/app/components/member";
 
 export const metadata: Metadata = {
   title: "Beranda | Lab Multimedia",
@@ -24,6 +25,7 @@ export default function Home() {
       <LatestCreation />
       <Lecturer />
       <Course />
+      <Member />
     </main>
   );
 }

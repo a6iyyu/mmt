@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import type { ReactNode } from "react";
+import { Footer } from "@/components/common/footer";
 import { Header } from "@/components/common/header";
-import "@/app/globals.css";
 import { ScrollIndicator } from "@/components/common/scroll-indicator";
+import "@/app/globals.css";
 
 const fonts = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ScrollIndicator />
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
