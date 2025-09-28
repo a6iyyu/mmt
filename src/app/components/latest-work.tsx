@@ -4,10 +4,10 @@ import { ArrowRight, ExternalLink, Star } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { CREATIONS } from "@/constants/route";
-import { Text as T } from "@/utils/text";
+import { Truncate } from "@/utils/text";
 import Image from "next/image";
 
-export default function LatestCreation() {
+export default function LatestWork() {
   const router = useRouter();
 
   const dummyProjects = [
@@ -91,10 +91,10 @@ export default function LatestCreation() {
             {/* Content */}
             <figcaption className="p-4">
               <h3 className="text-heading group-hover:text-accent mb-1 text-lg font-semibold transition-colors duration-300">
-                {T.truncate(project.title, 12)}
+                {Truncate(project.title, 12)}
               </h3>
               <p className="text-primary mb-4 text-sm leading-relaxed">
-                {T.truncate(project.description, 16, 28)}
+                {Truncate(project.description, 16, 28)}
               </p>
               <span className="mb-6 flex flex-wrap gap-2">
                 {project.tech.map((tag, i) => (

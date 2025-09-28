@@ -10,8 +10,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import "swiper/css";
-import "swiper/css/navigation";
 
 const members = [
   {

@@ -2,9 +2,9 @@
 
 import { ArrowDown, ArrowUp, ArrowUpDown, TriangleAlert } from "lucide-react";
 import { type ReactNode, useState } from "react";
-import type { Table } from "@/types/components";
+import { Table as T } from "@/types/components";
 
-export default function Table({ headers, rows, sortable }: Table) {
+export default function Table({ headers, rows, sortable }: T) {
   const [sortedRows, setSortedRows] = useState<ReactNode[][]>(rows);
   const [sortingItems, setSortingItems] = useState<{ index: number; ascending: boolean }>({ index: -1, ascending: true });
 

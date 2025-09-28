@@ -41,10 +41,12 @@ export function Footer() {
           <div className="space-y-4">
             <h5 className="text-lg font-semibold">Kontak Kami</h5>
             <address className="space-y-3 not-italic">
-              <span className="flex items-center gap-3">
-                <FaMapMarkerAlt className="h-4 w-4 flex-shrink-0" />
+              <span className="flex gap-3">
+                <FaMapMarkerAlt className="mt-1 h-4 w-4 flex-shrink-0" />
                 <p className="text-sm text-white/80">
-                  Gedung Multimedia, Kampus Teknologi
+                  Lantai 8 Gedung Sipil
+                  <br />
+                  Politeknik Negeri Malang
                 </p>
               </span>
               <span className="flex items-center gap-3">
