@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, Mail, Users } from "lucide-react";
+import { ArrowLeft, ArrowRight, Star, ExternalLink } from "lucide-react";
 import { RefObject, useRef } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa6";
 import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { NavigationOptions } from "swiper/types";
@@ -10,78 +10,75 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import "swiper/swiper.css";
+import "swiper/swiper-bundle.css";
 
-const members = [
+const projects = [
   {
-    name: "Dr. Ahmad Multimedia",
-    role: "Kepala Lab",
-    expertise: ["Game Development", "VR/AR", "Computer Graphics"],
+    title: "Project A",
+    category: "Game Development",
+    description: "Deskripsi singkat project A yang menjelaskan tujuan dan teknologi yang digunakan.",
     image: "/images/placeholder.png",
-    social: { linkedin: "#", github: "#", email: "ahmad@mmt.ac.id" },
+    tech: ["React", "Tailwind", "Three.js"],
+    links: { demo: "#", code: "#" },
   },
   {
-    name: "Sarah Creative",
-    role: "Dosen Multimedia",
-    expertise: ["Motion Graphics", "UI/UX Design", "Video Production"],
+    title: "Project B",
+    category: "UI/UX",
+    description: "Deskripsi singkat project B, sebuah aplikasi inovatif dengan desain antarmuka modern.",
     image: "/images/placeholder.png",
-    social: { linkedin: "#", github: "#", email: "sarah@mmt.ac.id" },
+    tech: ["Figma", "Framer"],
+    links: { demo: "#", code: "#" },
   },
   {
-    name: "Prof. Tech Innovation",
-    role: "Peneliti Senior",
-    expertise: ["AI/ML", "Computer Vision", "Interactive Media"],
+    title: "Project C",
+    category: "Animasi",
+    description: "Deskripsi singkat project C, sebuah karya animasi 3D yang memukau secara visual.",
     image: "/images/placeholder.png",
-    social: { linkedin: "#", github: "#", email: "tech@mmt.ac.id" },
+    tech: ["Blender", "Unity"],
+    links: { demo: "#", code: "#" },
   },
   {
-    name: "Maya Digital",
-    role: "Asisten Lab",
-    expertise: ["3D Modeling", "Animation", "Digital Art"],
+    title: "Project D",
+    category: "AR/VR",
+    description: "Eksplorasi virtual reality untuk simulasi pelatihan medis.",
     image: "/images/placeholder.png",
-    social: { linkedin: "#", github: "#", email: "maya@mmt.ac.id" },
+    tech: ["Unity", "C#"],
+    links: { demo: "#", code: "#" },
   },
   {
-    name: "Rizki Developer",
-    role: "Mahasiswa S2",
-    expertise: ["Web Development", "Mobile Apps", "IoT"],
+    title: "Project E",
+    category: "UI/UX",
+    description: "Platform e-learning interaktif berbasis web dengan gamifikasi.",
     image: "/images/placeholder.png",
-    social: { linkedin: "#", github: "#", email: "rizki@student.mmt.ac.id" },
-  },
-  {
-    name: "Andi Gamer",
-    role: "Mahasiswa S1",
-    expertise: ["Game Design", "Level Design", "Storytelling"],
-    image: "/images/placeholder.png",
-    social: { linkedin: "#", github: "#", email: "andi@student.mmt.ac.id" },
+    tech: ["Next.js", "TypeScript", "Tailwind"],
+    links: { demo: "#", code: "#" },
   },
 ];
 
-function MemberCard({ member }: { member: (typeof members)[0] }) {
+function WorksCard({ project }: { project: (typeof projects)[0] }) {
   return (
     <figure className="group relative flex h-[480px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl bg-slate-900 transition-shadow duration-300">
-      <Image src={member.image} alt={`Foto ${member.name}`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+      <Image src={project.image} alt={`Gambar ${project.title}`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
       <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" aria-hidden="true" />
       <figcaption className="relative z-10 space-y-4 p-6 text-white">
         <div>
-          <h3 className="text-2xl font-bold">{member.name}</h3>
-          <p className="text-sky-300">{member.role}</p>
+          <h3 className="text-2xl font-bold">{project.title}</h3>
+          <p className="text-sky-300">{project.category}</p>
         </div>
         <span className="flex flex-wrap gap-2 border-t border-white/10 pt-4">
-          {member.expertise.map((skill) => (
+          {project.tech.map((skill) => (
             <Badge key={skill} variant="secondary" className="bg-white/10 text-white backdrop-blur-sm">
               {skill}
             </Badge>
           ))}
         </span>
         <span className="flex items-center space-x-3 pt-2">
-          <Link href={member.social.linkedin} className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20">
-            <FaLinkedin className="h-4 w-4" />
+          <Link href={project.links.demo} rel="noopener noreferrer" className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20">
+            <ExternalLink className="h-4 w-4" />
           </Link>
-          <Link href={member.social.github} className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20">
+          <Link href={project.links.code} rel="noopener noreferrer" className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20">
             <FaGithub className="h-4 w-4" />
-          </Link>
-          <Link href={`mailto:${member.social.email}`} className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20">
-            <Mail className="h-4 w-4" />
           </Link>
         </span>
       </figcaption>
@@ -102,27 +99,26 @@ function CarouselControls({ previous, next }: { previous: RefObject<HTMLButtonEl
   );
 }
 
-export default function Member() {
+export default function BestWorks() {
   const previous = useRef<HTMLButtonElement>(null);
   const next = useRef<HTMLButtonElement>(null);
 
   return (
-    <section className="mt-24 mb-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
+    <section className="mx-auto mt-16 grid w-[90%] max-w-7xl grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
       <article className="cursor-default text-center lg:text-left">
         <h5 className="inline-flex items-center rounded-full bg-sky-100 px-4 py-2 text-sm font-semibold text-sky-800 ring-1 ring-sky-200 ring-inset">
-          <Users className="mr-2 h-4 w-4" />
-          Tim Profesional & Berbakat
+          <Star className="mr-2 h-4 w-4" />
+          Karya Unggulan Pilihan
         </h5>
         <h2 className="mt-6 text-xl leading-11 font-bold text-slate-900 lg:text-4xl">
-          Dosen & Mahasiswa
-          <span className="block bg-gradient-to-r from-sky-600 to-cyan-400 bg-clip-text text-transparent">
-            Penuh Inspirasi
+          Inovasi Terbaik{" "}
+          <span className="inline bg-gradient-to-r from-sky-600 to-cyan-400 bg-clip-text text-transparent">
+            Dari Lab Kami
           </span>
         </h2>
         <p className="mt-3 text-xs leading-8 text-slate-600 lg:text-base">
-          Berkenalan dengan para ahli di balik inovasi Lab Multimedia. Sebuah
-          tim solid yang terdiri dari dosen, peneliti, dan mahasiswa berbakat
-          yang siap berkolaborasi.
+          Lihat lebih dekat beberapa karya paling inovatif dan inspiratif yang
+          lahir dari kolaborasi mahasiswa dan dosen di Lab Multimedia.
         </p>
         <CarouselControls previous={previous} next={next} />
       </article>
@@ -145,9 +141,9 @@ export default function Member() {
           }}
           className="h-full w-full py-4"
         >
-          {members.map((member) => (
-            <SwiperSlide key={member.name}>
-              <MemberCard member={member} />
+          {projects.map((project) => (
+            <SwiperSlide key={project.title}>
+              <WorksCard project={project} />
             </SwiperSlide>
           ))}
         </Swiper>

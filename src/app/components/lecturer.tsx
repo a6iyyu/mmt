@@ -36,15 +36,8 @@ export default function Lecturer() {
 
   return (
     <section className="relative my-18 flex flex-col items-center">
-      {/* Dekorasi background blur */}
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <span className="bg-accent/20 absolute -top-10 -left-10 h-72 w-72 rounded-full blur-3xl" />
-      </div>
-
-      {/* Floating icon dekorator */}
+      <span className="bg-accent/20 pointer-events-none absolute inset-0 -top-10 -left-10 -z-10 h-72 w-72 rounded-full blur-3xl" />
       <Sparkles className="text-accent/30 absolute top-20 left-12 z-0 h-12 w-12 animate-pulse" />
-
-      {/* Judul */}
       <div className="border-accent/20 from-accent/10 to-secondary/10 mb-6 inline-flex w-fit items-center rounded-full border bg-gradient-to-r px-4 py-2">
         <Medal className="text-accent mr-2 h-4 w-4" />
         <h5 className="text-heading text-sm font-semibold">Tim Pengajar</h5>
@@ -59,8 +52,6 @@ export default function Lecturer() {
         Bertemu dengan para ahli multimedia yang berpengalaman dan berdedikasi
         dalam mengembangkan talenta mahasiswa di bidang teknologi kreatif
       </p>
-
-      {/* Grid Card Dosen */}
       <article className="mt-10 grid w-full gap-8 lg:grid-cols-3">
         {dummyLecturer.map((lecturer, index) => (
           <figure key={index} className="group before:from-accent/40 before:to-secondary/40 relative transform-gpu overflow-hidden rounded-2xl border border-transparent bg-white shadow-md transition-all duration-300 before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-gradient-to-r before:opacity-0 before:transition-opacity group-hover:before:opacity-100 hover:-translate-y-1 hover:shadow-xl dark:bg-neutral-900">

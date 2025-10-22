@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 
 export default function Hero() {
   return (
-    <section className="relative flex w-full cursor-default items-center justify-center py-48">
+    <section className="relative flex w-full cursor-default items-center justify-center pt-48 pb-12">
       <span className="bg-accent/20 pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full blur-3xl" />
       <span className="bg-secondary/20 pointer-events-none absolute -right-40 -bottom-40 h-96 w-96 rounded-full blur-3xl" />
       <div className="relative mx-auto w-[90%] text-center">

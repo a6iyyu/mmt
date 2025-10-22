@@ -49,7 +49,7 @@ export default function Input({ icon, label, name, onChange, placeholder, requir
           step={type === "number" ? "any" : undefined}
           onChange={handleInput}
           onWheel={handleWheel}
-          className={`box-border w-full rounded-[0.7rem] border-[1.5px] border-[#d1d5db] bg-white text-sm text-[#222] shadow-[0_1px_4px_rgba(60,60,60,0.04)] transition-all duration-200 outline-none placeholder:text-sm placeholder:text-[#b0b8c1] placeholder:opacity-100 focus:border-[#22b6d1] focus:shadow-[0_2px_8px_0_#22b6d122] ${type !== "file" ? "py-3.75 pl-14" : ""} ${type === "password" ? "pr-12" : "pr-4"} ${type === "file" ? "file:mr-4 file:cursor-pointer file:rounded file:border-0 file:bg-[var(--green-tertiary)] file:px-4 file:py-2 file:text-white" : ""}`}
+          className={`box-border w-full rounded-[0.7rem] border-[1.5px] border-[#d1d5db] text-sm text-[#222] shadow-[0_1px_4px_rgba(60,60,60,0.04)] transition-all duration-200 outline-none placeholder:text-sm placeholder:text-[#b0b8c1] placeholder:opacity-100 focus:border-[#22b6d1] focus:shadow-[0_2px_8px_0_#22b6d122] ${type !== "file" ? "py-4 pl-14" : ""} ${type === "password" ? "pr-12" : "pr-4"} ${type === "file" ? "file:mr-4 file:cursor-pointer file:rounded file:border-0 file:bg-[var(--green-tertiary)] file:px-4 file:py-2 file:text-white" : ""}`}
         />
         {type === "password" && (
           <span onClick={() => setShowPassword((prev) => !prev)} className="absolute top-1/2 right-6 -translate-y-1/2 cursor-pointer text-gray-500">
