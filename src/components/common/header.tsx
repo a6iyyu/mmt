@@ -27,7 +27,7 @@ export function Header() {
         </section>
         <nav className="hidden gap-6 text-sm font-medium lg:flex">
           {M.map((route, index) => (
-            <Link key={index} href={`/${route.name.toLowerCase().replace(/ /g, "-")}`} className="group text-heading transition duration-300">
+            <Link key={index} href={route.name === "Beranda" ? "/" : `/${route.name.toLowerCase().replace(/ /g, "-")}`} className="group text-heading transition duration-300">
               {route.name}
               <span className="bg-heading block h-0.5 max-w-0 transition-all duration-500 group-hover:max-w-full" />
             </Link>

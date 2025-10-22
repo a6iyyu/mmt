@@ -5,6 +5,8 @@ import Lecturer from "@/app/components/lecturer";
 import Course from "@/app/components/course";
 import Member from "@/app/components/member";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Beranda | Lab Multimedia",
   description: "",

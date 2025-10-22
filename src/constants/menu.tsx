@@ -1,7 +1,7 @@
 import { BookOpen, Home, Palette, Search, Users } from "lucide-react";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import type { ReactElement } from "react";
-import { ABOUT_US, COURSES, CREATIONS, HOME, MEMBER } from "@/constants/route";
+import { CATEGORY, COURSES, CREATIONS, HOME, MEMBER } from "@/constants/route";
 
 type Menu = {
   href: string;
@@ -31,9 +31,9 @@ export const Menu: Menu[] = [
     name: "Anggota",
   },
   {
-    href: ABOUT_US,
+    href: CATEGORY,
     icon: <Search className="text-accent mt-0.5 h-4 w-4" />,
-    name: "Tentang Kami",
+    name: "Kategori",
   },
 ];
 

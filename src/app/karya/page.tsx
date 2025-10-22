@@ -3,6 +3,8 @@ import Hero from "@/app/karya/components/hero";
 import BestWorks from "@/app/karya/components/best-works";
 import LatestWorksProvider from "@/app/karya/providers/latest-works";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Karya | Lab Multimedia",
   description: "",
