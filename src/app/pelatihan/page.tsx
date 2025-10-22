@@ -14,5 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function Pelatihan() {
-  return null;
+  return (
+    <main className="relative flex-grow overflow-hidden"></main>
+  );
 }

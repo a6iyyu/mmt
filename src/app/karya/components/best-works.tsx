@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa6";
 import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { NavigationOptions } from "swiper/types";
+import { bestWorks } from "@/app/karya/data/best-works";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -13,50 +14,7 @@ import Link from "next/link";
 import "swiper/swiper.css";
 import "swiper/swiper-bundle.css";
 
-const projects = [
-  {
-    title: "Project A",
-    category: "Game Development",
-    description: "Deskripsi singkat project A yang menjelaskan tujuan dan teknologi yang digunakan.",
-    image: "/images/placeholder.png",
-    tech: ["React", "Tailwind", "Three.js"],
-    links: { demo: "#", code: "#" },
-  },
-  {
-    title: "Project B",
-    category: "UI/UX",
-    description: "Deskripsi singkat project B, sebuah aplikasi inovatif dengan desain antarmuka modern.",
-    image: "/images/placeholder.png",
-    tech: ["Figma", "Framer"],
-    links: { demo: "#", code: "#" },
-  },
-  {
-    title: "Project C",
-    category: "Animasi",
-    description: "Deskripsi singkat project C, sebuah karya animasi 3D yang memukau secara visual.",
-    image: "/images/placeholder.png",
-    tech: ["Blender", "Unity"],
-    links: { demo: "#", code: "#" },
-  },
-  {
-    title: "Project D",
-    category: "AR/VR",
-    description: "Eksplorasi virtual reality untuk simulasi pelatihan medis.",
-    image: "/images/placeholder.png",
-    tech: ["Unity", "C#"],
-    links: { demo: "#", code: "#" },
-  },
-  {
-    title: "Project E",
-    category: "UI/UX",
-    description: "Platform e-learning interaktif berbasis web dengan gamifikasi.",
-    image: "/images/placeholder.png",
-    tech: ["Next.js", "TypeScript", "Tailwind"],
-    links: { demo: "#", code: "#" },
-  },
-];
-
-function WorksCard({ project }: { project: (typeof projects)[0] }) {
+function WorksCard({ project }: { project: (typeof bestWorks)[0] }) {
   return (
     <figure className="group relative flex h-[480px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl bg-slate-900 transition-shadow duration-300">
       <Image src={project.image} alt={`Gambar ${project.title}`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -141,7 +99,7 @@ export default function BestWorks() {
           }}
           className="h-full w-full py-4"
         >
-          {projects.map((project) => (
+          {bestWorks.map((project) => (
             <SwiperSlide key={project.title}>
               <WorksCard project={project} />
             </SwiperSlide>

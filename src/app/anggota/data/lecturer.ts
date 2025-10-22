@@ -1,10 +1,172 @@
-import { Interface } from "@/utils/decorator";
+import { Lecturer } from "@/app/anggota/types/lecturer";
 
-@Interface
-class Lecturer {
-  id!: string;
-  name!: string;
-  email!: string;
-}
-
-export const Lecturers: Lecturer[] = []
+export const dummyLecturers: Lecturer[] = [
+  {
+    id: 1,
+    name: "Dr. Dimas Wahyu Wibowo, S.T., M.T.",
+    email: "dimas.wibowo@email.com",
+    photo: "/images/placeholder.png",
+    position: "Dosen Pembimbing",
+    field: "Game Development",
+    research_interests: ["AI in Games", "Procedural Generation", "Game Physics"],
+    links: {
+      sinta: "#",
+      scholar: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 2,
+    name: "Rizky Andhika, S.Kom., M.Kom.",
+    email: "rizky.andhika@email.com",
+    photo: "/images/placeholder.png",
+    position: "Kepala Lab",
+    field: "UI/UX",
+    research_interests: ["Human-Computer Interaction", "Usability Testing"],
+    links: {
+      sinta: "#",
+      scholar: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 3,
+    name: "Siti Rahmawati, M.Ds.",
+    email: "siti.rahmawati@email.com",
+    photo: "/images/placeholder.png",
+    position: "Dosen Pembimbing",
+    field: "Animasi",
+    research_interests: ["3D Modeling", "Character Rigging", "Visual Effects"],
+    links: {
+      sinta: "#",
+      scholar: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 4,
+    name: "Dr. Budi Hartono, M.Cs.",
+    email: "budi.hartono@email.com",
+    photo: "/images/placeholder.png",
+    position: "Dosen Pembimbing",
+    field: "AR/VR",
+    research_interests: ["Immersive Technology", "VR Simulation", "Haptics"],
+    links: {
+      sinta: "#",
+      scholar: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 5,
+    name: "Anisa Fitriani, S.Sn., M.Sn.",
+    email: "anisa.fitriani@email.com",
+    photo: "/images/placeholder.png",
+    position: "Dosen Pembimbing",
+    field: "UI/UX",
+    research_interests: ["Design Systems", "Microinteractions", "UX Research"],
+    links: {
+      sinta: "#",
+      scholar: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 6,
+    name: "Eko Prasetyo, S.T., M.Kom.",
+    email: "eko.prasetyo@email.com",
+    photo: "/images/placeholder.png",
+    position: "Dosen Pembimbing",
+    field: "Game Development",
+    research_interests: ["Gamification", "Serious Games", "Mobile Game Dev"],
+    links: {
+      sinta: "#",
+      scholar: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 7,
+    name: "Putri Cahyani, M.Anim.",
+    email: "putri.cahyani@email.com",
+    photo: "/images/placeholder.png",
+    position: "Dosen Pembimbing",
+    field: "Animasi",
+    research_interests: ["2D Animation", "Storyboarding", "Motion Graphics"],
+    links: {
+      sinta: "#",
+      scholar: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 8,
+    name: "Agus Triyono, S.Kom., M.T.",
+    email: "agus.triyono@email.com",
+    photo: "/images/placeholder.png",
+    position: "Dosen Pembimbing",
+    field: "AR/VR",
+    research_interests: ["Augmented Reality", "Computer Vision", "3D Scanning"],
+    links: {
+      sinta: "#",
+      scholar: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 9,
+    name: "Dr. Rina Wulandari, M.Sc.",
+    email: "rina.wulandari@email.com",
+    photo: "/images/placeholder.png",
+    position: "Koordinator Riset",
+    field: "UI/UX",
+    research_interests: ["Accessibility (a11y)", "Voice UI", "Ethics in AI"],
+    links: {
+      sinta: "#",
+      scholar: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 10,
+    name: "Bayu Permana, S.Ds., M.A.",
+    email: "bayu.permana@email.com",
+    photo: "/images/placeholder.png",
+    position: "Dosen Pembimbing",
+    field: "Animasi",
+    research_interests: ["Concept Art", "Environment Design", "Digital Sculpting"],
+    links: {
+      sinta: "#",
+      scholar: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 11,
+    name: "Indra Gunawan, M.Cs.",
+    email: "indra.gunawan@email.com",
+    photo: "/images/placeholder.png",
+    position: "Dosen Pembimbing",
+    field: "Game Development",
+    research_interests: ["Networked Gameplay", "Game Engine Arch.", "Shaders"],
+    links: {
+      sinta: "#",
+      scholar: "#",
+      linkedin: "#",
+    },
+  },
+  {
+    id: 12,
+    name: "Prof. Dr. Ir. Mega Dwi, M.T.",
+    email: "mega.dwi@email.com",
+    photo: "/images/placeholder.png",
+    position: "Guru Besar",
+    field: "AR/VR",
+    research_interests: ["Digital Twins", "Medical VR", "Wearable Tech"],
+    links: {
+      sinta: "#",
+      scholar: "#",
+      linkedin: "#",
+    },
+  },
+];

@@ -8,8 +8,8 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   test: {
     environment: "jsdom",
+    mockReset: true,
     globals: true,
-    setupFiles: ["./tests/vitest.setup.ts"],
     exclude: ["node_modules", "dist", "**/.*", ".next", "vercel", "./src/generated/**", "prisma"],
     coverage: {
       reporter: "html",

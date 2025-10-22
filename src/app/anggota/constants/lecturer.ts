@@ -1,0 +1,1 @@
+export const LECTURER_FIELDS = ["Game Development", "UI/UX", "Animasi", "AR/VR"];

@@ -1,0 +1,42 @@
+export const bestWorks = [
+  {
+    title: "Project A",
+    category: "Game Development",
+    description: "Deskripsi singkat project A yang menjelaskan tujuan dan teknologi yang digunakan.",
+    image: "/images/placeholder.png",
+    tech: ["React", "Tailwind", "Three.js"],
+    links: { demo: "#", code: "#" },
+  },
+  {
+    title: "Project B",
+    category: "UI/UX",
+    description: "Deskripsi singkat project B, sebuah aplikasi inovatif dengan desain antarmuka modern.",
+    image: "/images/placeholder.png",
+    tech: ["Figma", "Framer"],
+    links: { demo: "#", code: "#" },
+  },
+  {
+    title: "Project C",
+    category: "Animasi",
+    description: "Deskripsi singkat project C, sebuah karya animasi 3D yang memukau secara visual.",
+    image: "/images/placeholder.png",
+    tech: ["Blender", "Unity"],
+    links: { demo: "#", code: "#" },
+  },
+  {
+    title: "Project D",
+    category: "AR/VR",
+    description: "Eksplorasi virtual reality untuk simulasi pelatihan medis.",
+    image: "/images/placeholder.png",
+    tech: ["Unity", "C#"],
+    links: { demo: "#", code: "#" },
+  },
+  {
+    title: "Project E",
+    category: "UI/UX",
+    description: "Platform e-learning interaktif berbasis web dengan gamifikasi.",
+    image: "/images/placeholder.png",
+    tech: ["Next.js", "TypeScript", "Tailwind"],
+    links: { demo: "#", code: "#" },
+  },
+];

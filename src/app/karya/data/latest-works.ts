@@ -10,9 +10,7 @@ export type Project = {
   code: string;
 };
 
-// SEKARANG BERISI 12 DATA
 export const dummyProjects: Project[] = [
-  // 6 data pertama (yang sudah ada)
   {
     title: "Project A",
     description: "Deskripsi singkat project A yang menjelaskan tujuan dan teknologi yang digunakan.",
