@@ -1,17 +1,14 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
-import Beranda from "@/app/page";
+import Home from "@/app/page";
 
-afterEach(() => {
-  cleanup();
-});
+afterEach(() => cleanup());
 
-describe("Beranda", () => {
-  it("should render the page", async () => {
-    render(<Beranda />);
-    const heading = await screen.findByText("Selamat Datang di Lab");
-    expect(heading).toBeDefined();
+describe("Home", () => {
+  it("Should render the page", async () => {
+    render(<Home />);
+    expect(await screen.findByText("Selamat Datang di Lab")).toBeDefined();
   });
 
-  it("the carousel should be able to slide", () => {});
+  it("The carousel should be able to slide", () => {});
 });

@@ -4,13 +4,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-     "build": "prisma generate && next build --turbopack",
+    "build": "prisma generate && next build --turbopack",
     "dev": "next dev --turbopack",
     "lint": "eslint",
+    "pw:e2e": "playwright test --project=chromium",
     "seed": "bun prisma/seed.ts",
     "start": "next start",
-    "test:e2e": "playwright test --project=chromium",
-    "test:unit": "vitest run --coverage"
+    "vt:ui": "vitest --ui",
+    "vt:watch": "vitest --watch"
   },
   "dependencies": {
     "@prisma/client": "^6.16.2",
@@ -39,14 +40,16 @@
     "@types/react-icons": "^3.0.0",
     "@types/reflect-metadata": "^0.1.0",
     "@vitejs/plugin-react": "^4.x",
-    "@vitest/coverage-v8": "3.2.4",
+    "@vitest/coverage-v8": "1.6.0",
+    "@vitest/ui": "1.6.0",
+    "autoprefixer": "^10.4.21",
     "axios": "^1.12.2",
     "eslint": "^9.36.0",
     "eslint-config-next": "15.5.2",
     "framer-motion": "^12.23.24",
     "gsap": "^3.13.0",
     "jose": "^6.1.0",
-    "jsdom": "^27.0.1",
+    "jsdom": "22.1.0",
     "playwright": "^1.56.1",
     "postcss-load-config": "^6.0.1",
     "prettier": "^3.6.2",
@@ -61,7 +64,7 @@
     "typescript": "^5.9.2",
     "vite": "^5.x",
     "vite-tsconfig-paths": "^4.x",
-    "vitest": "^1.x",
+    "vitest": "1.6.0",
     "zod": "^4.1.11"
   }
 }
