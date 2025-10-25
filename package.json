@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "prisma generate && next build --turbopack",
-    "dev": "next dev --turbopack",
+    "build": "prisma generate && next build",
+    "dev": "next dev",
     "lint": "eslint",
     "pw:e2e": "playwright test --project=chromium",
     "seed": "bun prisma/seed.ts",
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@playwright/test": "^1.56.1",
-    "@tailwindcss/postcss": "^4.1.13",
+    "@tailwindcss/postcss": "^4.1.16",
     "@tanstack/react-query": "^5.90.5",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
