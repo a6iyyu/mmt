@@ -1,18 +1,19 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { ArrowRight, Code, Palette, RectangleGoggles, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { container, item } from "@/constants/variants";
 import Image from "next/image";
 
 export default function Hero() {
   const router = useRouter();
 
   return (
-    <section className="mt-28 flex flex-col items-center justify-between gap-10 px-6 py-16 lg:flex-row">
-      {/* Gambar */}
-      <figure className="relative">
-        <Image src="/images/mascot.png" alt="Ilustrasi multimedia" width={1080} height={720} className="hidden h-auto w-full object-cover lg:block lg:basis-1/3" loading="lazy" />
+    <motion.section initial="hidden" animate="visible" variants={container} className="mt-28 flex flex-col items-center justify-between gap-10 px-6 py-16 lg:flex-row">
+      <motion.div className="relative" variants={item}>
+        <Image src="/images/mascot.png" alt="MMT Mascout" width={1080} height={720} className="hidden h-auto w-full object-cover lg:block lg:basis-1/3" loading="lazy" />
         <span className="from-accent to-secondary absolute -top-4 -right-16 flex h-16 w-16 animate-bounce items-center justify-center rounded-2xl bg-gradient-to-br shadow-lg">
           <Code className="h-8 w-8 text-white" />
         </span>
@@ -22,10 +23,8 @@ export default function Hero() {
         <span className="from-primary to-hover-blue absolute -top-10 left-8 flex h-12 w-12 animate-bounce items-center justify-center rounded-xl bg-gradient-to-br shadow-lg delay-300">
           <Sparkles className="h-6 w-6 text-white" />
         </span>
-      </figure>
-
-      {/* Konten */}
-      <figure className="relative flex flex-col lg:basis-11/20">
+      </motion.div>
+      <motion.figure className="relative flex flex-col lg:basis-11/20" variants={item}>
         <span className="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-br from-[#FF7626]/20 to-[#28AFB0]/20 opacity-60 blur-2xl" />
         <span className="border-accent/20 from-accent/10 to-secondary/10 mb-6 inline-flex w-fit items-center rounded-full border bg-gradient-to-r px-4 py-2">
           <Sparkles className="text-accent mr-2 h-4 w-4" />
@@ -61,7 +60,7 @@ export default function Hero() {
             <h5 className="font-medium text-[#314158]">AR/VR</h5>
           </span>
         </figcaption>
-      </figure>
-    </section>
+      </motion.figure>
+    </motion.section>
   );
 }

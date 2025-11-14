@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/app/anggota/components/hero";
-import List from "@/app/anggota/components/list";
+import Lecturer from "@/app/anggota/components/lecturer";
+import Student from "@/app/anggota/components/student";
 
 export const dynamic = "force-dynamic";
 
@@ -21,7 +22,8 @@ export default function Anggota() {
   return (
     <main className="relative flex-grow overflow-hidden">
       <Hero />
-      <List />
+      <Lecturer />
+      <Student />
     </main>
   );
 }

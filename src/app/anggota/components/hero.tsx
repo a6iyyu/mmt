@@ -1,24 +1,8 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { Sparkles, Circle, Star } from "lucide-react";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
+import { container, item } from "@/constants/variants";
 
 const statsData: { label: string; value: string }[] = [
   { value: "12", label: "Dosen Pembimbing" },
@@ -32,7 +16,7 @@ export default function Hero() {
       className="relative flex w-full cursor-default flex-col items-center overflow-hidden py-24 lg:pt-40"
       initial="hidden"
       animate="visible"
-      variants={containerVariants}
+      variants={container}
     >
       <span className="bg-accent/20 pointer-events-none absolute -top-40 -left-40 h-80 w-80 rounded-full blur-3xl" />
       <span className="bg-accent/10 pointer-events-none absolute top-1/2 left-1/3 h-64 w-64 -translate-y-1/2 rounded-full blur-3xl" />
@@ -41,17 +25,17 @@ export default function Hero() {
       <Sparkles className="text-secondary/50 absolute right-12 bottom-20 h-8 w-8 animate-pulse" />
       <Circle className="text-accent/30 animate-spin-slow absolute bottom-60 left-1/3 h-10 w-10" />
       <div className="z-10 flex w-[90%] max-w-7xl flex-col items-center justify-center text-center">
-        <motion.h2 className="text-primary text-sm font-bold tracking-widest uppercase" variants={itemVariants}>
+        <motion.h2 className="text-primary text-sm font-bold tracking-widest uppercase" variants={item}>
           Tim & Struktur Lab
         </motion.h2>
-        <motion.h1 className="from-accent to-secondary mt-4 bg-gradient-to-r bg-clip-text text-3xl font-extrabold tracking-tight text-transparent sm:text-4xl lg:text-5xl" variants={itemVariants}>
+        <motion.h1 className="from-accent to-secondary mt-4 bg-gradient-to-r bg-clip-text text-3xl font-extrabold tracking-tight text-transparent sm:text-4xl lg:text-5xl" variants={item}>
           Kenali Tim Inovator Kami
         </motion.h1>
-        <motion.p className="text-muted-foreground mx-auto mt-6 max-w-3xl text-lg leading-8" variants={itemVariants}>
+        <motion.p className="text-muted-foreground mx-auto mt-6 max-w-3xl text-lg leading-8" variants={item}>
           Bertemu dengan para dosen, peneliti, dan mahasiswa berbakat yang
           menjadi motor penggerak inovasi di Lab Multimedia.
         </motion.p>
-        <motion.div className="border-border/50 bg-card/40 mt-16 w-full max-w-5xl rounded-xl border p-8 shadow-lg backdrop-blur-sm" variants={itemVariants}>
+        <motion.div className="border-border/50 bg-card/40 mt-16 w-full max-w-5xl rounded-xl border p-8 shadow-lg backdrop-blur-sm" variants={item}>
           <figure className="md:divide-border grid grid-cols-1 gap-8 md:grid-cols-3 md:divide-x">
             {statsData.map((stat) => (
               <figcaption key={stat.label} className="flex flex-col items-center px-4">
