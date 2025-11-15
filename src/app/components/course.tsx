@@ -28,8 +28,6 @@ export default function Course() {
           <ArrowRight className="mt-0.5 h-5 w-5 transition-transform group-hover:translate-x-1" />
         </Button>
       </figcaption>
-
-      {/* Vertical scroller */}
       <Swiper
         autoplay={{ delay: 0, disableOnInteraction: false }}
         className="h-[500px] w-full basis-1/2 cursor-grab"

@@ -27,6 +27,7 @@
         "@testing-library/react": "^16.3.0",
         "@testing-library/user-event": "^14.6.1",
         "@types/axios": "^0.14.4",
+        "@types/bcryptjs": "^3.0.0",
         "@types/gsap": "^3.0.0",
         "@types/node": "^20.19.17",
         "@types/react": "^19.1.15",
@@ -38,6 +39,7 @@
         "@vitest/ui": "1.6.0",
         "autoprefixer": "^10.4.21",
         "axios": "^1.12.2",
+        "bcryptjs": "^3.0.3",
         "eslint": "^9.36.0",
         "eslint-config-next": "15.5.2",
         "framer-motion": "^12.23.24",
@@ -1894,6 +1896,16 @@
       },
       "sha512-8PvcXf70gTDZBgt9ptxJ8elBeBjcLOAcOtoO/mPJjtji1+CdGbHgm77om1GrsPxsiE+uXIpNSK64UYaIwQXd4Q=="
     ],
+    "@types/bcryptjs": [
+      "@types/bcryptjs@3.0.0",
+      "",
+      {
+        "dependencies": {
+          "bcryptjs": "*"
+        }
+      },
+      "sha512-WRZOuCuaz8UcZZE4R5HXTco2goQSI2XxjGY3hbM/xDvwmqFWd4ivooImsMx65OKM6CtNKbnZ5YL+YwAwK7c1dg=="
+    ],
     "@types/debug": [
       "@types/debug@4.1.12",
       "",
@@ -2799,6 +2811,16 @@
         }
       },
       "sha512-JMWsdF+O8Orq3EMukbUN1QfbLK9mX2CkUmQBcW2T0s8OmdAUL5LLM/6wFwSrqXzlXB13yhyK9gTKS1rIizOduQ=="
+    ],
+    "bcryptjs": [
+      "bcryptjs@3.0.3",
+      "",
+      {
+        "bin": {
+          "bcrypt": "bin/bcrypt"
+        }
+      },
+      "sha512-GlF5wPWnSa/X5LKM1o0wz0suXIINz1iHRLvTS+sLyi7XPbe5ycmYI3DlZqVGZZtDgl4DmasFg7gOB3JYbphV5g=="
     ],
     "brace-expansion": [
       "brace-expansion@1.1.12",

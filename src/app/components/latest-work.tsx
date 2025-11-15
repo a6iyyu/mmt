@@ -56,21 +56,21 @@ export default function LatestWork() {
       <div className="pointer-events-none absolute inset-0 -z-10">
         <span className="bg-secondary/20 absolute -top-20 -right-20 h-96 w-96 rounded-full blur-3xl" />
       </div>
-      <div className="border-accent/20 from-accent/10 to-secondary/10 mb-6 inline-flex items-center rounded-full border bg-gradient-to-r px-4 py-2">
+      <motion.div initial="hidden" animate="visible" variants={item} className="border-accent/20 from-accent/10 to-secondary/10 mb-6 inline-flex items-center rounded-full border bg-gradient-to-r px-4 py-2">
         <Star className="text-accent mr-2 h-4 w-4" />
         <h5 className="text-heading text-sm font-semibold">Karya Unggulan</h5>
-      </div>
-      <motion.h2 className="text-heading mb-6 text-4xl font-bold text-balance lg:text-4xl" variants={item}>
+      </motion.div>
+      <motion.h2 className="text-heading mb-6 text-4xl font-bold text-balance lg:text-4xl" initial="hidden" animate="visible" variants={item}>
         Karya{" "}
         <span className="from-accent to-secondary bg-gradient-to-r bg-clip-text text-transparent">
           Terbaru
         </span>
       </motion.h2>
-      <motion.p className="text-primary mx-auto max-w-3xl text-center text-sm leading-relaxed lg:text-lg" variants={item}>
+      <motion.p className="text-primary mx-auto max-w-3xl text-center text-sm leading-relaxed lg:text-lg" initial="hidden" animate="visible" variants={item}>
         Karya terbaru mahasiswa dan dosen, mulai dari animasi, game, hingga
         desain interaktif yang siap menginspirasi dunia digital
       </motion.p>
-      <motion.article className="mt-10 grid w-full gap-8 lg:grid-cols-3" variants={item}>
+      <motion.article className="mt-10 grid w-full gap-8 lg:grid-cols-3" initial="hidden" animate="visible" variants={item}>
         {dummyProjects.map((project, index) => (
           <figure key={index} className="group hover:shadow-primary/10 overflow-hidden rounded-2xl border-0 bg-white/80 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl">
             <div className="relative overflow-hidden">

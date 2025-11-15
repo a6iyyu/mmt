@@ -7,3 +7,127 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model dosen {
+  id_dosen     Int           @id @default(autoincrement())
+  nama_lengkap String        @db.VarChar(50)
+  nip          String        @unique
+  surel        String        @unique
+  keahlian     String?
+  linkedin     String?       @unique
+  sinta        String?       @unique @db.VarChar(255)
+  scholar      String?       @unique @db.VarChar(255)
+  jabatan      String?
+  foto_profil  String?
+  bio          String?       @db.Text
+  karya_dosen  karya_dosen[] @relation("karya_dosen")
+  created_at   DateTime      @default(now())
+  updated_at   DateTime      @updatedAt
+}
+
+model mahasiswa {
+  id_mahasiswa    Int               @id @default(autoincrement())
+  nama_lengkap    String            @db.VarChar(50)
+  nim             String            @unique
+  program_studi   Prodi
+  angkatan        Int
+  foto_profil     String?
+  bio             String?           @db.Text
+  surel           String?           @unique
+  linkedin        String?           @unique
+  whatsapp        String?           @unique
+  karya_mahasiswa karya_mahasiswa[] @relation("karya_mahasiswa")
+  created_at      DateTime          @default(now())
+  updated_at      DateTime          @updatedAt
+}
+
+model karya_dosen {
+  id_karya_dosen    Int        @id @default(autoincrement())
+  judul             String
+  slug              String     @unique
+  deskripsi         String     @db.Text
+  gambar            String
+  tautan            String     @unique
+  status            Publikasi  @default(DRAF)
+  tanggal_publikasi DateTime?
+  dosen             dosen[]    @relation("karya_dosen")
+  kategori          kategori[] @relation("kategori_karya_dosen")
+  created_at        DateTime   @default(now())
+  updated_at        DateTime   @updatedAt
+}
+
+model karya_mahasiswa {
+  id_karya_mahasiswa Int         @id @default(autoincrement())
+  judul              String
+  slug               String      @unique
+  deskripsi          String      @db.Text
+  gambar             String
+  status             Publikasi   @default(DRAF)
+  tanggal_publikasi  DateTime?
+  mahasiswa          mahasiswa[] @relation("karya_mahasiswa")
+  kategori           kategori[]  @relation("kategori_karya_mahasiswa")
+  teknologi          teknologi[] @relation("teknologi_karya_mahasiswa")
+  created_at         DateTime    @default(now())
+  updated_at         DateTime    @updatedAt
+}
+
+model pelatihan {
+  id_pelatihan     Int          @id @default(autoincrement())
+  nama             String       @unique
+  slug             String       @unique
+  deskripsi        String       @db.Text
+  tanggal          DateTime
+  mentor           String
+  lokasi           String
+  gambar           String
+  kuota            Int?
+  buka_pendaftaran Ketersediaan @default(TERSEDIA)
+  status           Publikasi    @default(DRAF)
+  created_at       DateTime     @default(now())
+  updated_at       DateTime     @updatedAt
+}
+
+model pengguna {
+  id_pengguna  Int      @id @default(autoincrement())
+  nama_lengkap String
+  surel        String   @unique
+  kata_sandi   String
+  peran        Peran    @default(ADMIN)
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+}
+
+model kategori {
+  id_kategori     Int               @id @default(autoincrement())
+  nama            String            @unique
+  slug            String            @unique
+  karya_dosen     karya_dosen[]     @relation("kategori_karya_dosen")
+  karya_mahasiswa karya_mahasiswa[] @relation("kategori_karya_mahasiswa")
+}
+
+model teknologi {
+  id_teknologi    Int               @id @default(autoincrement())
+  nama            String            @unique
+  karya_mahasiswa karya_mahasiswa[] @relation("teknologi_karya_mahasiswa")
+}
+
+enum Ketersediaan {
+  TERSEDIA
+  HABIS
+}
+
+enum Peran {
+  ADMIN
+}
+
+enum Prodi {
+  TI
+  SIB
+  PPLS
+}
+
+enum Publikasi {
+  DRAF
+  DITERBITKAN
+  DIARSIPKAN
+}

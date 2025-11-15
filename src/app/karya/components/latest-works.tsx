@@ -37,7 +37,7 @@ export default function LatestWorks() {
   }, [allProjects, searchTerm, selectedCategory]);
 
   return (
-    <section className="relative flex w-full flex-col items-center pt-8 pb-28">
+    <section className="relative flex w-full flex-col items-center pt-12 pb-28">
       <span className="bg-accent/10 pointer-events-none absolute -top-20 -left-32 h-72 w-72 rounded-full blur-2xl" />
       <span className="bg-secondary/10 pointer-events-none absolute top-1/2 right-0 h-64 w-64 -translate-y-1/2 rounded-full blur-2xl" />
       <motion.div initial="hidden" animate="visible" variants={item} className="z-10 flex cursor-default flex-col items-center text-center">

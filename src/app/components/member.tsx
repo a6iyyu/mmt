@@ -1,106 +1,13 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, Mail, Users } from "lucide-react";
-import { RefObject, useRef } from "react";
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { Users } from "lucide-react";
+import { useRef } from "react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { NavigationOptions } from "swiper/types";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import Link from "next/link";
-
-const members = [
-  {
-    name: "Dr. Ahmad Multimedia",
-    role: "Kepala Lab",
-    expertise: ["Game Development", "VR/AR", "Computer Graphics"],
-    image: "/images/placeholder.png",
-    social: { linkedin: "#", github: "#", email: "ahmad@mmt.ac.id" },
-  },
-  {
-    name: "Sarah Creative",
-    role: "Dosen Multimedia",
-    expertise: ["Motion Graphics", "UI/UX Design", "Video Production"],
-    image: "/images/placeholder.png",
-    social: { linkedin: "#", github: "#", email: "sarah@mmt.ac.id" },
-  },
-  {
-    name: "Prof. Tech Innovation",
-    role: "Peneliti Senior",
-    expertise: ["AI/ML", "Computer Vision", "Interactive Media"],
-    image: "/images/placeholder.png",
-    social: { linkedin: "#", github: "#", email: "tech@mmt.ac.id" },
-  },
-  {
-    name: "Maya Digital",
-    role: "Asisten Lab",
-    expertise: ["3D Modeling", "Animation", "Digital Art"],
-    image: "/images/placeholder.png",
-    social: { linkedin: "#", github: "#", email: "maya@mmt.ac.id" },
-  },
-  {
-    name: "Rizki Developer",
-    role: "Mahasiswa S2",
-    expertise: ["Web Development", "Mobile Apps", "IoT"],
-    image: "/images/placeholder.png",
-    social: { linkedin: "#", github: "#", email: "rizki@student.mmt.ac.id" },
-  },
-  {
-    name: "Andi Gamer",
-    role: "Mahasiswa S1",
-    expertise: ["Game Design", "Level Design", "Storytelling"],
-    image: "/images/placeholder.png",
-    social: { linkedin: "#", github: "#", email: "andi@student.mmt.ac.id" },
-  },
-];
-
-function MemberCard({ member }: { member: (typeof members)[0] }) {
-  return (
-    <figure className="group relative flex h-[480px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl bg-slate-900 transition-shadow duration-300">
-      <Image src={member.image} alt={`Foto ${member.name}`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-      <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" aria-hidden="true" />
-      <figcaption className="relative z-10 space-y-4 p-6 text-white">
-        <div>
-          <h3 className="text-2xl font-bold">{member.name}</h3>
-          <p className="text-sky-300">{member.role}</p>
-        </div>
-        <span className="flex flex-wrap gap-2 border-t border-white/10 pt-4">
-          {member.expertise.map((skill) => (
-            <Badge key={skill} variant="secondary" className="bg-white/10 text-white backdrop-blur-sm">
-              {skill}
-            </Badge>
-          ))}
-        </span>
-        <span className="flex items-center space-x-3 pt-2">
-          <Link href={member.social.linkedin} className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20">
-            <FaLinkedin className="h-4 w-4" />
-          </Link>
-          <Link href={member.social.github} className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20">
-            <FaGithub className="h-4 w-4" />
-          </Link>
-          <Link href={`mailto:${member.social.email}`} className="rounded-full bg-white/10 p-2 transition-colors hover:bg-white/20">
-            <Mail className="h-4 w-4" />
-          </Link>
-        </span>
-      </figcaption>
-    </figure>
-  );
-}
-
-function CarouselControls({ previous, next }: { previous: RefObject<HTMLButtonElement | null>; next: RefObject<HTMLButtonElement | null> }) {
-  return (
-    <nav className="mt-10 flex items-center justify-center gap-4 lg:justify-start">
-      <Button ref={previous} variant="outline" size="icon" className="h-12 w-12 cursor-pointer rounded-full border-slate-300 hover:bg-slate-100">
-        <ArrowLeft className="h-6 w-6 text-slate-700" />
-      </Button>
-      <Button ref={next} variant="outline" size="icon" className="h-12 w-12 cursor-pointer rounded-full border-slate-300 hover:bg-slate-100">
-        <ArrowRight className="h-6 w-6 text-slate-700" />
-      </Button>
-    </nav>
-  );
-}
+import { members } from "@/app/data/members";
+import { CarouselControls } from "@/app/atoms/carousel-controls";
+import { MemberCard } from "@/app/atoms/member-card";
 
 export default function Member() {
   const previous = useRef<HTMLButtonElement>(null);
