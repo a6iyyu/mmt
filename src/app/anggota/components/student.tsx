@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
 import { useMemo, useState } from "react";
-import { FaLinkedin } from "react-icons/fa6";
+import { FaLinkedin, FaWhatsapp } from "react-icons/fa6";
 import { container, item } from "@/constants/variants";
 import { dummyStudents } from "@/app/anggota/data/student";
 import { Button } from "@/components/ui/button";
@@ -22,7 +22,7 @@ export default function Student() {
   }, [selectedField]);
 
   return (
-    <section className="relative z-10 mx-auto flex w-[90%] max-w-7xl flex-col items-center pb-32">
+    <section className="relative z-10 mx-auto flex w-[90%] max-w-7xl flex-col items-center pb-20">
       <motion.div
         className="flex w-full flex-col items-center"
         variants={container}
@@ -51,8 +51,7 @@ export default function Student() {
           animate="visible"
         >
           {filteredStudents.map((student) => (
-            <motion.a
-              href={student.name.toLowerCase().replace(/\s+/g, "-")}
+            <motion.div
               key={student.id}
               variants={item}
               className="group flex items-center gap-5 rounded-xl border border-gray-200 bg-white/70 p-5 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
@@ -67,22 +66,27 @@ export default function Student() {
                 />
               </span>
               <figcaption className="flex flex-col justify-center">
-                <h3 className="text-heading text-base font-semibold">
-                  {student.name}
-                </h3>
-                <p className="text-primary text-sm">
+                <Link href={student.name.toLowerCase().replace(/\s+/g, "-")} target="_blank" rel="noreferrer">
+                  <h3 className="text-heading text-base font-semibold">
+                    {student.name}
+                  </h3>
+                </Link>
+                <p className="text-primary cursor-default text-sm">
                   {student.major} — {student.focus}
                 </p>
                 <span className="mt-2 flex gap-3 text-gray-500">
-                  <Link href={student.linkedin.toLowerCase().replace(/\s+/g, "")} target="_blank" rel="noreferrer">
+                  <Link href={student.linkedin} target="_blank" rel="noreferrer">
                     <FaLinkedin className="hover:text-accent h-4 w-4 transition-colors" />
                   </Link>
                   <Link href={`mailto:${student.email.toLowerCase().replace(/\s+/g, "")}`}>
                     <Mail className="hover:text-secondary h-4 w-4 transition-colors" />
                   </Link>
+                  <Link href={`${student.whatsapp}`} target="_blank" rel="noreferrer">
+                    <FaWhatsapp className="hover:text-green-500 h-4 w-4 transition-colors" />
+                  </Link>
                 </span>
               </figcaption>
-            </motion.a>
+            </motion.div>
           ))}
         </motion.figure>
         {filteredStudents.length === 0 && (

@@ -8,8 +8,9 @@ class Student {
   focus!: string;
   field!: "Game Development" | "UI/UX" | "VR/AR" | "Animasi" | "3D Asset";
   image!: string;
-  linkedin!: string;
+  linkedin!: URL | string;
   email!: string;
+  whatsapp!: URL | string;
 }
 
 export { Student };

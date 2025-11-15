@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Hero from "@/app/pelatihan/components/hero";
 
 export const metadata: Metadata = {
   title: "Pelatihan | Lab Multimedia",
@@ -15,6 +16,8 @@ export const metadata: Metadata = {
 
 export default function Pelatihan() {
   return (
-    <main className="relative flex-grow overflow-hidden"></main>
+    <main className="relative flex-grow overflow-hidden">
+      <Hero />
+    </main>
   );
 }
