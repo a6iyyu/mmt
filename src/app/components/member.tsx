@@ -6,7 +6,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { NavigationOptions } from "swiper/types";
 import { members } from "@/app/data/members";
-import { CarouselControls } from "@/app/atoms/carousel-controls";
+import { CarouselControls } from "@/components/common/carousel-controls";
 import { MemberCard } from "@/app/atoms/member-card";
 
 export default function Member() {

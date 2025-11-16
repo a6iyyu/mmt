@@ -25,18 +25,18 @@ export default function Hero() {
       <motion.div variants={item} initial="hidden" animate="visible" className="absolute bottom-1/20 left-1/4 -translate-x-1/2 animate-bounce [animation-delay:200ms]">
         <Orbit icon={Layers} colorClass="bg-amber-500" />
       </motion.div>
-      <motion.div variants={item} initial="hidden" animate="visible" className="relative z-10 max-w-3xl cursor-default px-6 text-center">
+      <motion.div variants={item} initial="hidden" animate="visible" className="relative z-10 max-w-4xl cursor-default px-6 text-center">
         <Badge className="border-primary/40 bg-primary/20 text-primary mb-4 inline-flex items-center gap-2 border px-4 py-2 text-sm backdrop-blur">
           <Sparkles className="text-primary h-4 w-4" />
           Pelatihan Resmi Lab MMT
         </Badge>
-        <h1 className="text-2xl leading-tight font-extrabold tracking-wide lg:text-5xl">
+        <h1 className="text-2xl leading-tight font-extrabold tracking-wide text-wrap lg:text-5xl">
           Belajar dari Mentor Bersertifikasi{" "}
           <span className="from-primary to-secondary block bg-gradient-to-r bg-clip-text text-transparent drop-shadow">
             Unity & Multimedia
           </span>
         </h1>
-        <p className="text-text-secondary mt-4 text-sm lg:text-lg">
+        <p className="text-text-secondary mx-auto mt-4 max-w-xl text-sm lg:text-lg">
           Program pelatihan komprehensif untuk meningkatkan keterampilan Game
           Development, UI/UX, Animasi, 3D, dan VR.
         </p>

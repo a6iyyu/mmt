@@ -1,14 +1,14 @@
 "use client";
 
-import { ArrowLeft, ArrowRight, Star, ExternalLink } from "lucide-react";
-import { RefObject, useRef } from "react";
+import { Star, ExternalLink } from "lucide-react";
+import { useRef } from "react";
 import { FaGithub } from "react-icons/fa6";
 import { Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { NavigationOptions } from "swiper/types";
 import { bestWorks } from "@/app/karya/data/best-works";
+import { CarouselControls } from "@/components/common/carousel-controls";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import "swiper/swiper.css";
@@ -41,19 +41,6 @@ function WorksCard({ project }: { project: (typeof bestWorks)[0] }) {
         </span>
       </figcaption>
     </figure>
-  );
-}
-
-function CarouselControls({ previous, next }: { previous: RefObject<HTMLButtonElement | null>; next: RefObject<HTMLButtonElement | null> }) {
-  return (
-    <nav className="mt-10 flex items-center justify-center gap-4 lg:justify-start">
-      <Button ref={previous} variant="outline" size="icon" className="h-12 w-12 cursor-pointer rounded-full border-slate-300 hover:bg-slate-100">
-        <ArrowLeft className="h-6 w-6 text-slate-700" />
-      </Button>
-      <Button ref={next} variant="outline" size="icon" className="h-12 w-12 cursor-pointer rounded-full border-slate-300 hover:bg-slate-100">
-        <ArrowRight className="h-6 w-6 text-slate-700" />
-      </Button>
-    </nav>
   );
 }
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/app/pelatihan/components/hero";
 import Benefits from "@/app/pelatihan/components/benefits";
+import Certificates from "@/app/pelatihan/components/certificates";
 import List from "@/app/pelatihan/components/list";
 import CallToAction from "@/app/pelatihan/components/cta";
 
@@ -22,6 +23,7 @@ export default function Pelatihan() {
     <main className="relative flex-grow overflow-hidden">
       <Hero />
       <Benefits />
+      <Certificates />
       <List />
       <CallToAction />
     </main>
