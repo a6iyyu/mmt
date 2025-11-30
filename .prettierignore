@@ -1,0 +1,8 @@
+.next/
+node_modules/
+dist/
+build/
+./prisma/migrations/
+.env
+.env.testing
+./src/generated/**

@@ -24,3 +24,4 @@ next-env.d.ts
 prisma/migrations
 storage/
 /src/generated/prisma
+.env.sentry-build-plugin

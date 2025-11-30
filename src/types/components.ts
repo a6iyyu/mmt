@@ -62,7 +62,7 @@ class Sidebar {
   label?: string;
   onClose?: () => void;
   subMenu?: Sidebar[];
-}
+};
 
 /**
  * @description Interface untuk komponen Table

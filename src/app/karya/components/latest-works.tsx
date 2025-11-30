@@ -44,7 +44,7 @@ export default function LatestWorks() {
         <h5 className="bg-primary/10 text-primary rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide">
           Semua Karya Terbaru
         </h5>
-        <h2 className="from-accent to-secondary mt-4 h-auto bg-gradient-to-r bg-clip-text text-3xl leading-normal font-extrabold tracking-tight text-transparent md:text-4xl">
+        <h2 className="from-accent to-secondary mt-4 h-auto bg-linear-to-r bg-clip-text text-3xl leading-normal font-extrabold tracking-tight text-transparent md:text-4xl">
           Eksplor Karya Digital Kami
         </h2>
         <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed md:text-base">
@@ -108,7 +108,7 @@ export default function LatestWorks() {
               <h3 className="text-foreground mt-2 text-xl font-bold">
                 {project.title}
               </h3>
-              <p className="text-muted-foreground mt-1 flex-grow text-sm">
+              <p className="text-muted-foreground mt-1 grow text-sm">
                 {Truncate(project.description, 100)}
               </p>
               <span className="my-4 flex flex-wrap gap-2">
@@ -127,7 +127,7 @@ export default function LatestWorks() {
           </motion.div>
         ))}
         {filteredProjects.length === 0 && (
-          <div className="text-muted-foreground col-span-full py-16 text-center">
+          <div className="cursor-default col-span-full py-16 text-center">
             <h3 className="text-xl font-semibold">Tidak Ada Karya Ditemukan</h3>
             <p className="mt-2">
               Coba ubah kata kunci pencarian atau filter kategori Anda.
@@ -135,10 +135,10 @@ export default function LatestWorks() {
           </div>
         )}
       </article>
-      {hasNextPage && (
+      {hasNextPage && filteredProjects.length > 0 && (
         <motion.span initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <Button onClick={() => fetchNextPage()} className="border-secondary/80 mx-auto mt-12 h-12 w-fit cursor-pointer rounded-md border-b-4 px-8 text-sm transition-all duration-100 ease-in-out active:translate-y-1 active:border-b-0 active:brightness-95">
-            Load More
+            Muat Lebih Banyak
           </Button>
         </motion.span>
       )}

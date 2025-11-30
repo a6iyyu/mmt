@@ -46,7 +46,7 @@ export default function Select({ label, name, onChange, options, required, value
         </select>
         <button
           type="button"
-          className="flex min-h-[2.5rem] w-full cursor-pointer items-center justify-between rounded-[0.7rem] border-[1.5px] border-[#d1d5db] bg-transparent p-4 text-left text-[#b0b8c1] focus:border-[#22b6d1] focus:shadow-[0_2px_8px_0_#22b6d122]"
+          className="flex min-h-10 w-full cursor-pointer items-center justify-between rounded-[0.7rem] border-[1.5px] border-[#d1d5db] bg-transparent p-4 text-left text-[#b0b8c1] focus:border-[#22b6d1] focus:shadow-[0_2px_8px_0_#22b6d122]"
           onClick={(e) => { e.stopPropagation(); setDropdownOpen(!dropdownOpen) }}
         >
           <h5 className="flex w-full items-center justify-between">
@@ -57,7 +57,7 @@ export default function Select({ label, name, onChange, options, required, value
                 return `Pilih ${label}`;
               })()}
             </span>
-            <ChevronDown className="ml-2 h-4 w-4 flex-shrink-0 text-gray-400" />
+            <ChevronDown className="ml-2 h-4 w-4 shrink-0 text-gray-400" />
           </h5>
         </button>
         {dropdownOpen && (

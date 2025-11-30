@@ -5,9 +5,6 @@ import { Autoplay, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/free-mode";
 
 export default function Course() {
   const images = Array.from({ length: 8 }, () => `/images/placeholder.png`);
