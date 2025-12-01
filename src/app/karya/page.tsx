@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 
 export default function Karya() {
   return (
-    <main className="relative flex-grow overflow-hidden">
-      <span className="from-accent/5 to-secondary/5 pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b" />
+    <main className="relative grow overflow-hidden">
+      <span className="from-accent/5 to-secondary/5 pointer-events-none absolute inset-0 -z-10 bg-linear-to-b" />
       <Hero />
       <BestWorks />
       <LatestWorksProvider />

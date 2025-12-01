@@ -7,16 +7,16 @@ export default function Hero() {
       <span className="bg-accent/20 pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full blur-3xl" />
       <span className="bg-secondary/20 pointer-events-none absolute -right-40 -bottom-40 h-96 w-96 rounded-full blur-3xl" />
       <div className="relative mx-auto w-[90%] text-center">
-        <Badge className="border-accent/20 mb-6 inline-flex items-center rounded-full border bg-white/60 px-4 py-2 text-sm font-medium text-[#314158] backdrop-blur">
+        <Badge className="border-accent/20 text-heading mb-6 inline-flex items-center rounded-full border bg-white/60 px-4 py-2 text-sm font-medium backdrop-blur">
           <Sparkles className="text-accent mr-2 h-4 w-4 animate-pulse" />
           Karya Mahasiswa & Dosen
         </Badge>
-        <h1 className="relative mb-4 text-4xl font-bold text-[#314158] lg:text-5xl">
+        <h1 className="text-heading relative mb-4 text-4xl font-bold lg:text-5xl">
           Jelajahi{" "}
-          <span className="from-accent to-secondary bg-gradient-to-r bg-clip-text text-transparent">
+          <span className="from-accent to-secondary bg-linear-to-r bg-clip-text text-transparent">
             Karya Multimedia
           </span>
-          <span className="from-accent/10 to-secondary/10 absolute -inset-x-10 -inset-y-2 -z-10 bg-gradient-to-r blur-2xl"></span>
+          <span className="from-accent/10 to-secondary/10 absolute -inset-x-10 -inset-y-2 -z-10 bg-linear-to-r blur-2xl"></span>
         </h1>
         <h5 className="mx-auto max-w-2xl text-lg leading-8 text-gray-600">
           Kumpulan karya inovatif dari mahasiswa dan penelitian dosen di bidang

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="container mx-auto w-[90%] flex-grow">
+    <main className="container mx-auto w-[90%] grow">
       <Hero />
       <LatestWork />
       <Lecturer />

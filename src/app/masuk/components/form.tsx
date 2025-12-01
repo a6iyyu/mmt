@@ -27,7 +27,7 @@ export default function Form() {
           icon={<Lock className="h-5 w-5 text-gray-400" />}
           required
         />
-        <button type="submit" className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-accent)] py-3.5 font-bold text-white shadow-lg transition-all hover:bg-[var(--color-accent)]/90 hover:shadow-xl active:scale-[0.98]">
+        <button type="submit" className="group bg-accent hover:bg-accent/90 flex w-full items-center justify-center gap-2 rounded-xl py-3.5 font-bold text-white shadow-lg transition-all hover:shadow-xl active:scale-[0.98]">
           Masuk Sekarang
           <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
         </button>

@@ -9,7 +9,7 @@ import { container, item } from "@/constants/variants";
 export default function Hero() {
   return (
     <motion.section variants={container} initial="hidden" animate="visible" className="bg-background text-heading relative flex min-h-screen w-full items-center justify-center overflow-hidden py-24 lg:pt-40">
-      <span className="absolute inset-0 bg-[url('/images/motion-grid.svg')] [mask-image:linear-gradient(180deg,_white,_rgba(255,_255,_255,_0))] bg-center opacity-10" />
+      <span className="absolute inset-0 bg-[url('/images/motion-grid.svg')] mask-[linear-gradient(180deg,white,rgba(255,255,255,0))] bg-center opacity-10" />
       <motion.div variants={item} initial="hidden" animate="visible" className="absolute top-1/5 left-3/20 animate-bounce [animation-delay:100ms]">
         <Orbit icon={Gamepad2} colorClass="bg-red-500" />
       </motion.div>
@@ -32,7 +32,7 @@ export default function Hero() {
         </Badge>
         <h1 className="text-2xl leading-tight font-extrabold tracking-wide text-wrap lg:text-5xl">
           Belajar dari Mentor Bersertifikasi{" "}
-          <span className="from-primary to-secondary block bg-gradient-to-r bg-clip-text text-transparent drop-shadow">
+          <span className="from-primary to-secondary block bg-linear-to-r bg-clip-text text-transparent drop-shadow">
             Unity & Multimedia
           </span>
         </h1>

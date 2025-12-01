@@ -19,7 +19,7 @@ export default function LecturerCard({ lecturer, variants }: { lecturer: ILectur
       <figcaption className="flex flex-1 flex-col p-5">
         <h3 className="text-foreground text-xl font-bold">{lecturer.name}</h3>
         <p className="text-muted-foreground text-sm">{lecturer.position}</p>
-        <div className="mt-4 flex-grow">
+        <div className="mt-4 grow">
           <h4 className="text-foreground mb-2 text-xs font-semibold tracking-wider uppercase">
             Minat Penelitian:
           </h4>

@@ -29,7 +29,7 @@ export default function Student() {
         initial="hidden"
         animate="visible"
       >
-        <motion.h2 variants={item} className="from-accent to-secondary bg-gradient-to-r bg-clip-text text-center text-xl font-extrabold tracking-tight text-transparent lg:text-3xl">
+        <motion.h2 variants={item} className="from-accent to-secondary bg-linear-to-r bg-clip-text text-center text-xl font-extrabold tracking-tight text-transparent lg:text-3xl">
           Mahasiswa Anggota Lab
         </motion.h2>
         <motion.p variants={item} className="mx-auto mt-4 max-w-2xl text-center text-sm leading-8 text-gray-600 lg:text-base">
@@ -56,7 +56,7 @@ export default function Student() {
               variants={item}
               className="group flex items-center gap-5 rounded-xl border border-gray-200 bg-white/70 p-5 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
-              <span className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-full bg-gray-100">
+              <span className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full bg-gray-100">
                 <Image
                   src={student.image}
                   alt={student.name}

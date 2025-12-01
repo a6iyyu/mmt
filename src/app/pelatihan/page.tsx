@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function Pelatihan() {
   return (
-    <main className="relative flex-grow overflow-hidden">
+    <main className="relative grow overflow-hidden">
       <Hero />
       <Benefits />
       <Certificates />

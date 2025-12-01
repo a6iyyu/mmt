@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function Masuk() {
   return (
-    <main className="flex min-h-screen w-full bg-[var(--color-background)]">
+    <main className="bg-background flex min-h-screen w-full">
       <section className="flex w-full flex-col justify-center px-8 sm:px-12 lg:w-1/2 xl:px-24">
         <Form />
       </section>

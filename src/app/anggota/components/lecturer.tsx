@@ -19,7 +19,7 @@ export default function LecturerList() {
   return (
     <section className="relative z-10 mx-auto flex w-[90%] max-w-7xl flex-col items-center pb-20">
       <motion.div className="flex w-full flex-col items-center" variants={container} initial="hidden" animate="visible">
-        <motion.h2 variants={item} className="from-accent to-secondary cursor-default bg-gradient-to-r bg-clip-text text-center text-xl font-extrabold tracking-tight text-transparent lg:text-3xl">
+        <motion.h2 variants={item} className="from-accent to-secondary cursor-default bg-linear-to-r bg-clip-text text-center text-xl font-extrabold tracking-tight text-transparent lg:text-3xl">
           Dosen Pembimbing
         </motion.h2>
         <motion.p variants={item} className="mx-auto mt-4 max-w-2xl cursor-default text-center text-sm leading-8 lg:text-base">

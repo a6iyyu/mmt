@@ -10,8 +10,7 @@ export default function Course() {
   const images = Array.from({ length: 8 }, () => `/images/placeholder.png`);
 
   return (
-    <figure className="from-heading to-primary mb-8 grid items-center gap-16 rounded-2xl bg-gradient-to-br px-16 lg:grid-cols-2">
-      {/* Caption */}
+    <figure className="from-heading to-primary mb-8 grid items-center gap-16 rounded-2xl bg-linear-to-br px-16 lg:grid-cols-2">
       <figcaption className="basis-1/2 text-white">
         <h2 className="mb-8 text-lg leading-11 font-bold text-balance lg:text-3xl">
           Belajar dengan kelas standar industri global
@@ -20,7 +19,7 @@ export default function Course() {
           Kelas di Dicoding Academy tersedia bagi yang belum memiliki kemampuan
           programming (dasar) hingga yang sudah profesional.
         </p>
-        <Button size="lg" className="group cursor-pointer rounded-lg border-0 bg-white !p-6 text-sm font-semibold text-[#314158] transition-all duration-300 hover:bg-white/90">
+        <Button size="lg" className="group text-heading cursor-pointer rounded-lg border-0 bg-white p-6! text-sm font-semibold transition-all duration-300 hover:bg-white/90">
           Lihat semua kelas
           <ArrowRight className="mt-0.5 h-5 w-5 transition-transform group-hover:translate-x-1" />
         </Button>

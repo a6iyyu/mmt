@@ -56,13 +56,13 @@ export default function LatestWork() {
       <div className="pointer-events-none absolute inset-0 -z-10">
         <span className="bg-secondary/20 absolute -top-20 -right-20 h-96 w-96 rounded-full blur-3xl" />
       </div>
-      <motion.div initial="hidden" animate="visible" variants={item} className="border-accent/20 from-accent/10 to-secondary/10 mb-6 inline-flex items-center rounded-full border bg-gradient-to-r px-4 py-2">
+      <motion.div initial="hidden" animate="visible" variants={item} className="border-accent/20 from-accent/10 to-secondary/10 mb-6 inline-flex items-center rounded-full border bg-linear-to-r px-4 py-2">
         <Star className="text-accent mr-2 h-4 w-4" />
         <h5 className="text-heading text-sm font-semibold">Karya Unggulan</h5>
       </motion.div>
       <motion.h2 className="text-heading mb-6 text-4xl font-bold text-balance lg:text-4xl" initial="hidden" animate="visible" variants={item}>
         Karya{" "}
-        <span className="from-accent to-secondary bg-gradient-to-r bg-clip-text text-transparent">
+        <span className="from-accent to-secondary bg-linear-to-r bg-clip-text text-transparent">
           Terbaru
         </span>
       </motion.h2>
@@ -95,12 +95,12 @@ export default function LatestWork() {
               </motion.p>
               <span className="mb-6 flex flex-wrap gap-2">
                 {project.tech.map((tag, i) => (
-                  <h6 key={i} className="border-hover-blue/30 from-hover-blue/20 to-secondary/20 text-heading rounded-full border bg-gradient-to-r px-3 py-1 text-xs font-medium">
+                  <h6 key={i} className="border-hover-blue/30 from-hover-blue/20 to-secondary/20 text-heading rounded-full border bg-linear-to-r px-3 py-1 text-xs font-medium">
                     {tag}
                   </h6>
                 ))}
               </span>
-              <Button size="sm" className="group/btn bg-accent hover:bg-accent/80 cursor-pointer rounded-sm border-0 !p-5 text-white transition-all duration-300">
+              <Button size="sm" className="group/btn bg-accent hover:bg-accent/80 cursor-pointer rounded-sm border-0 p-5! text-white transition-all duration-300">
                 <ExternalLink className="mr-2 h-4 w-4 transition-transform group-hover/btn:scale-110" />
                 Demo
               </Button>
@@ -108,9 +108,9 @@ export default function LatestWork() {
           </figure>
         ))}
       </motion.article>
-      <Button onClick={() => router.push(CREATIONS)} size="sm" className="group/btn bg-primary hover:bg-primary/80 mt-10 cursor-pointer rounded-sm border-0 !p-6 font-semibold text-white transition-all duration-300">
+      <Button onClick={() => router.push(CREATIONS)} size="sm" className="group/btn bg-primary hover:bg-primary/80 mt-10 cursor-pointer rounded-sm border-0 p-6! font-semibold text-white transition-all duration-300">
         Lihat Semua Karya
-        <ArrowRight className="mt-0.25 h-4 w-4 transition-transform lg:group-hover/btn:translate-x-0.5 lg:group-hover/btn:scale-110" />
+        <ArrowRight className="mt-px h-4 w-4 transition-transform lg:group-hover/btn:translate-x-0.5 lg:group-hover/btn:scale-110" />
       </Button>
     </motion.section>
   );

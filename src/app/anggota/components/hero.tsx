@@ -28,7 +28,7 @@ export default function Hero() {
         <motion.h2 className="text-primary text-sm font-bold tracking-widest uppercase" variants={item}>
           Tim & Struktur Lab
         </motion.h2>
-        <motion.h1 className="from-accent to-secondary mt-4 bg-gradient-to-r bg-clip-text text-3xl font-extrabold tracking-tight text-transparent sm:text-4xl lg:text-5xl" variants={item}>
+        <motion.h1 className="from-accent to-secondary mt-4 bg-linear-to-r bg-clip-text text-3xl font-extrabold tracking-tight text-transparent sm:text-4xl lg:text-5xl" variants={item}>
           Kenali Tim Inovator Kami
         </motion.h1>
         <motion.p className="text-muted-foreground mx-auto mt-6 max-w-3xl text-lg leading-8" variants={item}>

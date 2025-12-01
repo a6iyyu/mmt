@@ -9,7 +9,7 @@ export function MemberCard({ member }: { member: (typeof members)[0] }) {
   return (
     <figure className="group relative flex h-[480px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl bg-slate-900 transition-shadow duration-300">
       <Image src={member.image} alt={`Foto ${member.name}`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-      <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" aria-hidden="true" />
+      <span className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" aria-hidden="true" />
       <figcaption className="relative z-10 space-y-4 p-6 text-white">
         <div>
           <h3 className="text-2xl font-bold">{member.name}</h3>

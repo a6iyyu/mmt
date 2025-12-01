@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function Anggota() {
   return (
-    <main className="relative flex-grow overflow-hidden">
+    <main className="relative grow overflow-hidden">
       <Hero />
       <Lecturer />
       <Student />

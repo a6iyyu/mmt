@@ -22,7 +22,7 @@ export default function Member() {
         </h5>
         <h2 className="mt-6 text-xl leading-11 font-bold text-slate-900 lg:text-4xl">
           Dosen & Mahasiswa
-          <span className="block bg-gradient-to-r from-sky-600 to-cyan-400 bg-clip-text text-transparent">
+          <span className="block bg-linear-to-r from-sky-600 to-cyan-400 bg-clip-text text-transparent">
             Penuh Inspirasi
           </span>
         </h2>
