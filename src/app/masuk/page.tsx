@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Form from "@/app/masuk/components/form";
 import Slider from "@/app/masuk/components/slider";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Masuk | Lab Multimedia",
   description: "",

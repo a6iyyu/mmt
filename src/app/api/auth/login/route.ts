@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { API_AUTH_LOGIN } from "@/constants/route";
 
-export async function POST(_request: NextRequest): Promise<NextResponse> {
+export async function POST(): Promise<NextResponse> {
   try {
     return NextResponse.json({ message: `Login route at ${API_AUTH_LOGIN}` }, { status: 200 });
   } catch (error: unknown) {

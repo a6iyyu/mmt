@@ -4,6 +4,8 @@ import CategoryGrid from "@/app/kategori/components/category-grid";
 import Stats from "@/app/kategori/components/stats";
 import CTA from "@/app/kategori/components/cta";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Kategori | Lab Multimedia",
   description: "",
