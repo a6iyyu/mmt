@@ -22,7 +22,7 @@ export default function CourseList() {
   );
 
   const categoryOptions = toOptions(["Semua", ...Array.from(new Set(courses.map((c) => c.category)))], "Kategori");
-  const levelOptions = toOptions( ["Semua", ...Array.from(new Set(courses.map((c) => c.level)))], "Level");
+  const levelOptions = toOptions(["Semua", ...Array.from(new Set(courses.map((c) => c.level)))], "Level");
 
   const filteredCourses = useMemo(() => {
     return courses.filter((course) => {
@@ -46,7 +46,7 @@ export default function CourseList() {
 
   return (
     <section className="bg-background relative mx-auto min-h-[600px] max-w-6xl px-6 pb-20">
-      <article className="flex flex-col items-center text-center">
+      <article className="flex flex-col items-start justify-start lg:items-center lg:justify-center lg:text-center">
         <span className="border-accent/30 bg-accent/10 text-accent mb-4 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs! font-bold tracking-wide uppercase">
           <Sparkles className="h-3 w-3" />
           Upgrade Skill Sekarang
@@ -58,7 +58,7 @@ export default function CourseList() {
           Pilih alur belajarmu sendiri. Temukan kelas yang cocok untuk
           meningkatkan skill digitalmu.
         </p>
-        <div className="mt-6 flex items-center gap-3 opacity-60">
+        <div className="mt-6 hidden items-center gap-3 opacity-60 lg:flex">
           <span className="h-px w-12 bg-gray-300" />
           <span className="text-primary text-xs font-bold tracking-[0.2em]">
             ✦

@@ -1,13 +1,15 @@
+import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
-import { Badge } from "@/components/ui/badge";
 import { members } from "@/app/data/members";
+import { Badge } from "@/components/ui/badge";
+import { item } from "@/constants/variants";
 import Image from "next/image";
 import Link from "next/link";
 
 export function MemberCard({ member }: { member: (typeof members)[0] }) {
   return (
-    <figure className="group relative flex h-[480px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl bg-slate-900 transition-shadow duration-300">
+    <motion.figure variants={item} className="group relative flex h-[480px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl bg-slate-900 transition-shadow duration-300">
       <Image src={member.image} alt={`Foto ${member.name}`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
       <span className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" aria-hidden="true" />
       <figcaption className="relative z-10 space-y-4 p-6 text-white">
@@ -34,6 +36,6 @@ export function MemberCard({ member }: { member: (typeof members)[0] }) {
           </Link>
         </span>
       </figcaption>
-    </figure>
+    </motion.figure>
   );
 }

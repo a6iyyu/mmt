@@ -1,13 +1,15 @@
+import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
-import { Badge } from "@/components/ui/badge";
 import { bestWorks } from "@/app/karya/data/best-works";
+import { Badge } from "@/components/ui/badge";
+import { item } from "@/constants/variants";
 import Image from "next/image";
 import Link from "next/link";
 
 export function WorksCard({ project }: { project: (typeof bestWorks)[0] }) {
   return (
-    <figure className="group relative flex h-[480px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl bg-slate-900 transition-shadow duration-300">
+    <motion.figure variants={item} className="group relative flex h-[480px] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-2xl bg-slate-900 transition-shadow duration-300">
       <Image src={project.image} alt={`Gambar ${project.title}`} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
       <span className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" aria-hidden="true" />
       <figcaption className="relative z-10 space-y-4 p-6 text-white">
@@ -31,6 +33,6 @@ export function WorksCard({ project }: { project: (typeof bestWorks)[0] }) {
           </Link>
         </span>
       </figcaption>
-    </figure>
+    </motion.figure>
   );
 }

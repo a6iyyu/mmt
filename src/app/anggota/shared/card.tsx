@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { BookUser, GraduationCap, Mail } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa6";
 import { Lecturer as ILecturer } from "@/app/anggota/types/lecturer";

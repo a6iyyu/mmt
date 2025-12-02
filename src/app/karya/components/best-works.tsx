@@ -16,9 +16,9 @@ export default function BestWorks() {
   const next = useRef<HTMLButtonElement>(null);
 
   return (
-    <section className="mx-auto mt-16 grid w-[90%] max-w-7xl grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
-      <article className="cursor-default text-center lg:text-left">
-        <h5 className="inline-flex items-center rounded-full bg-sky-100 px-4 py-2 text-sm font-semibold text-sky-800 ring-1 ring-sky-200 ring-inset">
+    <section className="mx-auto mt-16 grid w-9/10 max-w-7xl grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center">
+      <article className="flex cursor-default flex-col items-start justify-start text-left">
+        <h5 className="inline-flex w-fit items-center rounded-full bg-sky-100 px-5 py-2.5 text-xs font-semibold text-sky-800 ring-1 ring-sky-200 ring-inset lg:text-sm">
           <Star className="mr-2 h-4 w-4" />
           Karya Unggulan Pilihan
         </h5>
@@ -28,13 +28,13 @@ export default function BestWorks() {
             Dari Lab Kami
           </span>
         </h2>
-        <p className="mt-3 text-xs leading-8 text-slate-600 lg:text-base">
+        <p className="mt-3 text-sm leading-7 text-slate-600 lg:text-base">
           Lihat lebih dekat beberapa karya paling inovatif dan inspiratif yang
           lahir dari kolaborasi mahasiswa dan dosen di Lab Multimedia.
         </p>
         <CarouselControls previous={previous} next={next} />
       </article>
-      <ul className="relative h-full min-h-[500px] w-full">
+      <ul className="relative order-first h-full min-h-[500px] w-full lg:order-last">
         <Swiper
           modules={[Navigation, Autoplay]}
           loop={true}
@@ -45,11 +45,11 @@ export default function BestWorks() {
             swiper.navigation.init();
             swiper.navigation.update();
           }}
-          spaceBetween={20}
-          slidesPerView={1.25}
+          spaceBetween={16}
+          slidesPerView={1}
           breakpoints={{
             640: { slidesPerView: 1.5, spaceBetween: 20 },
-            1024: { slidesPerView: 1.2, spaceBetween: 30 },
+            1024: { slidesPerView: 1, spaceBetween: 30 },
           }}
           className="h-full w-full py-4"
         >

@@ -37,17 +37,17 @@ export default function LatestWorks() {
   }, [allProjects, searchTerm, selectedCategory]);
 
   return (
-    <section className="relative flex w-full flex-col items-center pt-12 pb-28">
+    <section className="relative flex w-full flex-col items-center pt-12 pb-20">
       <span className="bg-accent/10 pointer-events-none absolute -top-20 -left-32 h-72 w-72 rounded-full blur-2xl" />
       <span className="bg-secondary/10 pointer-events-none absolute top-1/2 right-0 h-64 w-64 -translate-y-1/2 rounded-full blur-2xl" />
-      <motion.div initial="hidden" animate="visible" variants={item} className="z-10 flex cursor-default flex-col items-center text-center">
+      <motion.div initial="hidden" animate="visible" variants={item} className="z-10 flex cursor-default flex-col items-center px-4 text-center">
         <h5 className="bg-primary/10 text-primary rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide">
           Semua Karya Terbaru
         </h5>
-        <h2 className="from-accent to-secondary mt-4 h-auto bg-linear-to-r bg-clip-text text-3xl leading-normal font-extrabold tracking-tight text-transparent md:text-4xl">
+        <h2 className="from-accent to-secondary mx-auto mt-4 h-auto max-w-3xl bg-linear-to-r bg-clip-text text-[26px] leading-normal font-extrabold tracking-tight text-transparent lg:text-[44px]">
           Eksplor Karya Digital Kami
         </h2>
-        <p className="text-muted-foreground mt-4 max-w-2xl text-sm leading-relaxed md:text-base">
+        <p className="mt-4 max-w-xl mx-auto text-sm leading-relaxed md:text-base">
           Jelajahi karya terbaru yang dibuat oleh mahasiswa dan dosen Lab
           Multimedia, lengkap dengan kategori, teknologi, dan demo interaktif.
         </p>
@@ -92,7 +92,7 @@ export default function LatestWorks() {
           >
             <Image src={project.image} alt={`Gambar ${project.title}`} height={1920} width={1080} className="h-56 w-full object-cover opacity-[0.92]" />
             <figure className="flex flex-1 flex-col p-6">
-              <figcaption className="text-muted-foreground flex items-center justify-between text-sm">
+              <figcaption className="flex items-center justify-between text-sm">
                 <h6 className="font-medium">{project.category}</h6>
                 <div className="flex items-center gap-4">
                   <span className="flex items-center gap-1.5">
@@ -105,10 +105,10 @@ export default function LatestWorks() {
                   </span>
                 </div>
               </figcaption>
-              <h3 className="text-foreground mt-2 text-xl font-bold">
+              <h3 className="mt-2 text-xl font-bold">
                 {project.title}
               </h3>
-              <p className="text-muted-foreground mt-1 grow text-sm">
+              <p className="mt-1 grow text-sm leading-loose">
                 {Truncate(project.description, 100)}
               </p>
               <span className="my-4 flex flex-wrap gap-2">

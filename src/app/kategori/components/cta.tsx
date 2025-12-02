@@ -15,7 +15,7 @@ export default function CTA() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="bg-primary/5 relative flex flex-col items-center gap-10 overflow-hidden rounded-[2.5rem] px-8 py-18 md:flex-row md:px-12"
+        className="bg-primary/5 relative flex flex-col items-center gap-10 overflow-hidden rounded-[2.5rem] px-8 py-18 lg:flex-row lg:px-12"
       >
         <div className="bg-accent/10 pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full blur-3xl" />
         <div className="bg-primary/10 pointer-events-none absolute -right-20 -bottom-20 h-64 w-64 rounded-full blur-3xl" />
@@ -42,7 +42,7 @@ export default function CTA() {
             <h5 className="text-sm">Hubungi via WhatsApp</h5>
           </Link>
         </div>
-        <div className="relative min-h-[280px] w-full flex-1 overflow-hidden rounded-3xl md:h-[350px]">
+        <div className="relative order-first min-h-[280px] w-full flex-1 overflow-hidden rounded-3xl lg:order-last lg:h-[350px]">
           <Image
             src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop"
             alt="Ilustrasi 3D"

@@ -7,9 +7,11 @@ import { container, item } from "@/constants/variants";
 
 export default function Benefits() {
   return (
-    <motion.section variants={container} initial="hidden" animate="visible" className="bg-background md:grid-rows-auto mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 px-6 py-16 md:grid-cols-4 lg:grid-cols-4 lg:grid-rows-3 lg:gap-6 lg:px-0">
-      <motion.h2 variants={item} initial="hidden" animate="visible" className="text-accent cursor-default self-start text-2xl leading-tight font-bold text-wrap md:col-span-4 md:text-4xl lg:col-span-1 lg:row-span-1 lg:text-5xl">
-        Mengapa Memilih Kami?
+    <motion.section variants={container} initial="hidden" animate="visible" className="bg-background mx-auto grid w-full max-w-6xl grid-cols-1 gap-6 px-6 pb-16 md:grid-cols-4 lg:grid-cols-4 lg:grid-rows-3 lg:px-0 lg:py-16">
+      <motion.h2 variants={item} initial="hidden" animate="visible" className="text-accent cursor-default text-center text-[26px] leading-tight font-extrabold md:col-span-4 md:text-left lg:col-span-1 lg:row-span-1 lg:self-start lg:text-[44px]">
+        Mengapa Memilih
+        <br className="inline lg:hidden" />
+        Kami?
       </motion.h2>
       <BenefitCard
         title="Waktu Fleksibel"
