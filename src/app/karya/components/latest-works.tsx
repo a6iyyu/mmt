@@ -40,18 +40,18 @@ export default function LatestWorks() {
     <section className="relative flex w-full flex-col items-center pt-12 pb-20">
       <span className="bg-accent/10 pointer-events-none absolute -top-20 -left-32 h-72 w-72 rounded-full blur-2xl" />
       <span className="bg-secondary/10 pointer-events-none absolute top-1/2 right-0 h-64 w-64 -translate-y-1/2 rounded-full blur-2xl" />
-      <motion.div initial="hidden" animate="visible" variants={item} className="z-10 flex cursor-default flex-col items-center px-4 text-center">
-        <h5 className="bg-primary/10 text-primary rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide">
+      <motion.div initial="hidden" animate="visible" variants={item} className="z-10 flex cursor-default flex-col px-4 lg:items-center lg:text-center">
+        <h5 className="bg-primary/10 text-primary w-fit rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide">
           Semua Karya Terbaru
         </h5>
-        <h2 className="from-accent to-secondary mx-auto mt-4 h-auto max-w-3xl bg-linear-to-r bg-clip-text text-[26px] leading-normal font-extrabold tracking-tight text-transparent lg:text-[44px]">
+        <h2 className="from-accent to-secondary mt-4 bg-linear-to-r bg-clip-text text-[26px] leading-normal font-extrabold tracking-tight text-transparent lg:text-[44px]">
           Eksplor Karya Digital Kami
         </h2>
-        <p className="mt-4 max-w-xl mx-auto text-sm leading-relaxed md:text-base">
+        <p className="mt-4 max-w-xl mx-auto text-sm leading-loose lg:text-base lg:leading-relaxed">
           Jelajahi karya terbaru yang dibuat oleh mahasiswa dan dosen Lab
           Multimedia, lengkap dengan kategori, teknologi, dan demo interaktif.
         </p>
-        <div className="mt-4 flex items-center gap-3 opacity-60">
+        <div className="mt-4 hidden items-center gap-3 opacity-60 lg:flex">
           <span className="bg-border h-px w-10" />
           <span className="text-xs font-bold tracking-widest">✦</span>
           <span className="bg-border h-px w-10" />
