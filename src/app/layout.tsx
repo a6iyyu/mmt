@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import type { ReactNode } from "react";
-import { ClientLayout as Auth } from "@/app/auth";
+import { ClientLayout as Auth } from "@/client/auth";
 import "@/app/globals.css";
 import "swiper/css";
 import "swiper/css/autoplay";

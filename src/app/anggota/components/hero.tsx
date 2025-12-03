@@ -1,19 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Circle, Star } from "lucide-react";
+import { Circle, GraduationCap, Layers, Sparkles, Star, Users } from "lucide-react";
 import { container, item } from "@/constants/variants";
 
-const statsData: { label: string; value: string }[] = [
-  { value: "12", label: "Dosen Pembimbing" },
-  { value: "200+", label: "Mahasiswa Terlibat" },
-  { value: "5", label: "Bidang Fokus Penelitian" },
+const statsData = [
+  { value: "12", label: "Dosen Pembimbing", icon: GraduationCap },
+  { value: "200+", label: "Mahasiswa Terlibat", icon: Users },
+  { value: "5", label: "Bidang Fokus Penelitian", icon: Layers },
 ];
 
 export default function Hero() {
   return (
     <motion.section
-      className="relative flex w-full cursor-default flex-col items-center overflow-hidden py-24 lg:pt-40"
+      className="relative flex w-full cursor-default flex-col items-center overflow-hidden pt-32 pb-24 lg:pt-40"
       initial="hidden"
       animate="visible"
       variants={container}
@@ -24,32 +24,37 @@ export default function Hero() {
       <Star className="text-accent/50 absolute top-40 left-12 h-8 w-8 animate-bounce" />
       <Sparkles className="text-secondary/50 absolute right-12 bottom-20 h-8 w-8 animate-pulse" />
       <Circle className="text-accent/30 animate-spin-slow absolute bottom-60 left-1/3 h-10 w-10" />
-      <div className="z-10 flex w-[90%] max-w-7xl flex-col items-center justify-center text-center">
-        <motion.h2 className="text-primary text-sm font-bold tracking-widest uppercase" variants={item}>
+      <article className="z-10 flex w-[90%] max-w-7xl flex-col lg:items-center justify-center lg:text-center">
+        <motion.h5 className="text-primary text-xs font-bold tracking-widest uppercase lg:text-sm" variants={item}>
           Tim & Struktur Lab
-        </motion.h2>
-        <motion.h1 className="from-accent to-secondary mt-4 bg-linear-to-r bg-clip-text text-3xl font-extrabold tracking-tight text-transparent sm:text-4xl lg:text-5xl" variants={item}>
+        </motion.h5>
+        <motion.h1 className="from-accent to-secondary mt-4 bg-linear-to-r bg-clip-text text-[26px] font-extrabold tracking-tight text-transparent lg:text-[44px]" variants={item}>
           Kenali Tim Inovator Kami
         </motion.h1>
-        <motion.p className="text-muted-foreground mx-auto mt-6 max-w-3xl text-lg leading-8" variants={item}>
+        <motion.p className="mx-auto mt-6 max-w-3xl cursor-default text-sm leading-8 text-gray-600 lg:text-base lg:leading-9" variants={item}>
           Bertemu dengan para dosen, peneliti, dan mahasiswa berbakat yang
           menjadi motor penggerak inovasi di Lab Multimedia.
         </motion.p>
-        <motion.div className="border-border/50 bg-card/40 mt-16 w-full max-w-5xl rounded-xl border p-8 shadow-lg backdrop-blur-sm" variants={item}>
-          <figure className="md:divide-border grid grid-cols-1 gap-8 md:grid-cols-3 md:divide-x">
+        <motion.div className="lg:border-border/50 lg:bg-card/40 mt-12 w-full max-w-5xl rounded-xl border-none bg-transparent p-0 lg:mt-16 lg:border lg:p-8 lg:shadow-lg lg:backdrop-blur-sm" variants={item}>
+          <figure className="lg:divide-border/50 grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-8 lg:divide-x">
             {statsData.map((stat) => (
-              <figcaption key={stat.label} className="flex flex-col items-center px-4">
-                <h5 className="text-primary text-4xl font-bold tracking-tighter">
-                  {stat.value}
-                </h5>
-                <h5 className="text-muted-foreground mt-2 text-sm font-medium tracking-wide">
-                  {stat.label}
-                </h5>
+              <figcaption key={stat.label} className="flex items-center gap-4 rounded-lg border border-white/40 bg-white/40 p-4 shadow-sm backdrop-blur-sm lg:flex-col lg:border-none lg:bg-transparent lg:p-0 lg:shadow-none">
+                <span className="text-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm lg:hidden lg:bg-transparent lg:shadow-none">
+                  <stat.icon className="h-5 w-5" />
+                </span>
+                <span className="flex flex-col items-start text-left lg:items-center lg:text-center">
+                  <h5 className="text-primary text-base font-bold tracking-tighter lg:text-4xl">
+                    {stat.value}
+                  </h5>
+                  <h5 className="text-xs tracking-wide lg:mt-2 lg:text-sm">
+                    {stat.label}
+                  </h5>
+                </span>
               </figcaption>
             ))}
           </figure>
         </motion.div>
-      </div>
+      </article>
     </motion.section>
   );
 }

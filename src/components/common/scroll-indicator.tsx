@@ -15,5 +15,5 @@ export function ScrollIndicator() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return <span className="bg-primary fixed top-0 left-0 z-[9999] h-0.5 transition-all duration-150 ease-out" style={{ width: `${width}%` }} />;
+  return <span className="bg-primary fixed top-0 left-0 z-9999 h-0.5 transition-all duration-150 ease-out" style={{ width: `${width}%` }} />;
 }

@@ -35,7 +35,7 @@ export default function Lecturer() {
   ];
 
   return (
-    <section className="relative my-18 flex flex-col items-center">
+    <section className="relative my-18 flex flex-col lg:items-center">
       <span className="bg-accent/20 pointer-events-none absolute inset-0 -top-10 -left-10 -z-10 h-72 w-72 rounded-full blur-3xl" />
       <Sparkles className="text-accent/30 absolute top-20 left-12 z-0 h-12 w-12 animate-pulse" />
       <div className="border-accent/20 from-accent/10 to-secondary/10 mb-4 inline-flex w-fit items-center rounded-full border bg-linear-to-r px-4 py-2">
@@ -48,7 +48,7 @@ export default function Lecturer() {
           Multimedia
         </span>
       </h2>
-      <p className="text-primary max-w-3xl text-center text-sm leading-7 lg:text-base">
+      <p className="text-primary max-w-3xl text-sm leading-7 lg:text-center lg:text-base">
         Bertemu dengan para ahli multimedia yang berpengalaman dan berdedikasi
         dalam mengembangkan talenta mahasiswa di bidang teknologi kreatif
       </p>

@@ -5,19 +5,22 @@
     "": {
       "name": "mmt",
       "dependencies": {
+        "@hookform/resolvers": "^5.2.2",
         "@mdx-js/loader": "^3.1.1",
         "@mdx-js/react": "^3.1.1",
         "@next/mdx": "^16.0.5",
         "@prisma/client": "^6.19.0",
+        "@radix-ui/react-label": "^2.1.8",
         "@radix-ui/react-slot": "^1.2.4",
         "@sentry/nextjs": "^10.27.0",
         "@types/mdx": "^2.0.13",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "lucide-react": "^0.542.0",
-        "next": "^15.5.2",
+        "next": "15.5.2",
         "react": "19.1.0",
         "react-dom": "19.1.0",
+        "react-hook-form": "^7.67.0",
         "tailwind-merge": "^3.4.0",
       },
       "devDependencies": {
@@ -673,6 +676,19 @@
         }
       },
       "sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA=="
+    ],
+    "@hookform/resolvers": [
+      "@hookform/resolvers@5.2.2",
+      "",
+      {
+        "dependencies": {
+          "@standard-schema/utils": "^0.3.0"
+        },
+        "peerDependencies": {
+          "react-hook-form": "^7.55.0"
+        }
+      },
+      "sha512-A/IxlMLShx3KjV/HeTcTfaMxdwy690+L/ZADoeaTltLx+CVuzkeVIPuybK3jrRfw7YZnmdKsVVHAlEPIAEUNlA=="
     ],
     "@humanfs/core": [
       "@humanfs/core@0.19.1",
@@ -1786,6 +1802,46 @@
       },
       "sha512-z4eqJvfiNnFMHIIvXP3CY57y2WJs5g2v3X0zm9mEJkrkNv4rDxu+sg9Jh8EkXyeqBkB7SOcboo9dMVqhyrACIg=="
     ],
+    "@radix-ui/react-label": [
+      "@radix-ui/react-label@2.1.8",
+      "",
+      {
+        "dependencies": {
+          "@radix-ui/react-primitive": "2.1.4"
+        },
+        "peerDependencies": {
+          "@types/react": "*",
+          "@types/react-dom": "*",
+          "react": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+          "react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc"
+        },
+        "optionalPeers": [
+          "@types/react",
+          "@types/react-dom"
+        ]
+      },
+      "sha512-FmXs37I6hSBVDlO4y764TNz1rLgKwjJMQ0EGte6F3Cb3f4bIuHB/iLa/8I9VKkmOy+gNHq8rql3j686ACVV21A=="
+    ],
+    "@radix-ui/react-primitive": [
+      "@radix-ui/react-primitive@2.1.4",
+      "",
+      {
+        "dependencies": {
+          "@radix-ui/react-slot": "1.2.4"
+        },
+        "peerDependencies": {
+          "@types/react": "*",
+          "@types/react-dom": "*",
+          "react": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc",
+          "react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc"
+        },
+        "optionalPeers": [
+          "@types/react",
+          "@types/react-dom"
+        ]
+      },
+      "sha512-9hQc4+GNVtJAIEPEqlYqW5RiYdrr8ea5XQ0ZOnD6fgru+83kqT15mq2OCcbe8KnjRZl5vF3ks69AKz3kh1jrhg=="
+    ],
     "@radix-ui/react-slot": [
       "@radix-ui/react-slot@1.2.4",
       "",
@@ -2420,6 +2476,12 @@
       "",
       {},
       "sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA=="
+    ],
+    "@standard-schema/utils": [
+      "@standard-schema/utils@0.3.0",
+      "",
+      {},
+      "sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g=="
     ],
     "@swc/helpers": [
       "@swc/helpers@0.5.15",
@@ -8182,6 +8244,16 @@
         }
       },
       "sha512-Xs1hdnE+DyKgeHJeJznQmYMIBG3TKIHJJT95Q58nHLSrElKlGQqDTR2HQ9fx5CN/Gk6Vh/kupBTDLU11/nDk/g=="
+    ],
+    "react-hook-form": [
+      "react-hook-form@7.67.0",
+      "",
+      {
+        "peerDependencies": {
+          "react": "^16.8.0 || ^17 || ^18 || ^19"
+        }
+      },
+      "sha512-E55EOwKJHHIT/I6J9DmQbCWToAYSw9nN5R57MZw9rMtjh+YQreMDxRLfdjfxQbiJ3/qbg3Z02wGzBX4M+5fMtQ=="
     ],
     "react-icons": [
       "react-icons@5.5.0",

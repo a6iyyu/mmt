@@ -17,15 +17,15 @@ export default function LecturerCard({ lecturer, variants }: { lecturer: ILectur
         </h5>
       </div>
       <figcaption className="flex flex-1 flex-col p-5">
-        <h3 className="text-foreground text-xl font-bold">{lecturer.name}</h3>
-        <p className="text-muted-foreground text-sm">{lecturer.position}</p>
+        <h3 className="text-base font-bold lg:text-xl">{lecturer.name}</h3>
+        <p className="mt-2 text-xs lg:text-sm">{lecturer.position}</p>
         <div className="mt-4 grow">
-          <h4 className="text-foreground mb-2 text-xs font-semibold tracking-wider uppercase">
+          <h4 className="mb-2 text-[10px] font-semibold tracking-wider uppercase lg:text-xs">
             Minat Penelitian:
           </h4>
           <span className="flex flex-wrap gap-2">
             {lecturer.research_interests.map((interest) => (
-              <h5 key={interest} className="bg-muted/50 text-muted-foreground rounded-full px-3 py-1 text-xs">
+              <h5 key={interest} className="rounded-full px-3 py-1 text-[10px] lg:text-xs">
                 {interest}
               </h5>
             ))}

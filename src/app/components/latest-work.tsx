@@ -52,11 +52,16 @@ export default function LatestWork() {
   ];
 
   return (
-    <motion.section className="relative mt-6 flex flex-col items-center" initial="hidden" animate="visible" variants={container}>
+    <motion.section className="relative mt-6 flex flex-col lg:items-center lg:justify-center" initial="hidden" animate="visible" variants={container}>
       <div className="pointer-events-none absolute inset-0 -z-10 hidden lg:inline">
         <span className="bg-secondary/20 absolute -top-20 -right-20 h-96 w-96 rounded-full blur-3xl" />
       </div>
-      <motion.div initial="hidden" animate="visible" variants={item} className="border-accent/20 from-accent/10 to-secondary/10 mb-4 inline-flex items-center rounded-full border bg-linear-to-r px-4 py-2">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={item}
+        className="border-accent/20 from-accent/10 to-secondary/10 mb-4 inline-flex w-fit items-center rounded-full border bg-linear-to-r px-4 py-2"
+      >
         <Star className="text-accent mr-2 h-4 w-4" />
         <h5 className="text-heading text-xs font-semibold lg:text-sm">
           Karya Unggulan
@@ -68,7 +73,7 @@ export default function LatestWork() {
           Terbaru
         </span>
       </motion.h2>
-      <motion.p className="text-primary mx-auto max-w-3xl text-center text-sm leading-7 lg:text-base" initial="hidden" animate="visible" variants={item}>
+      <motion.p className="text-primary mx-auto max-w-3xl text-sm leading-7 lg:text-center lg:text-base" initial="hidden" animate="visible" variants={item}>
         Karya terbaru mahasiswa dan dosen, mulai dari animasi, game, hingga
         desain interaktif yang siap menginspirasi dunia digital
       </motion.p>
@@ -76,7 +81,14 @@ export default function LatestWork() {
         {dummyProjects.map((project, index) => (
           <figure key={index} className="group hover:shadow-primary/10 overflow-hidden rounded-2xl border-0 bg-white/80 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl">
             <div className="relative overflow-hidden">
-              <Image src={project.image} alt={project.title} width={600} height={400} className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-102" loading="lazy" />
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={600}
+                height={400}
+                className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-102"
+                loading="lazy"
+              />
               <span className="absolute top-4 left-4 flex gap-2">
                 {project.featured && (
                   <h6 className="bg-heading rounded-full px-3 py-1 text-xs font-semibold text-white shadow-lg">
