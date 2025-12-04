@@ -1,7 +1,7 @@
 "use client";
 
-import { captureException } from "@sentry/nextjs";
 import { useEffect } from "react";
+import { captureException } from "@sentry/nextjs";
 import NextError from "next/error";
 
 export default function GlobalError({ error }: { error: Error & { digest?: string } }) {

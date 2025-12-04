@@ -3,7 +3,6 @@ import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   reactStrictMode: true,
   images: {
@@ -18,15 +17,13 @@ const nextConfig: NextConfig = {
   },
 };
 
-const withMDX = createMDX({
-  extension: /\.(md|mdx)$/,
-});
+const withMDX = createMDX({ extension: /\.(md|mdx)$/ });
 
 export default withSentryConfig(withMDX(nextConfig), {
+  automaticVercelMonitors: true,
+  disableLogger: true,
   org: "a6iyyu",
   project: "mmt",
   silent: !process.env.CI,
   widenClientFileUpload: true,
-  disableLogger: true,
-  automaticVercelMonitors: true,
 });

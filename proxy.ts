@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export async function middleware(): Promise<NextResponse> {
+export async function proxy(): Promise<NextResponse> {
   try {
     return NextResponse.next();
   } catch (error: unknown) {

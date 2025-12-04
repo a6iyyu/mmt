@@ -15,7 +15,7 @@ export default function Hero() {
     <motion.section initial="hidden" animate="visible" variants={container} className="mt-28 flex flex-col items-center justify-between gap-10 px-6 py-16 lg:flex-row">
       <span className="absolute inset-0 bg-[url('/images/motion-grid.svg')] mask-[linear-gradient(180deg,white,rgba(255,255,255,0))] bg-center opacity-10" />
       <motion.div className="relative" variants={item}>
-        <Image src="/images/mascot.png" alt="MMT Mascout" width={1080} height={720} className="hidden h-auto w-full object-cover lg:block lg:basis-1/3" loading="lazy" />
+        <Image src="/images/mascot.png" alt="MMT Mascout" width={1080} height={720} className="hidden h-auto w-80 object-cover lg:block lg:basis-1/3" loading="lazy" />
         <span className="from-accent to-secondary absolute -top-4 -right-16 hidden h-16 w-16 animate-bounce items-center justify-center rounded-2xl bg-linear-to-br shadow-lg lg:flex">
           <Code className="h-8 w-8 text-white" />
         </span>
