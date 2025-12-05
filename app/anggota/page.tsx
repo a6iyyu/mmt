@@ -6,14 +6,14 @@ import Student from "@/app/anggota/components/student";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Anggota | Lab Multimedia",
+  title: "Anggota | Lab MMT",
   description: "",
   openGraph: {
-    title: "Anggota | Lab Multimedia",
+    title: "Anggota | Lab MMT",
     description: "",
   },
   twitter: {
-    title: "Anggota | Lab Multimedia",
+    title: "Anggota | Lab MMT",
     description: "",
   },
 };

@@ -1,7 +1,7 @@
 import { BookOpen, Home, Palette, Plus, Search, Users } from "lucide-react";
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaInstagram, FaYoutube } from "react-icons/fa";
 import type { ReactElement } from "react";
-import { ADMIN_CATEGORIES, ADMIN_COURSES, ADMIN_COURSES_CREATE, ADMIN_CREATIONS, ADMIN_DASHBOARD, ADMIN_MEMBERS, ADMIN_MEMBERS_CREATE, CATEGORY, COURSES, CREATIONS, HOME, MEMBER } from "@/constants/route";
+import { ADMIN_CATEGORIES, ADMIN_COURSES, ADMIN_COURSES_CREATE, ADMIN_CREATIONS, ADMIN_DASHBOARD, ADMIN_STUDENT, ADMIN_STUDENT_CREATE, CATEGORY, COURSES, CREATIONS, HOME, MEMBER } from "@/constants/route";
 import { Sidebar as ISidebar } from "@/types/components";
 
 type Menu = {
@@ -75,12 +75,12 @@ const Sidebar: ISidebar[] = [
     label: "Anggota",
     subMenu: [
       {
-        href: ADMIN_MEMBERS,
+        href: ADMIN_STUDENT,
         icon: <Users className="h-4 w-4" />,
         label: "Daftar",
       },
       {
-        href: ADMIN_MEMBERS_CREATE,
+        href: ADMIN_STUDENT_CREATE,
         icon: <Plus className="h-4 w-4" />,
         label: "Tambah",
       }
@@ -98,16 +98,6 @@ const SocialMediaLinks: Menu[] = [
     name: "Instagram",
     href: "#",
     icon: <FaInstagram size={20} />,
-  },
-  {
-    name: "Facebook",
-    href: "#",
-    icon: <FaFacebook size={20} />,
-  },
-  {
-    name: "Twitter",
-    href: "#",
-    icon: <FaTwitter size={20} />,
   },
 ];
 

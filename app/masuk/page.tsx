@@ -5,14 +5,14 @@ import Slider from "@/app/masuk/components/slider";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Masuk | Lab Multimedia",
+  title: "Masuk | Lab MMT",
   description: "",
   openGraph: {
-    title: "Masuk | Lab Multimedia",
+    title: "Masuk | Lab MMT",
     description: "",
   },
   twitter: {
-    title: "Masuk | Lab Multimedia",
+    title: "Masuk | Lab MMT",
     description: "",
   },
 };

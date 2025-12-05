@@ -17,6 +17,9 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       return NextResponse.json({ message: "Data tidak valid." }, { status: 400 });
     }
 
+    console.log(`🗒️ Isi permintaan dari klien: ${JSON.stringify(result.data)}`)
+    console.log(`🔐 Mencoba masuk pada rute ${API_AUTH_LOGIN} untuk surel: ${result.data.surel}`);
+
     const { surel, kata_sandi } = result.data;
     const user = await Prisma.pengguna.findUnique({ where: { surel } });
 

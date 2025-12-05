@@ -7,14 +7,14 @@ import List from "@/app/pelatihan/components/list";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Pelatihan | Lab Multimedia",
+  title: "Pelatihan | Lab MMT",
   description: "",
   openGraph: {
-    title: "Pelatihan | Lab Multimedia",
+    title: "Pelatihan | Lab MMT",
     description: "",
   },
   twitter: {
-    title: "Pelatihan | Lab Multimedia",
+    title: "Pelatihan | Lab MMT",
     description: "",
   },
 };

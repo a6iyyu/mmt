@@ -4,7 +4,7 @@ import { ArrowLeft, Headset, Lightbulb } from "lucide-react";
 import { COURSES } from "@/constants/route";
 import Link from "next/link";
 
-export default function NotFound() {
+export default function NotFoundClient() {
   return (
     <main className="bg-background relative flex flex-col items-center justify-center px-4 pt-40 pb-20 text-center">
       <section className="decoration-wrapper pointer-events-none absolute inset-0 z-0">

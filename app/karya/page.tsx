@@ -6,14 +6,14 @@ import LatestWorksProvider from "@/app/karya/providers/latest-works";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Karya | Lab Multimedia",
+  title: "Karya | Lab MMT",
   description: "",
   openGraph: {
-    title: "Karya | Lab Multimedia",
+    title: "Karya | Lab MMT",
     description: "",
   },
   twitter: {
-    title: "Karya | Lab Multimedia",
+    title: "Karya | Lab MMT",
     description: "",
   },
 };

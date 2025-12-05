@@ -7,14 +7,14 @@ import CTA from "@/app/kategori/components/cta";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Kategori | Lab Multimedia",
+  title: "Kategori | Lab MMT",
   description: "",
   openGraph: {
-    title: "Kategori | Lab Multimedia",
+    title: "Kategori | Lab MMT",
     description: "",
   },
   twitter: {
-    title: "Kategori | Lab Multimedia",
+    title: "Kategori | Lab MMT",
     description: "",
   },
 };

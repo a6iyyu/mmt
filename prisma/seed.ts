@@ -10,7 +10,7 @@ import { Prisma } from "@/lib/prisma";
       data: [
         {
           nama_lengkap: "Administrator",
-          surel: process.env.SUPERUSER_USERNAME as string,
+          surel: process.env.SUPERUSER_EMAIL as string,
           kata_sandi: await hash(process.env.SUPERUSER_PASSWORD as string, 10),
           peran: "ADMIN",
         },

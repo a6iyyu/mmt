@@ -7,28 +7,28 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   try {
     const { id } = await params;
     return {
-      title: `Anggota ${id} | Lab Multimedia`,
-      description: `Detail anggota dengan ID ${id} di Lab Multimedia.`,
+      title: `Anggota ${id} | Lab MMT`,
+      description: `Detail anggota dengan ID ${id} di Lab MMT.`,
       openGraph: {
-        title: `Anggota ${id} | Lab Multimedia`,
-        description: `Detail anggota dengan ID ${id} di Lab Multimedia.`,
+        title: `Anggota ${id} | Lab MMT`,
+        description: `Detail anggota dengan ID ${id} di Lab MMT.`,
       },
       twitter: {
-        title: `Anggota ${id} | Lab Multimedia`,
-        description: `Detail anggota dengan ID ${id} di Lab Multimedia.`,
+        title: `Anggota ${id} | Lab MMT`,
+        description: `Detail anggota dengan ID ${id} di Lab MMT.`,
       },
     };
   } catch (error) {
     console.error(`Terjadi kesalahan saat menghasilkan metadata untuk anggota dengan ID ${params}: ${error}`);
     return {
-      title: "Anggota | Lab Multimedia",
+      title: "Anggota | Lab MMT",
       description: "",
       openGraph: {
-        title: "Anggota | Lab Multimedia",
+        title: "Anggota | Lab MMT",
         description: "",
       },
       twitter: {
-        title: "Anggota | Lab Multimedia",
+        title: "Anggota | Lab MMT",
         description: "",
       },
     };
