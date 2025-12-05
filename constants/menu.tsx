@@ -1,7 +1,8 @@
-import { BookOpen, Home, Palette, Plus, Search, Users } from "lucide-react";
+import { BookOpen, Home, Palette, Plus, Search, User, Users } from "lucide-react";
 import { FaInstagram, FaYoutube } from "react-icons/fa";
+import { PiStudentFill } from "react-icons/pi";
 import type { ReactElement } from "react";
-import { ADMIN_CATEGORIES, ADMIN_COURSES, ADMIN_COURSES_CREATE, ADMIN_CREATIONS, ADMIN_DASHBOARD, ADMIN_STUDENT, ADMIN_STUDENT_CREATE, CATEGORY, COURSES, CREATIONS, HOME, MEMBER } from "@/constants/route";
+import { ADMIN_COURSES, ADMIN_COURSES_CREATE, ADMIN_CREATIONS, ADMIN_CREATIONS_CREATE, ADMIN_DASHBOARD, ADMIN_LECTURERS, ADMIN_LECTURERS_CREATE, ADMIN_STUDENT, ADMIN_STUDENT_CREATE, CATEGORY, COURSES, CREATIONS, HOME, MEMBER } from "@/constants/route";
 import { Sidebar as ISidebar } from "@/types/components";
 
 type Menu = {
@@ -45,11 +46,6 @@ const Sidebar: ISidebar[] = [
     label: "Dasbor",
   },
   {
-    href: ADMIN_CATEGORIES,
-    icon: <Search className="h-5 w-5" />,
-    label: "Kategori",
-  },
-  {
     icon: <BookOpen className="h-5 w-5" />,
     label: "Pelatihan",
     subMenu: [
@@ -66,17 +62,44 @@ const Sidebar: ISidebar[] = [
     ]
   },
   {
-    href: ADMIN_CREATIONS,
     icon: <Palette className="h-5 w-5" />,
     label: "Karya",
+    subMenu: [
+      {
+        href: ADMIN_CREATIONS,
+        icon: <Palette className="h-4 w-4" />,
+        label: "Daftar",
+      },
+      {
+        href: ADMIN_CREATIONS_CREATE,
+        icon: <Plus className="h-4 w-4" />,
+        label: "Tambah",
+      }
+    ],
   },
   {
-    icon: <Users className="h-5 w-5" />,
-    label: "Anggota",
+    icon: <User className="h-5 w-5" />,
+    label: "Dosen",
+    subMenu: [
+      {
+        href: ADMIN_LECTURERS,
+        icon: <User className="h-4 w-4" />,
+        label: "Daftar",
+      },
+      {
+        href: ADMIN_LECTURERS_CREATE,
+        icon: <Plus className="h-4 w-4" />,
+        label: "Tambah",
+      }
+    ],
+  },
+  {
+    icon: <PiStudentFill className="h-5 w-5" />,
+    label: "Mahasiswa",
     subMenu: [
       {
         href: ADMIN_STUDENT,
-        icon: <Users className="h-4 w-4" />,
+        icon: <PiStudentFill className="h-4 w-4" />,
         label: "Daftar",
       },
       {
@@ -85,7 +108,7 @@ const Sidebar: ISidebar[] = [
         label: "Tambah",
       }
     ],
-  }
+  },
 ];
 
 const SocialMediaLinks: Menu[] = [

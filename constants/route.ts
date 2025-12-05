@@ -25,7 +25,7 @@ export const LECTURER = "/dosen";
 /* =======================
    CMS (ADMIN) ROUTES
    ======================= */
-export const ADMIN_DASHBOARD = "/admin/dasbor";
+export const ADMIN_DASHBOARD = "/admin";
 
 export const ADMIN_STUDENT = "/admin/mahasiswa";
 export const ADMIN_STUDENT_CREATE = "/admin/mahasiswa/tambah";

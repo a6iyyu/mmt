@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import Statistics from "@/app/admin/components/statistics";
+import QuickActions from "@/app/admin/components/quick-actions";
+import TrainingStatus from "@/app/admin/components/training-status";
+import RecentActivities from "@/app/admin/components/recent-activities";
 
 export const metadata: Metadata = {
   title: "Dasbor Admin | Lab MMT",
@@ -15,8 +19,12 @@ export const metadata: Metadata = {
 
 export default function DasborAdmin() {
   return (
-    <section className="cursor-default p-10">
-      <h1 className="mb-4 text-xl font-bold lg:text-3xl">Dasbor Admin</h1>
-    </section>
+    <>
+      <span className="absolute inset-0 -z-10 bg-[url('/images/motion-grid.svg')] mask-[linear-gradient(180deg,white,rgba(255,255,255,0))] bg-center opacity-10" />
+      <Statistics />
+      <QuickActions />
+      <TrainingStatus />
+      <RecentActivities />
+    </>
   );
 }

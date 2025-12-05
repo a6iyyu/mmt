@@ -22,7 +22,7 @@ export default function Select({ label, name, onChange, options, required, value
   return (
     <fieldset className="relative flex w-full flex-col justify-between space-y-4 text-sm" ref={wrapper}>
       {label && (
-        <label htmlFor={name} className="flex items-center font-medium">
+        <label htmlFor={name} className="text-primary flex items-center font-medium">
           {label} {required && <h6 className="text-red-500">*</h6>}
         </label>
       )}

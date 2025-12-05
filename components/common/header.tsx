@@ -25,7 +25,7 @@ export function AdminHeader({ setSidebarOpen }: { setSidebarOpen: Dispatch<SetSt
   };
 
   return (
-    <header className="bg-background sticky top-0 z-40 flex w-full items-center justify-between border-b border-gray-200 px-6 py-4 shadow-sm">
+    <header className="sticky top-0 z-40 flex w-full items-center justify-between border-b border-gray-200 bg-slate-50 px-6 py-4 shadow-sm">
       <section className="flex items-center gap-4">
         <button onClick={() => setSidebarOpen((prev) => !prev)} className="cursor-pointer rounded-lg p-2 text-gray-600 hover:bg-gray-100">
           <Menu className="h-5 w-5" />
