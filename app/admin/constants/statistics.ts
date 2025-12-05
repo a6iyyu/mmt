@@ -1,5 +1,12 @@
 import { FileText, GraduationCap, Users } from "lucide-react";
-import { Statistics } from "@/app/admin/types/statistics";
+import type { ComponentType, SVGProps } from "react";
+
+type Statistics = {
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  title: string;
+  value: string;
+  color: string;
+};
 
 const styles: Record<string, { bg: string; text: string }> = {
   blue: { bg: "bg-blue-100", text: "text-blue-600" },
