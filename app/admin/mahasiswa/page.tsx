@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Daftar Anggota | Lab MMT",
-  description: "Halaman dasbor untuk administrator Lab MMT.",
+  title: "Daftar Mahasiswa | Lab MMT",
+  description: "Halaman daftar mahasiswa untuk administrator Lab MMT.",
   openGraph: {
-    title: "Daftar Anggota | Lab MMT",
-    description: "Halaman dasbor untuk administrator Lab MMT.",
+    title: "Daftar Mahasiswa | Lab MMT",
+    description: "Halaman daftar mahasiswa untuk administrator Lab MMT.",
   },
   twitter: {
-    title: "Daftar Anggota | Lab MMT",
-    description: "Halaman dasbor untuk administrator Lab MMT.",
+    title: "Daftar Mahasiswa | Lab MMT",
+    description: "Halaman daftar mahasiswa untuk administrator Lab MMT.",
   },
 };
 
 export default function DaftarAnggota() {
   return (
-    <section className="cursor-default p-10">
-      <h1 className="mb-4 text-xl font-bold lg:text-3xl">Daftar Anggota</h1>
-    </section>
+    <>
+      <span className="absolute inset-0 -z-10 bg-[url('/images/motion-grid.svg')] mask-[linear-gradient(180deg,white,rgba(255,255,255,0))] bg-center opacity-10" />
+    </>
   );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Filter from "@/app/admin/pelatihan/components/filter";
 import Statistics from "@/app/admin/pelatihan/components/statistics";
+import Filter from "@/app/admin/pelatihan/components/filter";
 import List from "@/app/admin/pelatihan/components/list";
 
 export const metadata: Metadata = {

@@ -25,13 +25,13 @@ export function AdminHeader({ setSidebarOpen }: { setSidebarOpen: Dispatch<SetSt
   };
 
   return (
-    <header className="sticky top-0 z-40 flex w-full items-center justify-between border-b border-gray-200 bg-slate-50 px-6 py-4 shadow-sm">
-      <section className="flex items-center gap-4">
+    <header className="sticky top-0 z-40 flex w-full items-center justify-between border-b border-gray-200 bg-slate-50 px-6 py-2.75 shadow-sm lg:py-4">
+      <section className="flex items-center gap-2 lg:gap-4">
         <button onClick={() => setSidebarOpen((prev) => !prev)} className="cursor-pointer rounded-lg p-2 text-gray-600 hover:bg-gray-100">
-          <Menu className="h-5 w-5" />
+          <Menu className="h-4 w-4 lg:h-5 lg:w-5" />
         </button>
-        <h4 className="hidden cursor-default text-lg font-semibold text-gray-800 lg:block">
-          CMS Admin Panel
+        <h4 className="cursor-default text-sm font-semibold text-gray-800 lg:text-lg">
+          Admin Panel
         </h4>
       </section>
       <section className="relative">
@@ -40,7 +40,7 @@ export function AdminHeader({ setSidebarOpen }: { setSidebarOpen: Dispatch<SetSt
             <p className="font-semibold text-gray-700">Administrator</p>
             <p className="text-xs text-gray-500">admin@labmmt.ac.id</p>
           </div>
-          <Image src="/images/profile-photo.png" alt="Profile" width={40} height={40} className="rounded-full border border-gray-200 object-cover" />
+          <Image src="/images/profile-photo.png" alt="Profile" width={40} height={40} className="h-7 w-7 rounded-full border border-gray-200 object-cover lg:h-10 lg:w-10" />
         </button>
         {isDropdownOpen && (
           <div className="absolute right-0 mt-3 w-48 rounded border border-gray-100 bg-white py-2 shadow-lg">

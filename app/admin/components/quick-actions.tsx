@@ -1,10 +1,10 @@
 import { type LucideIcon, Zap } from "lucide-react";
-import type { ComponentType } from "react";
+import type { ComponentType, SVGProps } from "react";
 import { quickActions } from "@/app/admin/constants/quick-actions";
 import Link from "next/link";
 
 type QuickActions = {
-  icon: ComponentType | LucideIcon;
+  icon: ComponentType<SVGProps<SVGSVGElement>> | LucideIcon;
   label: string;
   description: string;
   href: string;
