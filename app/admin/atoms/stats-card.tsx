@@ -15,8 +15,10 @@ export function StatsCard({ icon: Icon, title, value, color }: Statistics) {
       <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-full ${color ? styles[color]?.bg : styles.default.bg} ${color ? styles[color]?.text : styles.default.text}`}>
         <Icon className="h-6 w-6 lg:h-7 lg:w-7" />
       </div>
-      <figcaption className="flex flex-col">
-        <h2 className="text-sm font-medium text-gray-500">{title}</h2>
+      <figcaption className="flex flex-col overflow-hidden">
+        <h2 className="text-sm font-medium whitespace-nowrap text-gray-500">
+          {title}
+        </h2>
         <h5 className="mt-1 text-2xl font-extrabold text-gray-800">
           {value}
         </h5>

@@ -24,7 +24,7 @@ export default function Statistics() {
       <article className="mx-auto mt-6 flex w-9/10 snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:grid lg:w-19/20 lg:grid-cols-3 lg:justify-center lg:gap-6 lg:overflow-visible lg:pb-0">
         {statistics.map((item, index) => {
           return (
-            <span key={index} className="min-w-[300px] shrink-0 snap-center lg:min-w-0">
+            <span key={index} className="min-w-[250px] shrink-0 snap-center lg:min-w-0">
               <StatsCard icon={item.icon} title={item.title} value={item.value} color={item.color} />
             </span>
           );

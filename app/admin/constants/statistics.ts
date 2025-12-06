@@ -10,9 +10,10 @@ type Statistics = {
 
 const styles: Record<string, { bg: string; text: string }> = {
   blue: { bg: "bg-blue-100", text: "text-blue-600" },
-  purple: { bg: "bg-purple-100", text: "text-purple-600" },
-  orange: { bg: "bg-orange-100", text: "text-orange-600" },
   green: { bg: "bg-green-100", text: "text-green-600" },
+  orange: { bg: "bg-orange-100", text: "text-orange-600" },
+  purple: { bg: "bg-purple-100", text: "text-purple-600" },
+  red: { bg: "bg-red-100", text: "text-red-600" },
   default: { bg: "bg-gray-100", text: "text-gray-600" },
 };
 
