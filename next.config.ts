@@ -28,5 +28,6 @@ export default withSentryConfig(withMDX(nextConfig), {
   org: "a6iyyu",
   project: "mmt",
   silent: !process.env.CI,
+  telemetry: false,
   widenClientFileUpload: true,
 });
