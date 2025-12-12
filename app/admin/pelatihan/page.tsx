@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Statistics from "@/app/admin/pelatihan/components/statistics";
 import Filter from "@/app/admin/pelatihan/components/filter";
 import List from "@/app/admin/pelatihan/components/list";
+import { Prisma } from "@/lib/prisma";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Daftar Pelatihan | Lab MMT",
@@ -16,13 +19,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DaftarPelatihan() {
+export default async function DaftarPelatihan() {
+  const trainings = await Prisma.pelatihan.findMany({
+    orderBy: { created_at: "desc" },
+  });
+
   return (
     <>
       <span className="absolute inset-0 -z-10 bg-[url('/images/motion-grid.svg')] mask-[linear-gradient(180deg,white,rgba(255,255,255,0))] bg-center opacity-10" />
       <Statistics />
       <Filter />
-      <List />
+      <List data={trainings} />
     </>
   );
 }

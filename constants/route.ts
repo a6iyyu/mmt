@@ -1,8 +1,15 @@
 /* =======================
    API ROUTES
    ======================= */
-export const API_STUDENT_DETAIL = (id: number) => `/api/student/${id}/get`;
+export const API_COURSES_CREATE = "/api/courses/create";
+export const API_COURSES_EDIT = (id: number) => `/api/courses/${id}/edit`;
+export const API_COURSES_DELETE = (id: number) => `/api/courses/${id}/delete`;
+export const API_STUDENT_CREATE = "/api/student/create";
 export const API_STUDENT_EDIT = (id: number) => `/api/student/${id}/edit`;
+export const API_STUDENT_DELETE = (id: number) => `/api/student/${id}/delete`;
+export const API_LECTURERS_CREATE = "/api/lecturers/create";
+export const API_LECTURERS_EDIT = (id: number) => `/api/lecturers/${id}/edit`;
+export const API_LECTURERS_DELETE = (id: number) => `/api/lecturers/${id}/delete`;
 
 /* =======================
    COMMON ROUTES

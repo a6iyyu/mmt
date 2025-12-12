@@ -4,17 +4,16 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Sidebar as SidebarMenus } from "@/constants/menu";
-import type { Sidebar as ISidebar } from "@/types/components";
 import Image from "next/image";
 import Link from "next/link";
 
-export function Sidebar({ isOpen }: Pick<ISidebar, "isOpen">) {
+export function Sidebar({ className }: { className?: string }) {
   const pathname = usePathname();
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
   const handleSubMenuToggle = (label: string) => setOpenSubMenu(openSubMenu === label ? null : label);
 
   return (
-    <aside className={`bg-primary fixed top-0 left-0 z-50 h-screen w-64 transform text-white shadow-2xl transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
+    <aside className={`bg-primary fixed top-0 left-0 z-50 h-screen w-64 text-white shadow-2xl transition-transform duration-300 ease-in-out ${className}`}>
       <section className="flex items-center gap-3 px-5 py-6">
         <Image height={1920} width={1080} src="/images/mascot.png" alt="Logo" className="w-14" />
         <span>

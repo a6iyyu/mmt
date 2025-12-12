@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { API_STUDENT_DETAIL } from "@/constants/route";
 import { Prisma } from "@/lib/prisma";
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
@@ -21,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       },
     };
   } catch (err: unknown) {
-    console.error(`❌ [metadata] Gagal mendapatkan data di URL ${API_STUDENT_DETAIL(parseInt(id, 10))}: ${err}`);
+    console.error(`❌ [metadata] Gagal mendapatkan data mahasiswa: ${err}`);
     return {
       title: "Detail Mahasiswa | Lab MMT",
       description: "",

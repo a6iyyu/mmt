@@ -1,6 +1,7 @@
 import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
-import createMDX from "@next/mdx";
+import { Configuration as WebpackConfig } from "webpack";
+import nextMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
@@ -15,13 +16,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  webpack: (config: WebpackConfig) => {
+    if (config.infrastructureLogging) config.infrastructureLogging.level = "error";
+    return config;
+  },
 };
 
-const withMDX = createMDX({ extension: /\.(md|mdx)$/ });
+const withMDX = nextMDX({ extension: /\.(md|mdx)$/ });
 
 export default withSentryConfig(withMDX(nextConfig), {
-  automaticVercelMonitors: true,
-  disableLogger: true,
   org: "a6iyyu",
   project: "mmt",
   silent: !process.env.CI,
