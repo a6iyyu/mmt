@@ -1,11 +1,11 @@
-import type { ChangeEvent, ChangeEventHandler, ReactElement, ReactNode } from "react";
+import type { ChangeEventHandler, ReactElement, ReactNode } from "react";
 
 type Input = {
   icon: ReactNode;
   info?: string | null;
   label: string;
   name: string;
-  onChange?: ((value: ChangeEvent<HTMLInputElement>) => void) | null;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
   required: boolean;
   type: "text" | "date" | "email" | "file" | "password" | "number";
@@ -15,7 +15,7 @@ type Input = {
 type Select = {
   label: string;
   name: string;
-  onChange?: (value: string) => void;
+  onChange?: ((value: string) => void);
   options: Array<{ label: string; value: string }>;
   required: boolean;
   value?: string;

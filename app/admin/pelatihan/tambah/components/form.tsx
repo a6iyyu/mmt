@@ -26,7 +26,7 @@ export default function FormulirTambahPelatihan() {
   });
 
   return (
-    <form onSubmit={(e) => Submit(e, setIsLoading)} encType="multipart/form-data" className="grid grid-cols-1 gap-x-8 gap-y-6 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:grid-cols-2">
+    <form onSubmit={(e) => Submit(e, setIsLoading)} encType="multipart/form-data" className="mb-8 grid grid-cols-1 gap-x-8 gap-y-6 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:grid-cols-2">
       <Input
         label="Nama Pelatihan"
         name="nama"

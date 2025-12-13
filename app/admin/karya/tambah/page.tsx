@@ -1,24 +1,23 @@
-import { Home } from "lucide-react";
+import { Home, Palette } from "lucide-react";
 import type { Metadata } from "next";
-import { PiStudentFill } from "react-icons/pi";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { ADMIN_DASHBOARD, ADMIN_STUDENT } from "@/constants/route";
-import FormulirTambahMahasiswa from "@/app/admin/mahasiswa/tambah/components/form";
+import { ADMIN_CREATIONS, ADMIN_DASHBOARD } from "@/constants/route";
+import FormulirTambahKarya from "@/app/admin/karya/tambah/components/form";
 
 export const metadata: Metadata = {
-  title: "Tambah Mahasiswa | Lab MMT",
-  description: "Halaman untuk menambahkan mahasiswa baru di Lab MMT.",
+  title: "Tambah Karya | Lab MMT",
+  description: "Halaman untuk menambahkan karya baru di Lab MMT.",
   openGraph: {
-    title: "Tambah Mahasiswa | Lab MMT",
-    description: "Halaman untuk menambahkan mahasiswa baru di Lab MMT.",
+    title: "Tambah Karya | Lab MMT",
+    description: "Halaman untuk menambahkan karya baru di Lab MMT.",
   },
   twitter: {
-    title: "Tambah Mahasiswa | Lab MMT",
-    description: "Halaman untuk menambahkan mahasiswa baru di Lab MMT.",
+    title: "Tambah Karya | Lab MMT",
+    description: "Halaman untuk menambahkan karya baru di Lab MMT.",
   },
 };
 
-export default function TambahMahasiswa() {
+export default function TambahKarya() {
   return (
     <section className="mx-auto mt-8 flex w-9/10 flex-col gap-4 lg:w-19/20">
       <Breadcrumb>
@@ -30,27 +29,27 @@ export default function TambahMahasiswa() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href={ADMIN_STUDENT} className="flex items-center gap-2">
-              <PiStudentFill className="h-4 w-4" /> Mahasiswa
+            <BreadcrumbLink href={ADMIN_CREATIONS} className="flex items-center gap-2">
+              <Palette className="h-4 w-4" /> Karya
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbPage className="cursor-default">
-              Tambah Mahasiswa
+              Tambah Karya
             </BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
       <div className="cursor-default">
         <h1 className="text-2xl font-bold text-gray-800">
-          Tambah Mahasiswa Baru
+          Tambah Karya Baru
         </h1>
         <p className="mt-1 mb-2.5 text-sm text-gray-500">
-          Isi formulir di bawah untuk membuat mahasiswa baru.
+          Isi formulir di bawah untuk membuat karya baru.
         </p>
       </div>
-      <FormulirTambahMahasiswa />
+      <FormulirTambahKarya />
     </section>
   );
 }

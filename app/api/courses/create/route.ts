@@ -10,8 +10,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const formData = await request.formData();
     const file = formData.get("gambar") as File | null;
-
     const body = Object.fromEntries(formData) as Record<keyof typeof CoursesSchema.shape, string>;
+
     if (!body.nama || !body.kategori || !body.buka_pendaftaran || !file) {
       return NextResponse.json({ message: "Data tidak lengkap." }, { status: 400 });
     }
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         lokasi: body.lokasi,
         kuota: Number(body.kuota),
         gambar: imageUrl,
-        kategori: [(Object.keys(Categories) as (keyof typeof Categories)[]).find((key) => Categories[key] === body.kategori) as Categories],
+        kategori: (Object.keys(Categories) as (keyof typeof Categories)[]).find((key) => Categories[key] === body.kategori) as Categories,
         buka_pendaftaran: (Object.keys(Availability) as (keyof typeof Availability)[]).find((key) => Availability[key] === body.buka_pendaftaran) as Availability,
         created_at: new Date(),
         updated_at: new Date(),

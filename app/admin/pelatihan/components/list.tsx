@@ -1,10 +1,14 @@
+"use client";
+
 import { Calendar, Edit3, Trash2, Users } from "lucide-react";
 import { FaCircleInfo } from "react-icons/fa6";
 import { Badge } from "@/components/ui/badge";
+import { ADMIN_COURSES_DETAIL, API_COURSES_DELETE } from "@/constants/route";
 import type { pelatihan as Trainings } from "@/lib/generated/prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import Table from "@/components/common/table";
+import axios from "axios";
 
 // prettier-ignore
 export default function List({ data }: { data: Trainings[] }) {
@@ -14,6 +18,17 @@ export default function List({ data }: { data: Trainings[] }) {
       month: "short",
       year: "numeric",
     }).format(new Date(date));
+  };
+
+  const handleDelete = async (id: number, nama: string) => {
+    if (confirm(`Apakah Anda yakin ingin menghapus pelatihan "${nama}"?`)) {
+      try {
+        await axios.delete(API_COURSES_DELETE(id));
+        window.location.reload();
+      } catch (err: unknown) {
+        throw new Error(`[DELETE ${API_COURSES_DELETE(id)}] Terjadi kesalahan saat menghapus data pelatihan: ${err instanceof Error ? err.message : String(err)}`);
+      }
+    }
   };
 
   const rows = data.map((item) => [
@@ -26,7 +41,7 @@ export default function List({ data }: { data: Trainings[] }) {
           {item.nama}
         </h4>
         <p className="mt-1 text-[10px] font-bold tracking-wider text-gray-500 uppercase">
-          {item.kategori.map((k) => k.replace(/_/g, " ")).join(", ")}
+          {item.kategori.replace(/_/g, " ")}
         </p>
       </span>
     </article>,
@@ -55,15 +70,18 @@ export default function List({ data }: { data: Trainings[] }) {
       {item.buka_pendaftaran.replace("_", " ")}
     </Badge>,
     <article key="actions" className="flex justify-end gap-2">
-      <Link href="" className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-blue-600">
+      <Link href={ADMIN_COURSES_DETAIL(item.id_pelatihan)} className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-blue-600">
         <FaCircleInfo className="h-4 w-4" />
       </Link>
       <Link href="" className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-yellow-600">
         <Edit3 className="h-4 w-4" />
       </Link>
-      <Link href="" className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-red-600">
+      <button
+        onClick={() => handleDelete(item.id_pelatihan, item.nama)}
+        className="cursor-pointer rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-red-600"
+      >
         <Trash2 className="h-4 w-4" />
-      </Link>
+      </button>
     </article>,
   ]);
 

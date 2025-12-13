@@ -1,9 +1,10 @@
 import { mkdir, writeFile } from "fs/promises";
 import { NextResponse, NextRequest } from "next/server";
 import { join } from "path";
+import { API_COURSES_PATCH } from "@/constants/route";
 import { Prisma } from "@/lib/prisma";
 import { Kategori as Categories, Ketersediaan as Availability } from "@/lib/generated/prisma/enums";
-import { API_COURSES_PATCH } from "@/constants/route";
+import { CoursesSchema } from "@/validators/courses.schema";
 
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }): Promise<NextResponse> {
   try {
@@ -15,7 +16,7 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
 
     const formData = await request.formData();
     const file = formData.get("gambar") as File | null;
-    const body = Object.fromEntries(formData) as Record<string, string>;
+    const body = Object.fromEntries(formData) as Record<keyof typeof CoursesSchema.shape, string>;
 
     let imageUrl: string | undefined = undefined;
 
@@ -44,17 +45,15 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
         tanggal: body.tanggal ? new Date(body.tanggal) : undefined,
         kuota: body.kuota ? Number(body.kuota) : undefined,
         ...(imageUrl && { gambar: imageUrl }),
-        ...(categoryEnums && { kategori: [categoryEnums as Categories] }),
-        ...(availabilityEnums && {
-          buka_pendaftaran: availabilityEnums as Availability,
-        }),
+        ...(categoryEnums && { kategori: categoryEnums as Categories }),
+        ...(availabilityEnums && { buka_pendaftaran: availabilityEnums as Availability }),
         updated_at: new Date(),
       },
     });
 
     return NextResponse.json({ message: "Data pelatihan berhasil diperbarui." }, { status: 200 });
   } catch (error: unknown) {
-    console.error(`[PATCH ${API_COURSES_PATCH}] Terjadi kesalahan saat memperbarui data pelatihan: ${error instanceof Error ? error.message : String(error)}`);
+    console.error(`[PATCH ${API_COURSES_PATCH(Number((await params).id))}] Terjadi kesalahan saat memperbarui data pelatihan: ${error instanceof Error ? error.message : String(error)}`);
     return NextResponse.json({ message: "Gagal memperbarui data pelatihan." }, { status: 500 });
   }
 }

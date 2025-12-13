@@ -11,16 +11,16 @@ model dosen {
   id_dosen         Int                @id @default(autoincrement())
   nama_lengkap     String             @db.VarChar(50)
   nip              String             @unique
-  surel            String             @unique
-  keahlian         String?
-  linkedin         String?            @unique
-  sinta            String?            @unique @db.VarChar(255)
-  scholar          String?            @unique @db.VarChar(255)
-  jabatan          String?
+  keahlian         Kategori
+  jabatan          Jabatan
   foto_profil      String?
   bio              String?            @db.Text
+  linkedin         String?            @unique
+  surel            String             @unique
+  sinta            String?            @unique @db.VarChar(255)
+  scholar          String?            @unique @db.VarChar(255)
+  whatsapp         String?            @unique
   riset_penelitian riset_penelitian[] @relation("riset_penelitian")
-  terhapus         Boolean            @default(false)
   created_at       DateTime           @default(now())
   updated_at       DateTime           @updatedAt
 }
@@ -37,10 +37,9 @@ model karya {
   unggulan          Boolean     @default(false)
   status            Publikasi   @default(SEDANG_BERLANGSUNG)
   tanggal_publikasi DateTime?
-  kategori          Kategori[]
+  kategori          Kategori
   mahasiswa         mahasiswa[] @relation("karya")
   teknologi         teknologi[] @relation("teknologi_karya_mahasiswa")
-  terhapus          Boolean     @default(false)
   created_at        DateTime    @default(now())
   updated_at        DateTime    @updatedAt
 }
@@ -53,11 +52,11 @@ model mahasiswa {
   angkatan      Int
   foto_profil   String?
   bio           String?  @db.Text
-  surel         String?  @unique
+  github        String?  @unique
   linkedin      String?  @unique
+  surel         String?  @unique
   whatsapp      String?  @unique
   karya         karya[]  @relation("karya")
-  terhapus      Boolean  @default(false)
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
 }
@@ -69,12 +68,11 @@ model pelatihan {
   deskripsi        String       @db.Text
   tanggal          DateTime
   mentor           String
-  kategori         Kategori[]
+  kategori         Kategori
   lokasi           String
   gambar           String
   kuota            Int?
   buka_pendaftaran Ketersediaan @default(DIBUKA)
-  terhapus         Boolean      @default(false)
   created_at       DateTime     @default(now())
   updated_at       DateTime     @updatedAt
 }
@@ -100,7 +98,6 @@ model riset_penelitian {
   tanggal_publikasi   DateTime?
   kategori            Kategori[]
   dosen               dosen[]    @relation("riset_penelitian")
-  terhapus            Boolean    @default(false)
   created_at          DateTime   @default(now())
   updated_at          DateTime   @updatedAt
 }
@@ -113,7 +110,6 @@ model sertifikat {
   nama_kegiatan    String
   tanggal_terbit   DateTime
   tautan_berkas    String?
-  terhapus         Boolean  @default(false)
   created_at       DateTime @default(now())
   updated_at       DateTime @updatedAt
 }
@@ -122,6 +118,13 @@ model teknologi {
   id_teknologi Int     @id @default(autoincrement())
   nama         String  @unique
   karya        karya[] @relation("teknologi_karya_mahasiswa")
+}
+
+enum Jabatan {
+  ASISTEN_AHLI  @map("Asisten Ahli")
+  LEKTOR        @map("Lektor")
+  LEKTOR_KEPALA @map("Lektor Kepala")
+  GURU_BESAR    @map("Guru Besar")
 }
 
 enum Kategori {
@@ -145,8 +148,10 @@ enum Peran {
 
 enum Prodi {
   TI   @map("D-IV Teknik Informatika")
-  SIB  @map("D-IV Sistem Informasi")
+  SIB  @map("D-IV Sistem Informasi Bisnis")
   PPLS @map("D-II Pengembangan Piranti Lunak Situs")
+  MI   @map("D-III Manajemen Informatika")
+  RTI  @map("S2 Rekayasa Teknologi Informasi")
 }
 
 enum Publikasi {

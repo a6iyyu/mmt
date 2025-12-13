@@ -1,13 +1,6 @@
 import { Dumbbell, Home } from "lucide-react";
 import type { Metadata } from "next";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { ADMIN_COURSES, ADMIN_DASHBOARD } from "@/constants/route";
 import FormulirTambahPelatihan from "@/app/admin/pelatihan/tambah/components/form";
 
