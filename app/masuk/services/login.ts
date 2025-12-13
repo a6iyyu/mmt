@@ -2,13 +2,8 @@ import axios, { type AxiosError } from "axios";
 import type { Dispatch, FormEvent, SetStateAction } from "react";
 import { User } from "@/app/masuk/types/user";
 import { LOGIN } from "@/constants/route";
-import { Form } from "@/utils/form";
 
-class Login extends Form {
-  constructor() {
-    super();
-  }
-
+class Login {
   public static async submit(e: FormEvent<HTMLFormElement>, form: Pick<User, "surel" | "kata_sandi">, loading: Dispatch<SetStateAction<boolean>>) {
     e.preventDefault();
     loading(true);

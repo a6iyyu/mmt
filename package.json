@@ -78,7 +78,11 @@
     "webpack": "^5.103.0"
   },
   "trustedDependencies": [
+    "@prisma/engines",
     "@sentry/cli",
+    "esbuild",
+    "prisma",
+    "sharp",
     "unrs-resolver"
   ]
 }

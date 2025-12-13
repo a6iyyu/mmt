@@ -1,12 +1,13 @@
 "use client";
 
-import { Calendar, Pin, Save, School, ScrollText, Users } from "lucide-react";
+import { Calendar, Pin, Save, School, Users } from "lucide-react";
 import { useState } from "react";
 import { GiTeacher } from "react-icons/gi";
 import { Submit } from "@/app/admin/pelatihan/tambah/services/form";
 import { Button } from "@/components/ui/button";
 import Input from "@/components/common/input";
 import Select from "@/components/common/select";
+import TextArea from "@/components/common/textarea";
 
 // prettier-ignore
 export default function FormulirTambahPelatihan() {
@@ -15,15 +16,17 @@ export default function FormulirTambahPelatihan() {
   const [formData, setFormData] = useState({
     nama: "",
     mentor: "",
+    kategori: "",
+    gambar: null as File | null,
     deskripsi: "",
     lokasi: "",
     tanggal: "",
     kuota: "",
-    status: "",
+    buka_pendaftaran: "",
   });
 
   return (
-    <form onSubmit={(e) => Submit(e, setIsLoading)} className="grid grid-cols-1 gap-x-8 gap-y-6 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:grid-cols-2">
+    <form onSubmit={(e) => Submit(e, setIsLoading)} encType="multipart/form-data" className="grid grid-cols-1 gap-x-8 gap-y-6 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:grid-cols-2">
       <Input
         label="Nama Pelatihan"
         name="nama"
@@ -45,19 +48,54 @@ export default function FormulirTambahPelatihan() {
         type="text"
       />
       <div className="md:col-span-2">
-        <Input
+        <TextArea
           label="Deskripsi Singkat"
           name="deskripsi"
           placeholder="Jelaskan materi yang akan dipelajari..."
+          maxLength={1000}
           required
           value={formData.deskripsi}
-          onChange={(e) =>
-            setFormData({ ...formData, deskripsi: e.target.value })
-          }
-          icon={<ScrollText className="h-4 w-4" />}
-          type="text"
+          onChange={(e) => setFormData({ ...formData, deskripsi: e.target.value })}
         />
       </div>
+      <div className="md:col-span-2">
+        <Select
+          label="Kategori"
+          name="kategori"
+          required
+          options={[
+            { label: "Game Development", value: "Game Development" },
+            { label: "UI/UX Design", value: "UI/UX Design" },
+            { label: "AR/VR", value: "AR/VR" },
+            { label: "Animasi", value: "Animasi" },
+            { label: "Multimedia", value: "Multimedia" },
+            { label: "Lainnya", value: "Lainnya" },
+          ]}
+          value={formData.kategori}
+          onChange={(val) => setFormData({ ...formData, kategori: val })}
+        />
+      </div>
+      <div className="md:col-span-2">
+        <Input
+          label="Gambar"
+          name="gambar"
+          type="file"
+          required
+          onChange={(e) => setFormData({ ...formData, gambar: e.target.files?.[0] || null })}
+          icon={null}
+        />
+      </div>
+      <Select
+        label="Status Pendaftaran"
+        name="buka_pendaftaran"
+        required
+        options={[
+          { label: "Dibuka", value: "Dibuka" },
+          { label: "Akan Datang", value: "Akan Datang" },
+        ]}
+        value={formData.buka_pendaftaran}
+        onChange={(val) => setFormData({ ...formData, buka_pendaftaran: val })}
+      />
       <Input
         label="Lokasi"
         name="lokasi"
@@ -86,19 +124,6 @@ export default function FormulirTambahPelatihan() {
         value={formData.kuota}
         onChange={(e) => setFormData({ ...formData, kuota: e.target.value })}
         icon={<Users className="h-4 w-4" />}
-      />
-      <Select
-        label="Status Publikasi"
-        name="status"
-        required
-        options={[
-          { label: "Draf (Simpan dulu)", value: "DRAF" },
-          { label: "Terjadwal (Akan datang)", value: "DIJADWALKAN" },
-          { label: "Terbit (Sedang berlangsung)", value: "DITERBITKAN" },
-          { label: "Arsip (Selesai)", value: "DIARSIPKAN" },
-        ]}
-        value={formData.status}
-        onChange={(val) => setFormData({ ...formData, status: val })}
       />
       <div className="mt-4 flex items-center justify-end border-t border-gray-50 pt-6 md:col-span-2">
         <Button

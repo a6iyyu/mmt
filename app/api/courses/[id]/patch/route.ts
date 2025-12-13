@@ -2,9 +2,9 @@ import { NextResponse, NextRequest } from "next/server";
 import { API_COURSES_PATCH } from "@/constants/route";
 import { Prisma } from "@/lib/prisma";
 
-export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id);
+    const id = Number((await params).id);
     const body = await request.json();
 
     if (!id) {
@@ -26,7 +26,7 @@ export async function PATCH(request: NextRequest, { params }: { params: { id: st
 
     return NextResponse.json({ message: "Data pelatihan berhasil diperbarui." }, { status: 200 });
   } catch (error: unknown) {
-    console.error(`[PATCH ${API_COURSES_PATCH(Number(params.id))}] Error: ${error}`);
+    console.error(`[PATCH ${API_COURSES_PATCH(Number((await params).id))}] Error: ${error}`);
     return NextResponse.json({ message: "Gagal mengedit data pelatihan." }, { status: 500 });
   }
 }

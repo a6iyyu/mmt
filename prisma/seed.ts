@@ -1,5 +1,7 @@
 import { hash } from "bcryptjs";
+import { PrismaClientKnownRequestError } from "@/lib/generated/prisma/internal/prismaNamespace";
 import { Prisma } from "@/lib/prisma";
+import { PrismaClientValidationError } from "@prisma/client/runtime/client";
 
 (async () => {
   try {
@@ -12,12 +14,13 @@ import { Prisma } from "@/lib/prisma";
           nama_lengkap: "Administrator",
           surel: process.env.SUPERUSER_EMAIL as string,
           kata_sandi: await hash(process.env.SUPERUSER_PASSWORD as string, 10),
-          peran: "ADMIN",
         },
       ],
     });
   } catch (error: unknown) {
-    console.error(`❌ Error seeding database: ${error}.`);
+    if (error instanceof PrismaClientValidationError) console.error(`❌ [PrismaClientValidationError] Error seeding database: ${error.message}.`);
+    else if (error instanceof PrismaClientKnownRequestError) console.error(`❌ [PrismaClientKnownRequestError] Error seeding database: ${error.cause}.`);
+    else console.error(`❌ [Unknown Error] Error seeding database: ${error instanceof Error ? error.message : String(error)}.`);
     process.exit(1);
   } finally {
     console.log(`✅ Database seeded.`);

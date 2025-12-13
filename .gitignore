@@ -25,3 +25,4 @@ prisma/migrations
 storage/
 generated/
 .env.sentry-build-plugin
+storage/

@@ -3,9 +3,9 @@ import { API_COURSES_DELETE } from "@/constants/route";
 import { Prisma } from "@/lib/prisma";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
 
-export async function DELETE(_request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const id = Number(params.id);
+    const id = Number((await params).id);
 
     if (!id) {
       return NextResponse.json({ message: "ID tidak valid." }, { status: 400 });
@@ -15,7 +15,7 @@ export async function DELETE(_request: NextRequest, { params }: { params: { id: 
 
     return NextResponse.json({ message: "Data pelatihan berhasil dihapus." }, { status: 200 });
   } catch (error: unknown) {
-    console.error(`[DELETE ${API_COURSES_DELETE(Number(params.id))}] Error: ${error}`);
+    console.error(`[DELETE ${API_COURSES_DELETE(Number((await params).id))}] Error: ${error}`);
 
     if (error instanceof PrismaClientKnownRequestError && error.code === "P2025") {
       return NextResponse.json({ message: "Data tidak ditemukan." }, { status: 404 });

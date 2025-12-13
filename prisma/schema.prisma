@@ -20,6 +20,7 @@ model dosen {
   foto_profil      String?
   bio              String?            @db.Text
   riset_penelitian riset_penelitian[] @relation("riset_penelitian")
+  terhapus         Boolean            @default(false)
   created_at       DateTime           @default(now())
   updated_at       DateTime           @updatedAt
 }
@@ -34,11 +35,12 @@ model karya {
   tautan_repo       String?     @unique
   dilihat           Int         @default(0)
   unggulan          Boolean     @default(false)
-  status            Publikasi   @default(DRAF)
+  status            Publikasi   @default(SEDANG_BERLANGSUNG)
   tanggal_publikasi DateTime?
   kategori          Kategori[]
   mahasiswa         mahasiswa[] @relation("karya")
   teknologi         teknologi[] @relation("teknologi_karya_mahasiswa")
+  terhapus          Boolean     @default(false)
   created_at        DateTime    @default(now())
   updated_at        DateTime    @updatedAt
 }
@@ -55,6 +57,7 @@ model mahasiswa {
   linkedin      String?  @unique
   whatsapp      String?  @unique
   karya         karya[]  @relation("karya")
+  terhapus      Boolean  @default(false)
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
 }
@@ -71,7 +74,7 @@ model pelatihan {
   gambar           String
   kuota            Int?
   buka_pendaftaran Ketersediaan @default(DIBUKA)
-  status           Publikasi    @default(DRAF)
+  terhapus         Boolean      @default(false)
   created_at       DateTime     @default(now())
   updated_at       DateTime     @updatedAt
 }
@@ -93,10 +96,11 @@ model riset_penelitian {
   deskripsi           String     @db.Text
   gambar              String
   tautan              String     @unique
-  status              Publikasi  @default(DRAF)
+  status              Publikasi  @default(SEDANG_BERLANGSUNG)
   tanggal_publikasi   DateTime?
   kategori            Kategori[]
   dosen               dosen[]    @relation("riset_penelitian")
+  terhapus            Boolean    @default(false)
   created_at          DateTime   @default(now())
   updated_at          DateTime   @updatedAt
 }
@@ -109,6 +113,7 @@ model sertifikat {
   nama_kegiatan    String
   tanggal_terbit   DateTime
   tautan_berkas    String?
+  terhapus         Boolean  @default(false)
   created_at       DateTime @default(now())
   updated_at       DateTime @updatedAt
 }
@@ -129,24 +134,24 @@ enum Kategori {
 }
 
 enum Ketersediaan {
-  DIBUKA
-  PENUH
-  AKAN_DATANG @map("AKAN DATANG")
+  DIBUKA      @map("Dibuka")
+  PENUH       @map("Penuh")
+  AKAN_DATANG @map("Akan Datang")
 }
 
 enum Peran {
-  ADMIN
+  ADMIN @map("Admin")
 }
 
 enum Prodi {
-  TI
-  SIB
-  PPLS
+  TI   @map("D-IV Teknik Informatika")
+  SIB  @map("D-IV Sistem Informasi")
+  PPLS @map("D-II Pengembangan Piranti Lunak Situs")
 }
 
 enum Publikasi {
-  DIJADWALKAN
-  DRAF
-  DITERBITKAN
-  DIARSIPKAN
+  DIJADWALKAN        @map("Dijadwalkan")
+  SEDANG_BERLANGSUNG @map("Sedang Berlangsung")
+  SUDAH_TERBIT       @map("Sudah Terbit")
+  DIARSIPKAN         @map("Diarsipkan")
 }

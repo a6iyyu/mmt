@@ -1,6 +1,13 @@
 import { Dumbbell, Home } from "lucide-react";
 import type { Metadata } from "next";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { ADMIN_COURSES, ADMIN_DASHBOARD } from "@/constants/route";
 import FormulirTambahPelatihan from "@/app/admin/pelatihan/tambah/components/form";
 
@@ -35,7 +42,9 @@ export default function TambahPelatihan() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage className="cursor-default">Tambah Pelatihan</BreadcrumbPage>
+            <BreadcrumbPage className="cursor-default">
+              Tambah Pelatihan
+            </BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -43,7 +52,7 @@ export default function TambahPelatihan() {
         <h1 className="text-2xl font-bold text-gray-800">
           Tambah Pelatihan Baru
         </h1>
-        <p className="mt-1 text-sm text-gray-500">
+        <p className="mt-1 mb-2.5 text-sm text-gray-500">
           Isi formulir di bawah untuk membuat jadwal pelatihan baru.
         </p>
       </div>

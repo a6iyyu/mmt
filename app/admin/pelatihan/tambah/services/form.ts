@@ -1,45 +1,33 @@
 import axios, { isAxiosError } from "axios";
 import type { Dispatch, FormEvent, SetStateAction } from "react";
-import type { NextRouter } from "next/router";
-import { ZodError } from "zod";
+import { z, ZodError } from "zod";
 import { ADMIN_COURSES, API_COURSES_CREATE } from "@/constants/route";
-import { CourseCreateSchema } from "@/validators/courses.schema";
-
-type CourseFormData = {
-  nama: FormDataEntryValue;
-  mentor: FormDataEntryValue;
-  deskripsi: FormDataEntryValue;
-  lokasi: FormDataEntryValue;
-  tanggal: FormDataEntryValue;
-  kuota: number;
-  status: FormDataEntryValue;
-}
+import { CoursesSchema } from "@/validators/courses.schema";
 
 class CourseForm {
-  private static router: NextRouter;
-
   private static getFormData(form: HTMLFormElement) {
-    const formData = Object.fromEntries(new FormData(form).entries());
+    const data = Object.fromEntries(new FormData(form).entries()) as Record<keyof typeof CoursesSchema.shape, string>;
 
     return {
-      nama: formData.nama,
-      mentor: formData.mentor,
-      deskripsi: formData.deskripsi,
-      lokasi: formData.lokasi,
-      tanggal: formData.tanggal,
-      kuota: Number(formData.kuota),
-      status: formData.status,
+      nama: data.nama,
+      mentor: data.mentor,
+      deskripsi: data.deskripsi,
+      kategori: data.kategori,
+      buka_pendaftaran: data.buka_pendaftaran,
+      lokasi: data.lokasi,
+      tanggal: data.tanggal,
+      kuota: Number(data.kuota),
     };
   }
 
-  private static validate(data: CourseFormData) {
-    return CourseCreateSchema.parse(data);
+  private static validate(data: z.infer<typeof CoursesSchema>) {
+    return CoursesSchema.parse(data);
   }
 
-  private static handleError(error: unknown): void {
+  private static handleError(error: unknown) {
     if (error instanceof ZodError) {
       const errorMessages = error.issues.map((err) => `• ${err.message}`).join("\n");
-      console.error(`[${new Date().toISOString()}] Terjadi kesalahan saat memvalidasi data pelatihan: ${errorMessages}`);
+      console.error(`[${new Date().toISOString()}] Terjadi kesalahan saat memvalidasi data pelatihan:\n${errorMessages}`);
       return;
     }
 
@@ -58,12 +46,21 @@ class CourseForm {
     setIsLoading(true);
 
     try {
-      const formData = this.getFormData(e.currentTarget);
-      const payload = this.validate(formData);
-      await axios.post(API_COURSES_CREATE, payload);
-      this.router.push(ADMIN_COURSES);
+      this.validate(this.getFormData(e.currentTarget));
+
+      await axios.post(API_COURSES_CREATE, new FormData(e.currentTarget), {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      window.location.href = ADMIN_COURSES;
     } catch (error: unknown) {
-      this.handleError(error);
+      this.handleError(
+        error instanceof ZodError
+        ? error
+        : error instanceof Error
+        ? error
+        : new Error(`[${new Date().toISOString()}] An unknown error occurred in ${API_COURSES_CREATE}.`)
+      );
     } finally {
       setIsLoading(false);
     }
