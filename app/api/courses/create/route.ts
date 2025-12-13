@@ -6,7 +6,7 @@ import { Kategori as Categories, Ketersediaan as Availability } from "@/lib/gene
 import { Prisma } from "@/lib/prisma";
 import { CoursesSchema } from "@/validators/courses.schema";
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const formData = await request.formData();
     const file = formData.get("gambar") as File | null;
