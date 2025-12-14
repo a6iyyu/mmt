@@ -1,13 +1,13 @@
-import { BookOpen, Home, Palette, Plus, Search, User, Users } from "lucide-react";
+import { BookOpen, Home, type LucideIcon, Microscope, Palette, Plus, Search, User, Users } from "lucide-react";
 import { FaInstagram, FaYoutube } from "react-icons/fa";
 import { PiStudentFill } from "react-icons/pi";
-import type { ReactElement } from "react";
-import { ADMIN_COURSES, ADMIN_COURSES_CREATE, ADMIN_CREATIONS, ADMIN_CREATIONS_CREATE, ADMIN_DASHBOARD, ADMIN_LECTURERS, ADMIN_LECTURERS_CREATE, ADMIN_STUDENT, ADMIN_STUDENT_CREATE, CATEGORY, COURSES, CREATIONS, HOME, MEMBER } from "@/constants/route";
+import type { ComponentType, ReactElement, SVGProps } from "react";
+import { ADMIN_COURSES, ADMIN_COURSES_CREATE, ADMIN_CREATIONS, ADMIN_CREATIONS_CREATE, ADMIN_DASHBOARD, ADMIN_LECTURERS, ADMIN_LECTURERS_CREATE, ADMIN_RESEARCH, ADMIN_RESEARCH_CREATE, ADMIN_STUDENT, ADMIN_STUDENT_CREATE, CATEGORY, COURSES, CREATIONS, HOME, MEMBER, RESEARCH } from "@/constants/route";
 import { Sidebar as ISidebar } from "@/types/components";
 
 type Menu = {
   href: string;
-  icon: ReactElement;
+  icon: ComponentType<SVGProps<SVGSVGElement>> | LucideIcon | ReactElement;
   name: string;
 };
 
@@ -37,6 +37,11 @@ const Menu: Menu[] = [
     icon: <Search className="text-accent mt-0.5 h-4 w-4" />,
     name: "Kategori",
   },
+  {
+    href: RESEARCH,
+    icon: <Microscope className="text-accent mt-0.5 h-4 w-4" />,
+    name: "Riset",
+  }
 ];
 
 const Sidebar: ISidebar[] = [
@@ -109,6 +114,22 @@ const Sidebar: ISidebar[] = [
       }
     ],
   },
+  {
+    icon: <Microscope className="h-5 w-5" />,
+    label: "Riset",
+    subMenu: [
+      {
+        href: ADMIN_RESEARCH,
+        icon: <Microscope className="h-4 w-4" />,
+        label: "Daftar",
+      },
+      {
+        href: ADMIN_RESEARCH_CREATE,
+        icon: <Plus className="h-4 w-4" />,
+        label: "Tambah",
+      }
+    ],
+  }
 ];
 
 const SocialMediaLinks: Menu[] = [

@@ -2,7 +2,7 @@
 
 import { LogOut, Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { type Dispatch, type SetStateAction, useEffect, useState } from "react";
+import { type Dispatch, type ReactNode, type SetStateAction, useEffect, useState } from "react";
 import { Menu as IMenu } from "@/constants/menu";
 import { API_AUTH_LOGOUT, LOGIN } from "@/constants/route";
 import Image from "next/image";
@@ -99,7 +99,7 @@ export function PublicHeader() {
               className="group text-heading border-b-heading/50 flex items-center gap-3 border-b py-4 text-sm transition duration-300 last:border-b-0"
               onClick={() => setIsOpen(false)}
             >
-              {route.icon}
+              {route.icon as ReactNode}
               {route.name}
             </Link>
           ))}

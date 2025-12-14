@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import { Menu, SocialMediaLinks } from "@/constants/menu";
 import Image from "next/image";
@@ -70,7 +71,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="rounded-full p-2 text-white/80 transition-colors hover:bg-white/10 hover:text-white"
             >
-              {social.icon}
+              {social.icon as ReactNode}
             </Link>
           ))}
         </nav>

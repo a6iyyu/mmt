@@ -35,7 +35,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
       <>
         <Sidebar className={!isMounted ? "-translate-x-full lg:translate-x-0" : sidebarOpen ? "translate-x-0" : "-translate-x-full"} />
         {isMounted && sidebarOpen && <div className="fixed inset-0 z-30 bg-black/20 lg:hidden" onClick={() => setSidebarOpen(false)} />}
-        <main className={`flex-1 transition-all duration-300 ease-in-out ${!isMounted ? "ml-0 lg:ml-64" : sidebarOpen ? "ml-64" : "ml-0"}`}>
+        <main className={`flex-1 transition-all duration-300 ease-in-out ${!isMounted ? "ml-0 lg:ml-64" : sidebarOpen ? "lg:ml-64" : "ml-0"}`}>
           <AdminHeader setSidebarOpen={setSidebarOpen} />
           {children}
         </main>
