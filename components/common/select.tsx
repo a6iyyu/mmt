@@ -6,7 +6,7 @@ import { Select as ISelect } from "@/types/components";
 import { filteredOptions, handleClickOutside, label as SelectLabel, value as SelectValue } from "@/utils/select";
 import { Text } from "@/utils/text";
 
-export default function Select({ label, name, onChange, options, required, value }: ISelect) {
+export default function Select({ label, name, onChange, options, required, value, info }: ISelect) {
   const wrapper = useRef<HTMLFieldSetElement>(null);
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [searchText, setSearchText] = useState<string>("");
@@ -20,12 +20,18 @@ export default function Select({ label, name, onChange, options, required, value
   useEffect(() => setSelectedValue(value?.toString()), [value]);
 
   return (
-    <fieldset className="relative flex w-full flex-col justify-between space-y-4 text-sm" ref={wrapper}>
-      {label && (
-        <label htmlFor={name} className="text-primary flex items-center font-medium">
-          {label} {required && <h6 className="text-red-500">*</h6>}
+    <fieldset className={`flex w-full flex-col justify-between ${!info ? "space-y-4" : ""}`} ref={wrapper}>
+      <span>
+        <label htmlFor={name} className="text-primary text-sm font-medium">
+          {label}
+          {required && <span className="text-red-500">*</span>}
         </label>
-      )}
+        {info && (
+          <p className="mt-1 mb-3 cursor-default text-xs text-gray-500">
+            {info}
+          </p>
+        )}
+      </span>
       <div className="relative">
         <select
           name={name}
@@ -50,7 +56,7 @@ export default function Select({ label, name, onChange, options, required, value
           onClick={(e) => { e.stopPropagation(); setDropdownOpen(!dropdownOpen) }}
         >
           <h5 className="flex w-full items-center justify-between">
-            <span className="truncate">
+            <span className="truncate text-sm">
               {(() => {
                 const selectedOption = options.find((option) => SelectValue(option).toString() === ((value ?? selectedValue)?.toString() ?? ""));
                 if (selectedOption) return Text.truncate(`${SelectLabel(selectedOption)}`, 20, 40);
@@ -61,7 +67,7 @@ export default function Select({ label, name, onChange, options, required, value
           </h5>
         </button>
         {dropdownOpen && (
-          <ul className="absolute z-50 mt-1 max-h-40 w-full overflow-y-auto rounded-[0.7rem] border-[1.5px] border-[#d1d5db] bg-white">
+          <ul className="absolute z-50 mt-1 max-h-40 w-full overflow-y-auto rounded-[0.7rem] border-[1.5px] border-[#d1d5db] bg-white text-xs">
             <li className="sticky top-0 border-b border-gray-200 bg-white p-2">
               <input
                 type="text"

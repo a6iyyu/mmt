@@ -35,15 +35,17 @@ export default function Input({ icon, label, name, onChange, placeholder, requir
 
   return (
     <fieldset className={`flex w-full flex-col justify-between ${!info ? "space-y-4" : ""}`}>
-      <label htmlFor={name} className="text-primary text-sm font-medium">
-        {label}
-        {required && <span className="text-red-500">*</span>}
-      </label>
-      {info && (
-        <h6 className="mt-1 mb-3 cursor-default text-xs text-red-500">
-          {info}
-        </h6>
-      )}
+      <span>
+        <label htmlFor={name} className="text-primary text-sm font-medium">
+          {label}
+          {required && <span className="text-red-500">*</span>}
+        </label>
+        {info && (
+          <p className="mt-1 mb-3 cursor-default text-xs text-gray-500">
+            {info}
+          </p>
+        )}
+      </span>
       {type === "file" ? (
         <div className="flex items-center gap-4">
           <span className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg border border-gray-200 bg-gray-50">

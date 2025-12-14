@@ -4,9 +4,12 @@
 export const API_COURSES_CREATE = "/api/courses/create";
 export const API_COURSES_PATCH = (id: number) => `/api/courses/${id}/patch`;
 export const API_COURSES_DELETE = (id: number) => `/api/courses/${id}/delete`;
-export const API_STUDENT_CREATE = "/api/student/create";
-export const API_STUDENT_PATCH = (id: number) => `/api/student/${id}/patch`;
-export const API_STUDENT_DELETE = (id: number) => `/api/student/${id}/delete`;
+export const API_CREATIONS_CREATE = "/api/creations/create";
+export const API_CREATIONS_PATCH = (id: number) => `/api/creations/${id}/patch`;
+export const API_CREATIONS_DELETE = (id: number) => `/api/creations/${id}/delete`;
+export const API_STUDENTS_CREATE = "/api/students/create";
+export const API_STUDENTS_PATCH = (id: number) => `/api/students/${id}/patch`;
+export const API_STUDENTS_DELETE = (id: number) => `/api/students/${id}/delete`;
 export const API_LECTURERS_CREATE = "/api/lecturers/create";
 export const API_LECTURERS_PATCH = (id: number) => `/api/lecturers/${id}/patch`;
 export const API_LECTURERS_DELETE = (id: number) => `/api/lecturers/${id}/delete`;

@@ -15,6 +15,7 @@ type Input = {
 type Select = {
   label: string;
   name: string;
+  info?: string | null;
   onChange?: ((value: string) => void);
   options: Array<{ label: string; value: string }>;
   required: boolean;

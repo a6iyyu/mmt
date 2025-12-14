@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { API_STUDENT_PATCH } from "@/constants/route";
+import { API_STUDENTS_PATCH } from "@/constants/route";
 import { Prisma } from "@/lib/prisma";
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       },
     };
   } catch (err: unknown) {
-    console.error(`❌ [metadata] Gagal mendapatkan data di URL ${API_STUDENT_PATCH(parseInt(id, 10))}: ${err}`);
+    console.error(`❌ [metadata] Gagal mendapatkan data di URL ${API_STUDENTS_PATCH(parseInt(id, 10))}: ${err}`);
     return {
       title: "Edit Mahasiswa | Lab MMT",
       description: "",

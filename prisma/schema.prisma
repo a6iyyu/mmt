@@ -4,7 +4,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
 }
 
 model dosen {
@@ -96,7 +96,7 @@ model riset_penelitian {
   tautan              String     @unique
   status              Publikasi  @default(SEDANG_BERLANGSUNG)
   tanggal_publikasi   DateTime?
-  kategori            Kategori[]
+  kategori            Kategori
   dosen               dosen[]    @relation("riset_penelitian")
   created_at          DateTime   @default(now())
   updated_at          DateTime   @updatedAt
