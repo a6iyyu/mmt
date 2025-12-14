@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "fs/promises";
 import { NextResponse, NextRequest } from "next/server";
 import { join } from "path";
-import { API_STUDENT_CREATE } from "@/constants/route";
+import { API_STUDENTS_CREATE } from "@/constants/route";
 import { Prisma } from "@/lib/prisma";
 import { Prodi } from "@/lib/generated/prisma/enums";
 import { StudentsSchema } from "@/validators/students.schema";
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     return NextResponse.json({ message: "Data mahasiswa berhasil ditambahkan." }, { status: 201 });
   } catch (error: unknown) {
-    console.error(`[POST ${API_STUDENT_CREATE}] Terjadi kesalahan saat menambahkan data mahasiswa: ${error instanceof Error ? error.message : String(error)}`);
+    console.error(`[POST ${API_STUDENTS_CREATE}] Terjadi kesalahan saat menambahkan data mahasiswa: ${error instanceof Error ? error.message : String(error)}`);
     return NextResponse.json({ message: "Gagal menambahkan data mahasiswa karena kesalahan server." }, { status: 500 });
   }
 }

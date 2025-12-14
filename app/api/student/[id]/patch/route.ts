@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "fs/promises";
 import { NextResponse, NextRequest } from "next/server";
 import { join } from "path";
-import { API_STUDENT_PATCH } from "@/constants/route";
+import { API_STUDENTS_PATCH } from "@/constants/route";
 import { Prodi } from "@/lib/generated/prisma/enums";
 import { Prisma } from "@/lib/prisma";
 import { StudentsSchema } from "@/validators/students.schema";
@@ -52,7 +52,7 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
 
     return NextResponse.json({ message: "Data mahasiswa berhasil diperbarui." }, { status: 200 });
   } catch (error: unknown) {
-    console.error(`[PATCH ${API_STUDENT_PATCH(Number((await params).id))}] Terjadi kesalahan saat memperbarui data mahasiswa: ${error instanceof Error ? error.message : String(error)}`);
+    console.error(`[PATCH ${API_STUDENTS_PATCH(Number((await params).id))}] Terjadi kesalahan saat memperbarui data mahasiswa: ${error instanceof Error ? error.message : String(error)}`);
     return NextResponse.json({ message: "Gagal memperbarui data mahasiswa." }, { status: 500 });
   }
 }

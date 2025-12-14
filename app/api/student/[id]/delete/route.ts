@@ -3,7 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { join } from "path";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
 import { Prisma } from "@/lib/prisma";
-import { API_STUDENT_DELETE } from "@/constants/route";
+import { API_STUDENTS_DELETE } from "@/constants/route";
 
 export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -36,7 +36,7 @@ export async function DELETE(_request: NextRequest, { params }: { params: Promis
 
     return NextResponse.json({ message: "Data mahasiswa berhasil dihapus." }, { status: 200 });
   } catch (error: unknown) {
-    console.error(`[DELETE ${API_STUDENT_DELETE(Number((await params).id))}] Error: ${error}`);
+    console.error(`[DELETE ${API_STUDENTS_DELETE(Number((await params).id))}] Error: ${error}`);
 
     if (error instanceof PrismaClientKnownRequestError && error.code === "P2025") {
       return NextResponse.json({ message: "Data tidak ditemukan." }, { status: 404 });
