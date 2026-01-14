@@ -3,6 +3,9 @@ import Statistics from "@/app/admin/mahasiswa/components/statistics";
 import Filter from "@/app/admin/mahasiswa/components/filter";
 import List from "@/app/admin/mahasiswa/components/list";
 
+export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
+
 export const metadata: Metadata = {
   title: "Daftar Mahasiswa | Lab MMT",
   description: "Halaman daftar mahasiswa untuk administrator Lab MMT.",

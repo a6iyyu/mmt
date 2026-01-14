@@ -14,6 +14,7 @@ class StudentForm {
       nim: data.nim ? Number(data.nim) : 0,
       program_studi: String(data.program_studi),
       angkatan: Number(data.angkatan),
+      status: String(data.status) as z.infer<typeof StudentsSchema.shape.status>,
       bio: String(data.bio),
       github: String(data.github),
       linkedin: String(data.linkedin),

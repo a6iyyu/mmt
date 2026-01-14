@@ -72,7 +72,7 @@ export default async function DetailPelatihan({ params }: { params: Promise<{ id
                 priority
               />
               <div className="absolute top-3 left-3">
-                <span className={`rounded-full px-3 py-1 text-xs font-bold tracking-wider text-white uppercase shadow-sm backdrop-blur-sm ${course.buka_pendaftaran === "Dibuka" ? "bg-green-500/90" : "bg-red-500/90"}`}>
+                <span className={`rounded-full px-3 py-1 text-xs font-bold tracking-wider text-white uppercase shadow-sm backdrop-blur-sm ${course.buka_pendaftaran === "DIBUKA" ? "bg-green-500/90" : "bg-red-500/90"}`}>
                   {course.buka_pendaftaran.replace("_", " ")}
                 </span>
               </div>

@@ -12,7 +12,7 @@ export const course: Course[] = [
     lokasi: "Lab Multimedia dan Teknologi Perangkat Bergerak",
     gambar: "/images/mascot.png",
     kuota: null,
-    buka_pendaftaran: "Dibuka",
+    buka_pendaftaran: "DIBUKA",
     created_at: new Date("2026-01-01"),
     updated_at: new Date("2026-01-01"),
   }

@@ -60,9 +60,9 @@ export default function List({ data }: { data: Trainings[] }) {
     </article>,
     <Badge
       key="status"
-      className={`pointer-events-none border px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase ${item.buka_pendaftaran === "Dibuka"
+      className={`pointer-events-none border px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase ${item.buka_pendaftaran === "DIBUKA"
         ? "border-green-200 bg-green-50 text-green-700"
-        : item.buka_pendaftaran === "Penuh"
+        : item.buka_pendaftaran === "PENUH"
         ? "border-red-200 bg-red-50 text-red-700"
         : "border-blue-200 bg-blue-50 text-blue-700"
       }`}

@@ -12,6 +12,9 @@ class LecturerForm {
       foto_profil: data.foto_profil as unknown as File,
       nama_lengkap: String(data.nama_lengkap),
       nip: data.nip ? Number(data.nip) : 0,
+      keahlian: String(data.keahlian),
+      jabatan: String(data.jabatan),
+      bio: data.bio ? String(data.bio) : undefined,
     };
   }
 
