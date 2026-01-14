@@ -47,9 +47,9 @@ export const ADMIN_DASHBOARD = "/admin";
 
 export const ADMIN_STUDENT = "/admin/mahasiswa";
 export const ADMIN_STUDENT_CREATE = "/admin/mahasiswa/tambah";
-export const ADMIN_STUDENT_DETAIL = (id: number) => `/admin/mahasiswa/${id}/detail`;
-export const ADMIN_STUDENT_EDIT = (id: number) => `/admin/mahasiswa/${id}/edit`;
-export const ADMIN_STUDENT_DELETE = (id: number) => `/admin/mahasiswa/${id}/hapus`;
+export const ADMIN_STUDENT_DETAIL = (name: string) => `/admin/mahasiswa/${name}/detail`;
+export const ADMIN_STUDENT_EDIT = (name: string) => `/admin/mahasiswa/${name}/edit`;
+export const ADMIN_STUDENT_DELETE = (name: string) => `/admin/mahasiswa/${name}/hapus`;
 
 export const ADMIN_LECTURERS = "/admin/dosen";
 export const ADMIN_LECTURERS_CREATE = "/admin/dosen/tambah";

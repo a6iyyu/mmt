@@ -7,13 +7,23 @@ export default function Filter() {
     <form className="mx-auto mt-8 flex w-9/10 flex-col items-end justify-between gap-4 lg:w-19/20 lg:flex-row">
       <Input
         type="text"
-        placeholder="Cari karya..."
+        placeholder="Cth. Eka Gustiwana"
         name="cari"
-        label="Cari Kata Kunci"
+        label="Cari Nama Mahasiswa"
         required={false}
         icon={<Search className="h-4 w-4 text-gray-400" />}
       />
-      <Select name="status" label="Status" required={false} options={[]} />
+      <Select
+        name="status"
+        label="Status"
+        required={false}
+        options={[
+          { label: "Semua", value: "semua" },
+          { label: "Aktif", value: "aktif" },
+          { label: "Cuti", value: "cuti" },
+          { label: "Lulus", value: "lulus" },
+        ]}
+      />
     </form>
   );
 }

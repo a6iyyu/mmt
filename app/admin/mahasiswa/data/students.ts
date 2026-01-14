@@ -1,63 +1,39 @@
+// students.ts
+import { Prodi } from "@/lib/generated/prisma/enums";
+
 export type Student = {
-  id: number;
-  name: string;
+  id_mahasiswa: number;
+  nama_lengkap: string;
   nim: string;
-  image: string;
-  major: "D4 TI" | "D4 SIB" | "D4 PPLS";
-  linkedin?: string;
-  batch: number;
-  focus: string[];
-  status: "Aktif" | "Lulus" | "Cuti";
-  email: string;
+  foto_profil: string;
+  program_studi: Prodi;
+  angkatan: number;
+  linkedin?: string | null;
+  surel: string;
+  status?: string; 
 };
 
-export const students: Student[] = [
+export const dummyStudents: Student[] = [
   {
-    id: 1,
-    name: "Rafi Abiyyu Airlangga",
+    id_mahasiswa: 1,
+    nama_lengkap: "Rafi Abiyyu Airlangga",
     nim: "2141720001",
-    image: "/images/placeholder.png",
-    major: "D4 TI",
+    foto_profil: "/images/placeholder.png",
+    program_studi: "TI",
+    angkatan: 2021,
     linkedin: "https://www.linkedin.com/in/rafi-abiyyu-airlangga",
-    batch: 2021,
-    focus: ["Game Development"],
+    surel: "rafi.abiyyu@student.polinema.ac.id",
     status: "Aktif",
-    email: "rafi.abiyyu@student.polinema.ac.id",
   },
   {
-    id: 2,
-    name: "Siti Aminah",
+    id_mahasiswa: 2,
+    nama_lengkap: "Siti Aminah",
     nim: "2141720002",
-    image: "/images/placeholder.png",
-    major: "D4 SIB",
+    foto_profil: "/images/placeholder.png",
+    program_studi: "SIB",
+    angkatan: 2021,
     linkedin: "https://www.linkedin.com/in/siti-aminah",
-    batch: 2021,
-    focus: ["UI/UX Design"],
-    status: "Aktif",
-    email: "siti.aminah@student.polinema.ac.id",
-  },
-  {
-    id: 3,
-    name: "Budi Santoso",
-    nim: "2041720003",
-    image: "/images/placeholder.png",
-    major: "D4 TI",
-    linkedin: "https://www.linkedin.com/in/budi-santoso",
-    batch: 2020,
-    focus: ["3D Animation"],
-    status: "Lulus",
-    email: "budi.santoso@alumni.polinema.ac.id",
-  },
-  {
-    id: 4,
-    name: "Muhammad Erril",
-    nim: "2241720004",
-    image: "/images/placeholder.png",
-    major: "D4 PPLS",
-    linkedin: "https://www.linkedin.com/in/muhammad-erril",
-    batch: 2022,
-    focus: ["AR/VR"],
-    status: "Aktif",
-    email: "erril.putra@student.polinema.ac.id",
+    surel: "siti.aminah@student.polinema.ac.id",
+    status: "Cuti",
   },
 ];

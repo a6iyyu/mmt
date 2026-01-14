@@ -57,6 +57,7 @@ model mahasiswa {
   surel         String?  @unique
   whatsapp      String?  @unique
   karya         karya[]  @relation("karya")
+  status        Status   @default(AKTIF)
   created_at    DateTime @default(now())
   updated_at    DateTime @updatedAt
 }
@@ -88,18 +89,18 @@ model pengguna {
 }
 
 model riset_penelitian {
-  id_riset_penelitian Int        @id @default(autoincrement())
+  id_riset_penelitian Int       @id @default(autoincrement())
   judul               String
-  slug                String     @unique
-  deskripsi           String     @db.Text
+  slug                String    @unique
+  deskripsi           String    @db.Text
   gambar              String
-  tautan              String     @unique
-  status              Publikasi  @default(SEDANG_BERLANGSUNG)
+  tautan              String    @unique
+  status              Publikasi @default(SEDANG_BERLANGSUNG)
   tanggal_publikasi   DateTime?
   kategori            Kategori
-  dosen               dosen[]    @relation("riset_penelitian")
-  created_at          DateTime   @default(now())
-  updated_at          DateTime   @updatedAt
+  dosen               dosen[]   @relation("riset_penelitian")
+  created_at          DateTime  @default(now())
+  updated_at          DateTime  @updatedAt
 }
 
 model sertifikat {
@@ -121,42 +122,48 @@ model teknologi {
 }
 
 enum Jabatan {
-  ASISTEN_AHLI  @map("Asisten Ahli")
-  LEKTOR        @map("Lektor")
-  LEKTOR_KEPALA @map("Lektor Kepala")
-  GURU_BESAR    @map("Guru Besar")
+  ASISTEN_AHLI
+  LEKTOR
+  LEKTOR_KEPALA
+  GURU_BESAR
 }
 
 enum Kategori {
-  GAME_DEVELOPMENT @map("Game Development")
-  UI_UX            @map("UI/UX Design")
-  AR_VR            @map("AR/VR")
-  ANIMASI          @map("Animasi")
-  MULTIMEDIA       @map("Multimedia")
-  LAINNYA          @map("Lainnya")
+  GAME_DEVELOPMENT
+  UI_UX
+  AR_VR
+  ANIMASI
+  MULTIMEDIA
+  LAINNYA
 }
 
 enum Ketersediaan {
-  DIBUKA      @map("Dibuka")
-  PENUH       @map("Penuh")
-  AKAN_DATANG @map("Akan Datang")
+  DIBUKA
+  PENUH
+  AKAN_DATANG
 }
 
 enum Peran {
-  ADMIN @map("Admin")
+  ADMIN
 }
 
 enum Prodi {
-  TI   @map("D-IV Teknik Informatika")
-  SIB  @map("D-IV Sistem Informasi Bisnis")
-  PPLS @map("D-II Pengembangan Piranti Lunak Situs")
-  MI   @map("D-III Manajemen Informatika")
-  RTI  @map("S2 Rekayasa Teknologi Informasi")
+  TI
+  SIB
+  PPLS
+  MI
+  RTI
 }
 
 enum Publikasi {
-  DIJADWALKAN        @map("Dijadwalkan")
-  SEDANG_BERLANGSUNG @map("Sedang Berlangsung")
-  SUDAH_TERBIT       @map("Sudah Terbit")
-  DIARSIPKAN         @map("Diarsipkan")
+  DIJADWALKAN
+  SEDANG_BERLANGSUNG
+  SUDAH_TERBIT
+  DIARSIPKAN
+}
+
+enum Status {
+  AKTIF
+  CUTI
+  LULUS
 }

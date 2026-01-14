@@ -137,7 +137,7 @@ export default function FormulirTambahDosen() {
         label="WhatsApp"
         name="whatsapp"
         info="Gunakan format internasional"
-        placeholder="Cth. +6281234567890"
+        placeholder="Cth. 6281234567890"
         required
         icon={<FaWhatsapp className="h-4 w-4" />}
         type="text"

@@ -9,11 +9,13 @@ export const StudentsSchema = z.object({
     .max(30, { message: "Nama lengkap tidak boleh lebih dari 30 karakter." })
     .regex(/^[a-zA-Z\s]+$/, { message: "Nama lengkap hanya boleh mengandung huruf dan spasi." })
     .trim(),
+  status: z
+    .enum(["Aktif", "Cuti", "Lulus", "Dikeluarkan"] as const, { error: "Status tidak valid." }),
   nim: z
     .number({ error: "NIM harus berupa angka." })
-    .min(100000000000, { message: "NIM harus terdiri dari 12 digit." })
-    .max(99999999999999, { message: "NIM tidak boleh lebih dari 14 digit." })
-    .refine((val) => /^\d{12,14}$/.test(val.toString()), { message: "NIM harus terdiri dari 12 hingga 14 digit." }),
+    .min(1000000000, { message: "NIM harus terdiri dari minimal 10 digit." })
+    .max(999999999999, { message: "NIM tidak boleh lebih dari 12 digit." })
+    .refine((val) => /^\d{10,12}$/.test(val.toString()), { message: "NIM harus terdiri dari 10 hingga 12 digit." }),
   program_studi: z
     .enum(Object.values(Prodi as unknown as [string, ...string[]]), { error: "Program studi tidak valid." }),
   angkatan: z
@@ -51,6 +53,6 @@ export const StudentsSchema = z.object({
     .string()
     .min(10, { message: "Nomor WhatsApp harus terdiri dari minimal 10 karakter." })
     .max(15, { message: "Nomor WhatsApp tidak boleh lebih dari 15 karakter." })
-    .regex(/^\+628\d{8,13}$/, { message: "Format nomor WhatsApp tidak valid, gunakan format +628xxxxxxxxxx." })
+    .regex(/^628\d{8,13}$/, { message: "Format nomor WhatsApp tidak valid, gunakan format 628xxxxxxxxxx." })
     .trim(),
 });
