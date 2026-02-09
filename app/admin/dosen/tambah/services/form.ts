@@ -1,65 +1,48 @@
 import axios, { isAxiosError } from "axios";
-import type { Dispatch, FormEvent, SetStateAction } from "react";
-import { z, ZodError } from "zod";
-import { ADMIN_STUDENT, API_STUDENTS_CREATE } from "@/constants/route";
+import { toast } from "sonner";
+import { z } from "zod";
+import { ADMIN_LECTURERS, API_LECTURERS_CREATE, API_STUDENTS_CREATE } from "@/constants/route";
 import { LecturerSchema } from "@/validators/lecturer.schema";
 
-class LecturerForm {
-  private static getFormData(form: HTMLFormElement) {
-    const data = Object.fromEntries(new FormData(form).entries()) as Record<keyof typeof LecturerSchema.shape, string>;
+export class LecturerForm {
+  private static toFormData(data: z.output<typeof LecturerSchema>): FormData {
+    const formData = new FormData();
+    const keys = Object.keys(data) as Array<keyof z.output<typeof LecturerSchema>>;
 
-    return {
-      foto_profil: data.foto_profil as unknown as File,
-      nama_lengkap: String(data.nama_lengkap),
-      nip: data.nip ? Number(data.nip) : 0,
-      keahlian: String(data.keahlian),
-      jabatan: String(data.jabatan),
-      bio: data.bio ? String(data.bio) : undefined,
-    };
-  }
+    keys.forEach((key) => {
+      const value = data[key];
+      if (value === undefined || value === null) return;
+      value instanceof File ? formData.append(key, value) : formData.append(key, String(value));
+    });
 
-  private static validate(data: z.infer<typeof LecturerSchema>) {
-    return LecturerSchema.parse(data);
+    return formData;
   }
 
   private static handleError(error: unknown) {
-    if (error instanceof ZodError) {
-      const errorMessages = error.issues.map((err) => `• ${err.message}`).join("\n");
-      console.error(`[${new Date().toISOString()}] Terjadi kesalahan saat memvalidasi data mahasiswa:\n${errorMessages}`);
-      return;
-    }
-
     if (isAxiosError(error)) {
-      const message = error.response?.data || "Gagal menghubungi server.";
-      console.error(`[${new Date().toISOString()}] Terjadi kesalahan saat menghubungi server: ${message}`);
+      const message: string = error.response?.data?.message || JSON.stringify(error.response?.data) || "Gagal menghubungi server.";
+      toast.error(`Error: ${message}`);
       return;
     }
 
-    console.error(`[${new Date().toISOString()}] Terjadi kesalahan tak terduga: ${(error as Error).message}`);
-    throw error;
+    const errorMessage = error instanceof Error ? error.message : "Ada yang tidak beres.";
+    if (process.env.NODE_ENV === "development") console.error(`Terjadi kesalahan: ${errorMessage}`);
+    toast.error("Terjadi kesalahan sistem yang tidak terduga.");
   }
 
-  public static async submit(e: FormEvent<HTMLFormElement>, setIsLoading: Dispatch<SetStateAction<boolean>>): Promise<void> {
-    e.preventDefault();
-    setIsLoading(true);
-
+  public static async submit(data: z.output<typeof LecturerSchema>): Promise<void> {
     try {
-      this.validate(this.getFormData(e.currentTarget));
+      const payload = this.toFormData(data);
 
-      await axios.post(API_STUDENTS_CREATE, new FormData(e.currentTarget), {
+      await axios.post(API_LECTURERS_CREATE, payload, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      window.location.href = ADMIN_STUDENT;
+      window.location.href = ADMIN_LECTURERS;
     } catch (error: unknown) {
       this.handleError(error);
-    } finally {
-      setIsLoading(false);
     }
   }
 }
 
-export const Submit = (
-  e: FormEvent<HTMLFormElement>,
-  setIsLoading: Dispatch<SetStateAction<boolean>>,
-) => LecturerForm.submit(e, setIsLoading);
+export const Submit = async (data: z.output<typeof LecturerSchema>): Promise<void> => LecturerForm.submit(data);

@@ -1,5 +1,5 @@
 import axios, { isAxiosError } from "axios";
-import type { Dispatch, FormEvent, SetStateAction } from "react";
+import type { Dispatch, SetStateAction, SubmitEvent } from "react";
 import { z, ZodError } from "zod";
 import { ADMIN_STUDENT, API_STUDENTS_CREATE } from "@/constants/route";
 import { StudentsSchema } from "@/validators/students.schema";
@@ -44,7 +44,7 @@ class StudentForm {
     throw error;
   }
 
-  public static async submit(e: FormEvent<HTMLFormElement>, setIsLoading: Dispatch<SetStateAction<boolean>>): Promise<void> {
+  public static async submit(e: SubmitEvent<HTMLFormElement>, setIsLoading: Dispatch<SetStateAction<boolean>>): Promise<void> {
     e.preventDefault();
     setIsLoading(true);
 
@@ -64,7 +64,4 @@ class StudentForm {
   }
 }
 
-export const Submit = (
-  e: FormEvent<HTMLFormElement>,
-  setIsLoading: Dispatch<SetStateAction<boolean>>,
-) => StudentForm.submit(e, setIsLoading);
+export const Submit = (e: SubmitEvent<HTMLFormElement>, setIsLoading: Dispatch<SetStateAction<boolean>>) => StudentForm.submit(e, setIsLoading);

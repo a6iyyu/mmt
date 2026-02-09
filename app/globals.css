@@ -76,6 +76,8 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar-width: 16rem;
+  --sidebar-width-icon: 3rem;
 }
 
 .dark {
@@ -124,6 +126,7 @@
 @theme {
   --color-primary: #3a7ca5; /* Biru utama untuk elemen primer */
   --color-secondary: #28afb0; /* Teal untuk highlight sekunder */
+  --color-sidebar: var(--color-primary); /* Gunakan warna primer untuk sidebar */
   --color-accent: #ff7626; /* Oranye terang untuk aksen dan tombol */
   --color-background: #fff9ec; /* Putih krem untuk latar belakang */
   --color-heading: #314158; /* Biru tua untuk heading */

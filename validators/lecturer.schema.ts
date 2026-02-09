@@ -25,11 +25,36 @@ export const LecturerSchema = z.object({
     .trim(),
   foto_profil: z
     .instanceof(File, { message: "Foto profil harus berupa berkas." })
-    .refine((file) => file.size <= 2 * 1024 * 1024, { message: "Ukuran foto profil tidak boleh lebih dari 2MB." })
-    .refine((file) => ["image/jpeg", "image/jpg", "image/png"].includes(file.type), { message: "Format foto profil harus JPEG, JPG, atau PNG." }),
+    .optional()
+    .refine((file) => file instanceof File, { message: "Foto profil wajib diisi." })
+    .refine((file) => !file || file.size <= 2 * 1024 * 1024, { message: "Ukuran foto profil tidak boleh lebih dari 2MB." })
+    .refine((file) => !file || ["image/jpeg", "image/jpg", "image/png"].includes(file.type), { message: "Format foto profil harus JPEG, JPG, atau PNG." }),
   bio: z
     .string()
     .max(1000, { message: "Bio tidak boleh lebih dari 1000 karakter." })
     .trim()
-    .optional(),    
+    .optional(),   
+  linkedin: z
+    .string()
+    .max(100, { message: "Tautan LinkedIn tidak boleh lebih dari 100 karakter." })
+    .trim()
+    .optional(),
+  surel: z
+    .email({ message: "Surel harus berupa alamat email yang valid." })
+    .max(100, { message: "Surel tidak boleh lebih dari 100 karakter." })
+    .trim(),
+  sinta: z
+    .string()
+    .max(100, { message: "Tautan SINTA tidak boleh lebih dari 100 karakter." })
+    .trim()
+    .optional(),
+  scholar: z
+    .string()
+    .max(100, { message: "Tautan Google Scholar tidak boleh lebih dari 100 karakter." })
+    .trim()
+    .optional(),
+  whatsapp: z
+    .string()
+    .regex(/^\+?[1-9]\d{1,14}$/, { message: "Nomor WhatsApp harus berupa nomor telepon internasional yang valid." })
+    .optional(),
 });

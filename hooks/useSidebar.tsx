@@ -1,4 +1,4 @@
-import { type ComponentProps, createContext, type CSSProperties, forwardRef, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { type ComponentProps, createContext, forwardRef, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useMobile } from "@/hooks/useMobile";
 import { cn } from "@/lib/shadcn";
@@ -15,8 +15,6 @@ type SidebarContextProps = {
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
-const SIDEBAR_WIDTH = "16rem";
-const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
 const SidebarContext = createContext<SidebarContextProps | null>(null);
@@ -60,12 +58,7 @@ const SidebarProvider = forwardRef<HTMLDivElement, ComponentProps<"div"> & { def
   return (
     <SidebarContext.Provider value={contextValue}>
       <TooltipProvider delayDuration={0}>
-        <div
-          style={{ "--sidebar-width": SIDEBAR_WIDTH, "--sidebar-width-icon": SIDEBAR_WIDTH_ICON, ...style } as CSSProperties }
-          className={cn("group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full", className)}
-          ref={ref}
-          {...props}
-        >
+        <div className={cn("group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full", className)} ref={ref} {...props}>
           {children}
         </div>
       </TooltipProvider>

@@ -15,8 +15,7 @@ const sidebarMenuButtonVariants = cva("peer/menu-button flex w-full items-center
   variants: {
     variant: {
       default: "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
-      outline:
-        "bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]",
+      outline: "bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]",
     },
     size: {
       default: "h-8 text-sm",
@@ -35,7 +34,7 @@ const Sidebar = forwardRef<HTMLDivElement, ComponentProps<"div"> & { side?: "lef
 
   if (collapsible === "none") {
     return (
-      <div className={cn("bg-sidebar text-sidebar-foreground flex h-full w-[--sidebar-width] flex-col", className)} ref={ref} {...props}>
+      <div className={cn("bg-sidebar text-sidebar-foreground flex h-full w-64 flex-col", className)} ref={ref} {...props}>
         {children}
       </div>
     );
@@ -47,7 +46,7 @@ const Sidebar = forwardRef<HTMLDivElement, ComponentProps<"div"> & { side?: "lef
         <SheetContent
           data-sidebar="sidebar"
           data-mobile="true"
-          className="bg-sidebar text-sidebar-foreground w-[--sidebar-width] p-0 [&>button]:hidden"
+          className="bg-sidebar text-sidebar-foreground w-64 p-0 [&>button]:hidden"
           style={{ "--sidebar-width": "18rem" } as CSSProperties }
           side={side}
         >
@@ -72,17 +71,17 @@ const Sidebar = forwardRef<HTMLDivElement, ComponentProps<"div"> & { side?: "lef
     >
       <div
         className={cn(
-          "relative w-[--sidebar-width] bg-transparent transition-[width] duration-200 ease-linear",
+          "relative w-64 bg-transparent transition-[width] duration-200 ease-linear",
           "group-data-[collapsible=offcanvas]:w-0",
           "group-data-[side=right]:rotate-180",
-          variant === "floating" || variant === "inset" ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]" : "group-data-[collapsible=icon]:w-[--sidebar-width-icon]",
+          variant === "floating" || variant === "inset" ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]" : "group-data-[collapsible=icon]:w-12",
         )}
       />
       <div
         className={cn(
-          "fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] duration-200 ease-linear md:flex",
-          side === "left" ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]" : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
-          variant === "floating" || variant === "inset" ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]" : "group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l",
+          "fixed inset-y-0 z-10 hidden h-svh w-64 transition-[left,right,width] duration-200 ease-linear md:flex",
+          side === "left" ? "left-0 group-data-[collapsible=offcanvas]:-left-64" : "right-0 group-data-[collapsible=offcanvas]:right-64",
+          variant === "floating" || variant === "inset" ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]" : "group-data-[collapsible=icon]:w-12 group-data-[side=left]:border-r group-data-[side=right]:border-l",
           className,
         )}
         {...props}
@@ -147,14 +146,15 @@ const SidebarInset = forwardRef<HTMLDivElement, ComponentProps<"main">>(({ class
     <main
       ref={ref}
       className={cn(
-        "bg-background relative flex w-full flex-1 flex-col",
-        "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2",
-        className,
+        "relative flex min-h-svh flex-1 flex-col bg-background",
+        "peer-data-[variant=sidebar]:transition-[margin] peer-data-[variant=sidebar]:duration-200 peer-data-[variant=sidebar]:ease-linear",
+        "md:peer-data-[state=collapsed]:peer-data-[variant=sidebar]:ml-12",
+        className
       )}
       {...props}
     />
-  );
-});
+  )
+})
 SidebarInset.displayName = "SidebarInset";
 
 const SidebarInput = forwardRef<ComponentRef<typeof Input>, ComponentProps<typeof Input>>(({ className, ...props }, ref) => {
