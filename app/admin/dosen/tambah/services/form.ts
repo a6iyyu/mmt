@@ -1,8 +1,17 @@
 import axios, { isAxiosError } from "axios";
 import { toast } from "sonner";
 import { z } from "zod";
-import { ADMIN_LECTURERS, API_LECTURERS_CREATE, API_STUDENTS_CREATE } from "@/constants/route";
+import { ADMIN_LECTURERS, API_LECTURERS_CREATE } from "@/constants/route";
 import { LecturerSchema } from "@/validators/lecturer.schema";
+
+const fileToBase64 = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = (error) => reject(error);
+  });
+};
 
 export class LecturerForm {
   private static toFormData(data: z.output<typeof LecturerSchema>): FormData {
@@ -11,7 +20,7 @@ export class LecturerForm {
 
     keys.forEach((key) => {
       const value = data[key];
-      if (value === undefined || value === null) return;
+      if (value === undefined || value === null || value === "") return;
       value instanceof File ? formData.append(key, value) : formData.append(key, String(value));
     });
 
@@ -32,13 +41,41 @@ export class LecturerForm {
 
   public static async submit(data: z.output<typeof LecturerSchema>): Promise<void> {
     try {
-      const payload = this.toFormData(data);
+      const useAPI = process.env.NEXT_PUBLIC_USE_DB === "true";
 
-      await axios.post(API_LECTURERS_CREATE, payload, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      if (useAPI) {
+        const payload = this.toFormData(data);
+        await axios.post(API_LECTURERS_CREATE, payload, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+      } else {
+        const existingData = localStorage.getItem("lecturers_data");
+        const lecturers = existingData ? JSON.parse(existingData) : [];
 
-      window.location.href = ADMIN_LECTURERS;
+        let imageBase64 = "/images/placeholder.png";
+        if (data.photo instanceof File) {
+          imageBase64 = await fileToBase64(data.photo);
+        }
+
+        const newLecturer = {
+          id: Date.now().toString(),
+          name: data.name,
+          nip: data.nip || "-",
+          image: imageBase64,
+          expertise: [data.field],
+          email: data.email,
+          phone: data.linkedin || "-",
+        };
+
+        lecturers.push(newLecturer);
+        localStorage.setItem("lecturers_data", JSON.stringify(lecturers));
+      }
+
+      toast.success("Data berhasil disimpan!");
+      setTimeout(() => {
+        window.location.href = ADMIN_LECTURERS;
+      }, 1000);
+      
     } catch (error: unknown) {
       this.handleError(error);
     }

@@ -1,10 +1,25 @@
-import { Plus } from "lucide-react";
+import { GraduationCap, type LucideIcon, Plus, Users, UserCheck, UserMinus } from "lucide-react";
+import type { ComponentType, SVGProps } from "react";
 import { StatsCard } from "@/app/admin/atoms/stats-card";
-import { students } from "@/app/admin/mahasiswa/constants/students";
 import { ADMIN_STUDENT_CREATE } from "@/constants/route";
 import Link from "next/link";
+import React from "react";
 
-export default function Statistics() {
+type StatisticItem = {
+  icon: ComponentType<SVGProps<SVGSVGElement>> | LucideIcon;
+  title: string;
+  value: string;
+  color: "blue" | "green" | "orange" | "red" | "yellow" | "purple";
+};
+
+export default function Statistics({ stats }: { stats: { total: number; active: number; graduated: number; onLeave: number } }) {
+  const statisticsData: StatisticItem[] = [
+    { icon: Users, title: "Total Mahasiswa", value: stats.total.toString(), color: "blue" },
+    { icon: UserCheck, title: "Mahasiswa Aktif", value: stats.active.toString(), color: "green" },
+    { icon: GraduationCap, title: "Lulus / Alumni", value: stats.graduated.toString(), color: "purple" },
+    { icon: UserMinus, title: "Cuti", value: stats.onLeave.toString(), color: "orange" },
+  ];
+
   return (
     <>
       <div className="mx-auto mt-8 flex w-9/10 flex-col gap-4 sm:flex-row sm:items-end sm:justify-between lg:w-19/20">
@@ -21,10 +36,10 @@ export default function Statistics() {
           <span>Tambah Baru</span>
         </Link>
       </div>
-      <article className="mx-auto mt-6 flex w-9/10 snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:grid lg:w-19/20 lg:grid-cols-4 lg:justify-center lg:gap-6 overflow-visible lg:pb-0">
-        {students.map((item, index) => {
+      <article className="mx-auto mt-6 flex w-9/10 snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:grid lg:w-19/20 lg:grid-cols-4 lg:justify-center lg:gap-6 lg:overflow-visible lg:pb-0">
+        {statisticsData.map((item, index) => {
           return (
-            <span key={index} className="min-w-[250px] shrink-0 snap-center lg:min-w-0">
+            <span key={index} className="min-w-62.5 shrink-0 snap-center lg:min-w-0">
               <StatsCard icon={item.icon} title={item.title} value={item.value} color={item.color} />
             </span>
           );

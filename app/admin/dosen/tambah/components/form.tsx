@@ -1,10 +1,10 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { IdCard, Mail, Save, Upload, Image as ImageIcon } from "lucide-react";
+import { IdCard, Mail, Save, Upload, Image as ImageIcon, GraduationCap } from "lucide-react";
 import { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
-import { FaLinkedin, FaWhatsapp } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
 import { PiChalkboardTeacher } from "react-icons/pi";
 import { z } from "zod";
 import { Submit } from "@/app/admin/dosen/tambah/services/form";
@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { LecturerSchema } from "@/validators/lecturer.schema";
 import Image from "next/image";
 
@@ -22,17 +21,15 @@ export default function FormulirTambahDosen() {
   const form = useForm<z.input<typeof LecturerSchema>>({
     resolver: zodResolver(LecturerSchema),
     defaultValues: {
-      nama_lengkap: "",
-      nip: undefined,
-      keahlian: "",
-      jabatan: "",
-      bio: "",
+      name: "",
+      nip: "",
+      field: "",
       linkedin: "",
-      surel: "",
+      email: "",
       sinta: "",
       scholar: "",
-      whatsapp: "",
-      foto_profil: undefined,
+      photo: undefined,
+      position: undefined,
     },
     mode: "onChange",
   });
@@ -47,7 +44,7 @@ export default function FormulirTambahDosen() {
           <div className="md:col-span-2">
             <FormField
               control={form.control}
-              name="foto_profil"
+              name="photo"
               render={({ field: { value, onChange, ...fieldProps } }) => (
                 <FormItem>
                   <FormLabel className="text-primary font-medium">
@@ -69,13 +66,13 @@ export default function FormulirTambahDosen() {
                         type="file"
                         accept="image/*"
                         className="hidden"
-                        id="foto_profil"
+                        id="photo"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
                           file instanceof File ? (setPreview(URL.createObjectURL(file)), onChange(file)) : (setPreview(null), onChange(undefined));
                         }}
                       />
-                      <label htmlFor="foto_profil" className="bg-primary hover:bg-hover-blue flex w-fit cursor-pointer items-center gap-3 rounded-md px-5 py-3.5 text-xs font-medium text-white transition-colors">
+                      <label htmlFor="photo" className="bg-primary hover:bg-hover-blue flex w-fit cursor-pointer items-center gap-3 rounded-md px-5 py-3.5 text-xs font-medium text-white transition-colors">
                         <Upload size={16} /> Pilih Gambar
                       </label>
                       <FormMessage />
@@ -87,16 +84,18 @@ export default function FormulirTambahDosen() {
           </div>
           <FormField
             control={form.control}
-            name="nama_lengkap"
+            name="name"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-primary font-medium">
                   Nama Lengkap <span className="text-red-500">*</span>
                 </FormLabel>
-                <FormControl className="relative">
+                <div className="relative">
                   <PiChalkboardTeacher className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                  <Input placeholder="Masukkan nama lengkap" className="pl-10" {...field} />
-                </FormControl>
+                  <FormControl>
+                    <Input placeholder="Masukkan nama lengkap" className="pl-10" {...field} />
+                  </FormControl>
+                </div>
                 <FormMessage />
               </FormItem>
             )}
@@ -109,24 +108,25 @@ export default function FormulirTambahDosen() {
                 <FormLabel className="text-primary font-medium">
                   NIP <span className="text-red-500">*</span>
                 </FormLabel>
-                <FormControl className="relative">
+                <div className="relative">
                   <IdCard className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                  <Input
-                    type="number"
-                    placeholder="Masukkan NIP"
-                    className="pl-10"
-                    {...field}
-                    value={field.value ? String(field.value) : ""}
-                    onChange={field.onChange}
-                  />
-                </FormControl>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      inputMode="numeric"
+                      placeholder="Masukkan NIP"
+                      className="pl-10"
+                      {...field}
+                    />
+                  </FormControl>
+                </div>
                 <FormMessage />
               </FormItem>
             )}
           />
           <FormField
             control={form.control}
-            name="keahlian"
+            name="field"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-primary font-medium">
@@ -153,7 +153,7 @@ export default function FormulirTambahDosen() {
           />
           <FormField
             control={form.control}
-            name="jabatan"
+            name="position"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-primary font-medium">
@@ -166,38 +166,34 @@ export default function FormulirTambahDosen() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="Asisten Ahli">Asisten Ahli</SelectItem>
-                    <SelectItem value="Lektor">Lektor</SelectItem>
-                    <SelectItem value="Lektor Kepala">Lektor Kepala</SelectItem>
-                    <SelectItem value="Guru Besar">Guru Besar</SelectItem>
+                    <SelectItem value="EXPERT_ASSISTANT">Asisten Ahli</SelectItem>
+                    <SelectItem value="ASSISTANT_PROFESSOR">Lektor</SelectItem>
+                    <SelectItem value="ASSOCIATE_PROFESSOR">Lektor Kepala</SelectItem>
+                    <SelectItem value="PROFESSOR">Guru Besar</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <div className="md:col-span-2">
-            <FormField
-              control={form.control}
-              name="bio"
-              render={({ field }) => (
-                <FormItem>
-                  <span className="flex justify-between">
-                    <FormLabel className="text-primary font-medium">
-                      Bio
-                    </FormLabel>
-                    <h5 className="text-xs text-gray-500">
-                      {field.value?.length || 0} / 2000
-                    </h5>
-                  </span>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-primary font-medium">
+                  Surel <span className="text-red-500">*</span>
+                </FormLabel>
+                <div className="relative">
+                  <Mail className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
                   <FormControl>
-                    <Textarea placeholder="Masukkan bio singkat" className="resize-none" maxLength={2000} rows={4} {...field} />
+                    <Input type="email" placeholder="Cth. labmmt@gmail.com" className="pl-10" {...field} />
                   </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
+                </div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
             name="linkedin"
@@ -206,29 +202,15 @@ export default function FormulirTambahDosen() {
                 <FormLabel className="text-primary font-medium">
                   LinkedIn
                 </FormLabel>
-                <FormControl className="relative">
+                <div className="relative">
                   <FaLinkedin className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                  <Input placeholder="Cth. labmmt" className="pl-10" {...field} />
-                </FormControl>
+                  <FormControl>
+                    <Input placeholder="Cth. labmmt" className="pl-10" {...field} />
+                  </FormControl>
+                </div>
                 <FormDescription className="text-xs">
                   Tanpa &quot;https://www.linkedin.com/in/&quot;
                 </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="surel"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-primary font-medium">
-                  Surel <span className="text-red-500">*</span>
-                </FormLabel>
-                <FormControl className="relative">
-                  <Mail className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                  <Input type="email" placeholder="Cth. labmmt@gmail.com" className="pl-10" {...field} />
-                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -241,29 +223,30 @@ export default function FormulirTambahDosen() {
                 <FormLabel className="text-primary font-medium">
                   SINTA
                 </FormLabel>
-                <FormControl className="relative">
-                  <Mail className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                  <Input placeholder="Cth. labmmt" className="pl-10" {...field} />
-                </FormControl>
+                <div className="relative">
+                  <IdCard className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <FormControl>
+                    <Input placeholder="Cth. ID SINTA" className="pl-10" {...field} />
+                  </FormControl>
+                </div>
                 <FormMessage />
               </FormItem>
             )}
           />
           <FormField
             control={form.control}
-            name="whatsapp"
+            name="scholar"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-primary font-medium">
-                  WhatsApp
+                  Google Scholar
                 </FormLabel>
-                <FormControl className="relative">
-                  <FaWhatsapp className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                  <Input type="number" placeholder="Cth. 6281..." className="pl-10" {...field} />
-                </FormControl>
-                <FormDescription className="text-xs">
-                  Gunakan format internasional (62...)
-                </FormDescription>
+                <div className="relative">
+                  <GraduationCap className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <FormControl>
+                    <Input placeholder="Cth. ID Scholar" className="pl-10" {...field} />
+                  </FormControl>
+                </div>
                 <FormMessage />
               </FormItem>
             )}

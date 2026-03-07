@@ -7,163 +7,164 @@ datasource db {
   provider = "mysql"
 }
 
-model dosen {
-  id_dosen         Int                @id @default(autoincrement())
-  nama_lengkap     String             @db.VarChar(50)
-  nip              String             @unique
-  keahlian         Kategori
-  jabatan          Jabatan
-  foto_profil      String?
-  bio              String?            @db.Text
-  linkedin         String?            @unique
-  surel            String             @unique
-  sinta            String?            @unique @db.VarChar(255)
-  scholar          String?            @unique @db.VarChar(255)
-  whatsapp         String?            @unique
-  riset_penelitian riset_penelitian[] @relation("riset_penelitian")
-  created_at       DateTime           @default(now())
-  updated_at       DateTime           @updatedAt
+model lecturer {
+  id                 Int              @id @default(autoincrement())
+  name               String           @db.VarChar(100)
+  nip                String?          @unique
+  position           LecturerPosition
+  field              String
+  photo              String?
+  email              String           @unique
+  sinta              String?          @unique @db.VarChar(255)
+  scholar            String?          @unique @db.VarChar(255)
+  linkedin           String?          @unique
+  research_interests Json?
+  researches         research[]       @relation("lecturer_research")
+  created_at         DateTime         @default(now())
+  updated_at         DateTime         @updatedAt
 }
 
-model karya {
-  id_karya          Int         @id @default(autoincrement())
-  judul             String
-  slug              String      @unique
-  deskripsi         String      @db.Text
-  gambar            String
-  tautan_demo       String?     @unique
-  tautan_repo       String?     @unique
-  dilihat           Int         @default(0)
-  unggulan          Boolean     @default(false)
-  status            Publikasi   @default(SEDANG_BERLANGSUNG)
-  tanggal_publikasi DateTime?
-  kategori          Kategori
-  mahasiswa         mahasiswa[] @relation("karya")
-  teknologi         teknologi[] @relation("teknologi_karya_mahasiswa")
-  created_at        DateTime    @default(now())
-  updated_at        DateTime    @updatedAt
+model project {
+  id                 Int               @id @default(autoincrement())
+  title              String
+  slug               String?           @unique
+  description        String            @db.Text
+  image              String
+  category           String
+  featured           Boolean           @default(false)
+  views              Int               @default(0)
+  stars              Int               @default(0)
+  demo_link          String?           @unique
+  code_link          String?           @unique
+  publication_status PublicationStatus @default(ONGOING)
+  publish_date       DateTime?
+  students           student[]         @relation("student_project")
+  technologies       tech[]            @relation("project_tech")
+  created_at         DateTime          @default(now())
+  updated_at         DateTime          @updatedAt
 }
 
-model mahasiswa {
-  id_mahasiswa  Int      @id @default(autoincrement())
-  nama_lengkap  String   @db.VarChar(50)
-  nim           String   @unique
-  program_studi Prodi
-  angkatan      Int
-  foto_profil   String?
-  bio           String?  @db.Text
-  github        String?  @unique
-  linkedin      String?  @unique
-  surel         String?  @unique
-  whatsapp      String?  @unique
-  karya         karya[]  @relation("karya")
-  status        Status   @default(AKTIF)
-  created_at    DateTime @default(now())
-  updated_at    DateTime @updatedAt
+model student {
+  id         Int           @id @default(autoincrement())
+  name       String        @db.VarChar(100)
+  nim        String?       @unique
+  major      String
+  focus      String?
+  field      String?
+  batch      Int?
+  image      String?
+  email      String?       @unique
+  linkedin   String?       @unique
+  whatsapp   String?       @unique
+  github     String?       @unique
+  projects   project[]     @relation("student_project")
+  status     StudentStatus @default(ACTIVE)
+  created_at DateTime      @default(now())
+  updated_at DateTime      @updatedAt
 }
 
-model pelatihan {
-  id_pelatihan     Int          @id @default(autoincrement())
-  nama             String       @unique
-  slug             String       @unique
-  deskripsi        String       @db.Text
-  tanggal          DateTime
-  mentor           String
-  kategori         Kategori
-  lokasi           String
-  gambar           String
-  kuota            Int?
-  buka_pendaftaran Ketersediaan @default(DIBUKA)
-  created_at       DateTime     @default(now())
-  updated_at       DateTime     @updatedAt
+model course {
+  id            Int          @id @default(autoincrement())
+  title         String       @unique
+  slug          String       @unique
+  category      String
+  level         String
+  image         String
+  mentor_name   String
+  mentor_avatar String?
+  price         String
+  duration      String
+  rating        Float?
+  description   String?      @db.Text
+  date          DateTime?
+  location      String?
+  quota         Int?
+  availability  Availability @default(OPEN)
+  created_at    DateTime     @default(now())
+  updated_at    DateTime     @updatedAt
 }
 
-model pengguna {
-  id_pengguna  Int      @id @default(autoincrement())
-  nama_lengkap String
-  surel        String   @unique
-  kata_sandi   String
-  peran        Peran    @default(ADMIN)
-  created_at   DateTime @default(now())
-  updated_at   DateTime @updatedAt
+model user {
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String   @unique
+  password   String
+  role       Role     @default(ADMIN)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
-model riset_penelitian {
-  id_riset_penelitian Int       @id @default(autoincrement())
-  judul               String
-  slug                String    @unique
-  deskripsi           String    @db.Text
-  gambar              String
-  tautan              String    @unique
-  status              Publikasi @default(SEDANG_BERLANGSUNG)
-  tanggal_publikasi   DateTime?
-  kategori            Kategori
-  dosen               dosen[]   @relation("riset_penelitian")
-  created_at          DateTime  @default(now())
-  updated_at          DateTime  @updatedAt
+model research {
+  id           Int               @id @default(autoincrement())
+  title        String
+  slug         String            @unique
+  description  String            @db.Text
+  image        String
+  link         String?           @unique
+  status       PublicationStatus @default(ONGOING)
+  publish_date DateTime?
+  category     Category
+  lecturers    lecturer[]        @relation("lecturer_research")
+  created_at   DateTime          @default(now())
+  updated_at   DateTime          @updatedAt
 }
 
-model sertifikat {
-  id_sertifikat    Int      @id @default(autoincrement())
-  nomor_sertifikat String   @unique
-  nama_penerima    String
-  peran            String
-  nama_kegiatan    String
-  tanggal_terbit   DateTime
-  tautan_berkas    String?
-  created_at       DateTime @default(now())
-  updated_at       DateTime @updatedAt
+model certificate {
+  id                 Int       @id @default(autoincrement())
+  title              String
+  image              String
+  description        String    @db.Text
+  link               String?
+  tags               Json?
+  certificate_number String?   @unique
+  recipient_name     String?
+  role               String?
+  issue_date         DateTime?
+  created_at         DateTime  @default(now())
+  updated_at         DateTime  @updatedAt
 }
 
-model teknologi {
-  id_teknologi Int     @id @default(autoincrement())
-  nama         String  @unique
-  karya        karya[] @relation("teknologi_karya_mahasiswa")
+model tech {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  projects project[] @relation("project_tech")
 }
 
-enum Jabatan {
-  ASISTEN_AHLI
-  LEKTOR
-  LEKTOR_KEPALA
-  GURU_BESAR
+enum Availability {
+  OPEN
+  FULL
+  UPCOMING
 }
 
-enum Kategori {
+enum Category {
   GAME_DEVELOPMENT
   UI_UX
   AR_VR
-  ANIMASI
+  ANIMATION
   MULTIMEDIA
-  LAINNYA
+  OTHERS
 }
 
-enum Ketersediaan {
-  DIBUKA
-  PENUH
-  AKAN_DATANG
+enum LecturerPosition {
+  EXPERT_ASSISTANT
+  ASSISTANT_PROFESSOR
+  ASSOCIATE_PROFESSOR
+  PROFESSOR
 }
 
-enum Peran {
+enum PublicationStatus {
+  SCHEDULED
+  ONGOING
+  PUBLISHED
+  ARCHIVED
+}
+
+enum Role {
   ADMIN
 }
 
-enum Prodi {
-  TI
-  SIB
-  PPLS
-  MI
-  RTI
-}
-
-enum Publikasi {
-  DIJADWALKAN
-  SEDANG_BERLANGSUNG
-  SUDAH_TERBIT
-  DIARSIPKAN
-}
-
-enum Status {
-  AKTIF
-  CUTI
-  LULUS
+enum StudentStatus {
+  ACTIVE
+  ON_LEAVE
+  GRADUATED
 }

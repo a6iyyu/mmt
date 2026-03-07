@@ -34,7 +34,7 @@ export default function QuickActions() {
           <Link
             key={index}
             href={action.href}
-            className={`group flex min-w-[280px] shrink-0 snap-center items-center gap-4 rounded-xl border border-dashed border-gray-300 bg-white p-5 transition-all duration-300 lg:w-full lg:min-w-0 lg:hover:-translate-y-1 lg:hover:shadow-md ${action.hover}`}
+            className={`group flex min-w-70 shrink-0 snap-center items-center gap-4 rounded-xl border border-dashed border-gray-300 bg-white p-5 transition-all duration-300 lg:w-full lg:min-w-0 lg:hover:-translate-y-1 lg:hover:shadow-md ${action.hover}`}
           >
             <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${action.bg} ${action.color} transition-transform group-hover:scale-110`}>
               <action.icon className="h-6 w-6" />

@@ -81,7 +81,7 @@ export function ClientLayout({ children }: { children: ReactNode }) {
                 <h5 className="truncate text-sm leading-none font-bold text-white">
                   Lab MMT
                 </h5>
-                <h5 className="truncate text-[10px] leading-tight text-white opacity-70">
+                <h5 className="mt-1 truncate text-[10px] leading-tight text-white opacity-70">
                   Multimedia & Mobile
                 </h5>
               </span>
@@ -90,13 +90,13 @@ export function ClientLayout({ children }: { children: ReactNode }) {
           <SidebarSeparator className="bg-white/10" />
           <SidebarContent>
             <SidebarGroup>
-              <SidebarMenu>
+              <SidebarMenu className="gap-2">
                 {adminNavigation.map((item) => (
                   <SidebarMenuItem key={item.name}>
                     {item.submenu ? (
                       <Collapsible className="group/collapsible">
                         <CollapsibleTrigger asChild>
-                          <SidebarMenuButton className="text-white hover:bg-white/10 hover:text-white data-[state=open]:bg-white/10">
+                          <SidebarMenuButton className="py-2 text-white hover:bg-white/10 hover:text-white data-[state=open]:bg-white/10">
                             <item.icon className="size-4" />
                             <span className="font-medium">{item.name}</span>
                             <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />

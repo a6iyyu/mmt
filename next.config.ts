@@ -4,6 +4,9 @@ import { Configuration as WebpackConfig } from "webpack";
 import nextMDX from "@next/mdx";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    clientTraceMetadata: [],
+  },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   reactStrictMode: true,
   images: {

@@ -1,10 +1,24 @@
-import { Plus } from "lucide-react";
+import { GraduationCap, type LucideIcon, Plus, Users, UserCheck } from "lucide-react";
+import type { ComponentType, SVGProps } from "react";
 import { StatsCard } from "@/app/admin/atoms/stats-card";
-import { statistics } from "@/app/admin/dosen/constants/statistics";
 import { ADMIN_LECTURERS_CREATE } from "@/constants/route";
 import Link from "next/link";
+import React from "react";
 
-export default function Statistics() {
+type StatisticItem = {
+  icon: ComponentType<SVGProps<SVGSVGElement>> | LucideIcon;
+  title: string;
+  value: string;
+  color: "blue" | "green" | "orange" | "red" | "yellow" | "purple";
+};
+
+export default function Statistics({ stats }: { stats: { total: number; professor: number; expertAssistant: number } }) {
+  const statisticsData: StatisticItem[] = [
+    { icon: Users, title: "Total Dosen", value: stats.total.toString(), color: "blue" },
+    { icon: GraduationCap, title: "Guru Besar", value: stats.professor.toString(), color: "green" },
+    { icon: UserCheck, title: "Asisten Ahli", value: stats.expertAssistant.toString(), color: "orange" },
+  ];
+
   return (
     <>
       <div className="mx-auto mt-8 flex w-9/10 flex-col gap-4 sm:flex-row sm:items-end sm:justify-between lg:w-19/20">
@@ -22,9 +36,9 @@ export default function Statistics() {
         </Link>
       </div>
       <article className="mx-auto mt-6 flex w-9/10 snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:grid lg:w-19/20 lg:grid-cols-3 lg:justify-center lg:gap-6 lg:overflow-visible lg:pb-0">
-        {statistics.map((item, index) => {
+        {statisticsData.map((item, index) => {
           return (
-            <span key={index} className="min-w-[250px] shrink-0 snap-center lg:min-w-0">
+            <span key={index} className="min-w-62.5 shrink-0 snap-center lg:min-w-0">
               <StatsCard icon={item.icon} title={item.title} value={item.value} color={item.color} />
             </span>
           );
