@@ -2,7 +2,6 @@ import { mkdir, writeFile } from "fs/promises";
 import { NextResponse, NextRequest } from "next/server";
 import { join } from "path";
 import { API_STUDENTS_PATCH } from "@/constants/route";
-import { Prodi } from "@/lib/generated/prisma/enums";
 import { Prisma } from "@/lib/prisma";
 import { StudentsSchema } from "@/validators/students.schema";
 
@@ -31,19 +30,16 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
       imageUrl = `/storage/student/${filename}`;
     }
 
-    const majorEnums = (Object.keys(Prodi) as (keyof typeof Prodi)[]).find((key) => Prodi[key] === body.program_studi);
-
-    await Prisma.mahasiswa.update({
-      where: { id_mahasiswa: id },
+    await Prisma.student.update({
+      where: { id },
       data: {
-        nama_lengkap: body.nama_lengkap,
+        name: body.name,
         nim: body.nim,
-        ...(majorEnums && { program_studi: majorEnums as Prodi }),
-        angkatan: body.angkatan ? Number(body.angkatan) : undefined,
-        ...(imageUrl && { foto_profil: imageUrl }),
-        bio: body.bio,
+        major: body.major,
+        ...(imageUrl && { image: imageUrl }),
+        batch: body.batch ? Number(body.batch) : undefined,
         github: body.github,
-        surel: body.surel,
+        email: body.email,
         linkedin: body.linkedin,
         whatsapp: body.whatsapp,
         updated_at: new Date().toISOString(),

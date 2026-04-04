@@ -6,17 +6,17 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
 
   try {
-    const family = await Prisma.mahasiswa.findUniqueOrThrow({ where: { id_mahasiswa: parseInt(id, 10) } });
+    const family = await Prisma.student.findUniqueOrThrow({ where: { id: parseInt(id, 10) } });
 
     return {
-      title: `Edit Mahasiswa ${family.nama_lengkap ?? ""} | Lab MMT`,
+      title: `Edit Mahasiswa ${family.name ?? ""} | Lab MMT`,
       description: "",
       openGraph: {
-        title: `Edit Mahasiswa ${family.nama_lengkap ?? ""} | Lab MMT`,
+        title: `Edit Mahasiswa ${family.name ?? ""} | Lab MMT`,
         description: "",
       },
       twitter: {
-        title: `Edit Mahasiswa ${family.nama_lengkap ?? ""} | Lab MMT`,
+        title: `Edit Mahasiswa ${family.name ?? ""} | Lab MMT`,
         description: "",
       },
     };

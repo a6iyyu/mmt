@@ -17,8 +17,6 @@ function SelectValue({ ...props }: ComponentProps<typeof Value>) {
   return <Value data-slot="select-value" {...props} />;
 }
 
-// ... import lainnya ...
-
 function SelectTrigger({ className, size = "default", children, ...props }: ComponentProps<typeof Trigger> & { size?: "sm" | "default" }) {
   return (
     <Trigger

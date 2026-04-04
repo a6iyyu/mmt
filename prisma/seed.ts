@@ -11,14 +11,14 @@ import { Prisma } from "@/lib/prisma";
     }
 
     await Prisma.$connect();
-    await Prisma.pengguna.deleteMany();
-    await Prisma.pengguna.upsert({
-      where: { surel: process.env.SUPERUSER_EMAIL },
+    await Prisma.user.deleteMany();
+    await Prisma.user.upsert({
+      where: { email: process.env.SUPERUSER_EMAIL },
       update: {},
       create: {
-        nama_lengkap: "Administrator",
-        surel: process.env.SUPERUSER_EMAIL as string,
-        kata_sandi: await hash(process.env.SUPERUSER_PASSWORD as string, 10),
+        name: "Administrator",
+        email: process.env.SUPERUSER_EMAIL as string,
+        password: await hash(process.env.SUPERUSER_PASSWORD as string, 10),
       },
     });
   } catch (error: unknown) {

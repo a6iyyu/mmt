@@ -2,7 +2,7 @@ import { mkdir, writeFile } from "fs/promises";
 import { NextResponse, NextRequest } from "next/server";
 import { join } from "path";
 import { API_COURSES_CREATE } from "@/constants/route";
-import { Kategori as Categories, Ketersediaan as Availability } from "@/lib/generated/prisma/enums";
+import { Availability, Category } from "@/lib/generated/prisma/enums";
 import { Prisma } from "@/lib/prisma";
 import { CoursesSchema } from "@/validators/courses.schema";
 
@@ -29,18 +29,21 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       imageUrl = `/storage/course/${filename}`;
     }
 
-    await Prisma.pelatihan.create({
+    await Prisma.course.create({
       data: {
-        nama: body.nama,
+        title: body.nama,
         slug: body.nama.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-" + Date.now(),
-        deskripsi: body.deskripsi,
-        tanggal: new Date(body.tanggal),
-        mentor: body.mentor,
-        lokasi: body.lokasi,
-        kuota: Number(body.kuota),
-        gambar: imageUrl,
-        kategori: (Object.keys(Categories) as (keyof typeof Categories)[]).find((key) => Categories[key] === body.kategori) as Categories,
-        buka_pendaftaran: (Object.keys(Availability) as (keyof typeof Availability)[]).find((key) => Availability[key] === body.buka_pendaftaran) as Availability,
+        description: body.deskripsi,
+        date: new Date(body.tanggal),
+        mentor_name: body.mentor,
+        location: body.lokasi,
+        quota: Number(body.kuota),
+        level: "Pemula",
+        price: "",
+        duration: "1h",
+        image: imageUrl,
+        category: (Object.keys(Category) as (keyof typeof Category)[]).find((key) => Category[key] === body.kategori) as Category,
+        availability: (Object.keys(Availability) as (keyof typeof Availability)[]).find((key) => Availability[key] === body.buka_pendaftaran) as Availability,
         created_at: new Date(),
         updated_at: new Date(),
       },

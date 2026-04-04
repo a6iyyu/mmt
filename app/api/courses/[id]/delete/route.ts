@@ -13,19 +13,19 @@ export async function DELETE(_request: NextRequest, { params }: { params: Promis
       return NextResponse.json({ message: "ID tidak valid." }, { status: 400 });
     }
 
-    const existingCourse = await Prisma.pelatihan.findUnique({
-      where: { id_pelatihan: id },
-      select: { gambar: true },
+    const existingCourse = await Prisma.course.findUnique({
+      where: { id },
+      select: { image: true },
     });
 
     if (!existingCourse) {
       return NextResponse.json({ message: "Data tidak ditemukan." }, { status: 404 });
     }
 
-    await Prisma.pelatihan.delete({ where: { id_pelatihan: id } });
+    await Prisma.course.delete({ where: { id } });
 
-    if (existingCourse.gambar) {
-      const imagePath = join(process.cwd(), "public", existingCourse.gambar);
+    if (existingCourse.image) {
+      const imagePath = join(process.cwd(), "public", existingCourse.image);
       try {
         await unlink(imagePath);
         console.log(`[DELETE FILE SUCCESS] Berhasil menghapus gambar fisik di ${imagePath}`);

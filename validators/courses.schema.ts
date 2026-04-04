@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Kategori as Categories, Ketersediaan as Availability } from "@/lib/generated/prisma/enums";
+import { Availability, Category } from "@/lib/generated/prisma/enums";
 
 export const CoursesSchema = z.object({
   nama: z
@@ -18,7 +18,7 @@ export const CoursesSchema = z.object({
     .max(1000, { message: "Deskripsi maksimal 1000 karakter!" })
     .trim(),
   kategori: z
-    .enum(Object.values(Categories as unknown as [string, ...string[]]), { error: "Kategori pelatihan tidak valid!" }),
+    .enum(Object.values(Category as unknown as [string, ...string[]]), { error: "Kategori pelatihan tidak valid!" }),
   buka_pendaftaran: z
     .enum(Object.values(Availability as unknown as [string, ...string[]]), { error: "Status pendaftaran tidak valid!" }),
   lokasi: z

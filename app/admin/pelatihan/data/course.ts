@@ -1,18 +1,23 @@
-import { Kategori as Category, type pelatihan as Course } from "@/lib/generated/prisma/client";
+import { Availability, Category, type course as Course } from "@/lib/generated/prisma/client";
 
 export const course: Course[] = [
   {
-    id_pelatihan: 0,
-    nama: "Pelatihan Pengembangan Game Dasar",
+    id: 0,
+    title: "Pelatihan Pengembangan Game Dasar",
     slug: "pelatihan-pengembangan-game-dasar",
-    deskripsi: "Pelatihan ini akan mengajarkan dasar-dasar pengembangan game menggunakan Unity.",
-    tanggal: new Date("2026-01-01"),
-    mentor: "Muhammad Ali Zulfikar",
-    kategori: Category.GAME_DEVELOPMENT,
-    lokasi: "Lab Multimedia dan Teknologi Perangkat Bergerak",
-    gambar: "/images/mascot.png",
-    kuota: null,
-    buka_pendaftaran: "DIBUKA",
+    description: "Pelatihan ini akan mengajarkan dasar-dasar pengembangan game menggunakan Unity.",
+    date: new Date("2026-01-01"),
+    mentor_name: "Muhammad Ali Zulfikar",
+    category: Category.GAME_DEVELOPMENT,
+    location: "Lab Multimedia dan Teknologi Perangkat Bergerak",
+    image: "/images/mascot.png",
+    quota: null,
+    availability: Availability.OPEN,
+    level: "Beginner",
+    mentor_avatar: "/images/placeholder.png",
+    price: "Rp120.000",
+    duration: "1h",
+    rating: 5,
     created_at: new Date("2026-01-01"),
     updated_at: new Date("2026-01-01"),
   }

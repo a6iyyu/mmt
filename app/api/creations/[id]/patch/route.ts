@@ -3,7 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { join } from "path";
 import { API_COURSES_PATCH } from "@/constants/route";
 import { Prisma } from "@/lib/prisma";
-import { Kategori as Categories, Ketersediaan as Availability } from "@/lib/generated/prisma/enums";
+import { Availability, Category } from "@/lib/generated/prisma/enums";
 import { CoursesSchema } from "@/validators/courses.schema";
 
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }): Promise<NextResponse> {
@@ -31,22 +31,22 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
       imageUrl = `/storage/course/${filename}`;
     }
 
-    const categoryEnums = (Object.keys(Categories) as (keyof typeof Categories)[]).find((key) => Categories[key] === body.kategori);
+    const categoryEnums = (Object.keys(Category) as (keyof typeof Category)[]).find((key) => Category[key] === body.kategori);
     const availabilityEnums = (Object.keys(Availability) as (keyof typeof Availability)[]).find((key) => Availability[key] === body.buka_pendaftaran);
 
-    await Prisma.pelatihan.update({
-      where: { id_pelatihan: id },
+    await Prisma.course.update({
+      where: { id },
       data: {
-        nama: body.nama,
+        title: body.nama,
         slug: body.nama ? body.nama.toLowerCase().replace(/[^a-z0-9]+/g, "-") + "-" + Date.now() : undefined,
-        deskripsi: body.deskripsi,
-        mentor: body.mentor,
-        lokasi: body.lokasi,
-        tanggal: body.tanggal ? new Date(body.tanggal) : undefined,
-        kuota: body.kuota ? Number(body.kuota) : undefined,
-        ...(imageUrl && { gambar: imageUrl }),
-        ...(categoryEnums && { kategori: categoryEnums as Categories }),
-        ...(availabilityEnums && { buka_pendaftaran: availabilityEnums as Availability }),
+        description: body.deskripsi,
+        mentor_name: body.mentor,
+        location: body.lokasi,
+        date: body.tanggal ? new Date(body.tanggal) : undefined,
+        quota: body.kuota ? Number(body.kuota) : undefined,
+        ...(imageUrl && { image: imageUrl }),
+        ...(categoryEnums && { category: categoryEnums as Category }),
+        ...(availabilityEnums && { availability: availabilityEnums as Availability }),
         updated_at: new Date(),
       },
     });

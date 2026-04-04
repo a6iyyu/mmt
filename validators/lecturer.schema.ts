@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { LecturerPosition } from "@/lib/generated/prisma/enums";
 
 export const LecturerSchema = z.object({
   name: z
@@ -19,7 +20,7 @@ export const LecturerSchema = z.object({
     .min(3, { error: "Keahlian harus terdiri dari minimal 3 karakter." })
     .max(50, { error: "Keahlian tidak boleh lebih dari 50 karakter." })
     .trim(),
-  position: z.enum(["EXPERT_ASSISTANT", "ASSISTANT_PROFESSOR", "ASSOCIATE_PROFESSOR", "PROFESSOR"], { error: "Jabatan wajib dipilih." }),
+  position: z.enum(Object.values(LecturerPosition as Record<string, string>), { error: "Jabatan wajib dipilih." }),
   photo: z
     .instanceof(File, { error: "Foto profil harus berupa berkas." })
     .optional()

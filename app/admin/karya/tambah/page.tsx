@@ -2,6 +2,7 @@ import { Home, Palette } from "lucide-react";
 import type { Metadata } from "next";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { ADMIN_CREATIONS, ADMIN_DASHBOARD } from "@/constants/route";
+import { Prisma } from "@/lib/prisma";
 import FormulirTambahKarya from "@/app/admin/karya/tambah/components/form";
 
 export const metadata: Metadata = {
@@ -17,7 +18,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TambahKarya() {
+export default async function TambahKarya() {
+  const students = await Prisma.student.findMany({
+    select: { id: true, name: true },
+    orderBy: { name: "asc" },
+  });
+
   return (
     <section className="mx-auto mt-8 flex w-9/10 flex-col gap-4 lg:w-19/20">
       <Breadcrumb>
@@ -49,7 +55,7 @@ export default function TambahKarya() {
           Isi formulir di bawah untuk membuat karya baru.
         </p>
       </div>
-      <FormulirTambahKarya />
+      <FormulirTambahKarya students={students || []} />
     </section>
   );
 }

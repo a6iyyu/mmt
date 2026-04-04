@@ -21,14 +21,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     console.log(`🔐 Mencoba masuk pada rute ${API_AUTH_LOGIN} untuk surel: ${result.data.surel}`);
 
     const { surel, kata_sandi } = result.data;
-    const user = await Prisma.pengguna.findUnique({ where: { surel } });
+    const user = await Prisma.user.findUnique({ where: { email: surel } });
 
     if (!user) {
       console.error(`❌ Pengguna tidak ditemukan pada rute ${API_AUTH_LOGIN} untuk surel: ${surel}`);
       return NextResponse.json({ message: "Pengguna tidak ditemukan." }, { status: 401 });
     }
 
-    const isPasswordValid = await compare(kata_sandi, user.kata_sandi);
+    const isPasswordValid = await compare(kata_sandi, user.password);
 
     if (!isPasswordValid) {
       console.error(`❌ Kata sandi salah pada rute ${API_AUTH_LOGIN} untuk surel: ${surel}`);
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     }
 
     const secret = new TextEncoder().encode(process.env.JWT_SECRET);
-    const token = await new SignJWT({ id: user.id_pengguna, surel: user.surel }).setProtectedHeader({ alg: "HS256" }).setIssuedAt().setExpirationTime("1h").sign(secret);
+    const token = await new SignJWT({ id: user.id, surel: user.email }).setProtectedHeader({ alg: "HS256" }).setIssuedAt().setExpirationTime("1h").sign(secret);
 
     cookies.set("auth_token", token, {
       httpOnly: true,

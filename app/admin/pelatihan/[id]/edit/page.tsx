@@ -8,9 +8,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
 
   try {
-    const trainings = await Prisma.pelatihan.findUnique({
-      where: { id_pelatihan: parseInt(id, 10) },
-      select: { nama: true },
+    const trainings = await Prisma.course.findUnique({
+      where: { id: parseInt(id, 10) },
+      select: { title: true },
     });
 
     if (!trainings) {
@@ -18,15 +18,15 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     }
 
     return {
-      title: `Edit Pelatihan ${trainings.nama} | Lab MMT`,
-      description: `Halaman edit pelatihan ${trainings.nama} untuk administrator Lab MMT.`,
+      title: `Edit Pelatihan ${trainings.title} | Lab MMT`,
+      description: `Halaman edit pelatihan ${trainings.title} untuk administrator Lab MMT.`,
       openGraph: {
-        title: `Edit Pelatihan ${trainings.nama} | Lab MMT`,
-        description: `Halaman edit pelatihan ${trainings.nama} untuk administrator Lab MMT.`,
+        title: `Edit Pelatihan ${trainings.title} | Lab MMT`,
+        description: `Halaman edit pelatihan ${trainings.title} untuk administrator Lab MMT.`,
       },
       twitter: {
-        title: `Edit Pelatihan ${trainings.nama} | Lab MMT`,
-        description: `Halaman edit pelatihan ${trainings.nama} untuk administrator Lab MMT.`,
+        title: `Edit Pelatihan ${trainings.title} | Lab MMT`,
+        description: `Halaman edit pelatihan ${trainings.title} untuk administrator Lab MMT.`,
       },
     };
   } catch (error: unknown) {

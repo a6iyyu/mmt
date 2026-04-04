@@ -10,8 +10,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarHeader, SidebarInset, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarSeparator, SidebarTrigger } from "@/components/ui/sidebar";
+import { ADMIN, ADMIN_COURSES, ADMIN_CREATIONS, ADMIN_LECTURERS, ADMIN_RESEARCH, ADMIN_STUDENT, LOGIN } from "@/constants/route";
 import { SidebarProvider } from "@/hooks/useSidebar";
-import { ADMIN, LOGIN } from "@/constants/route";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -26,20 +26,12 @@ type AdminNavigation = {
 };
 
 const adminNavigation: AdminNavigation[] = [
-  { name: "Dasbor", href: "/admin", icon: LayoutDashboard },
-  {
-    name: "Pelatihan",
-    icon: GraduationCap,
-    submenu: [{ name: "Daftar Pelatihan", href: "/admin/pelatihan" }],
-  },
-  {
-    name: "Karya",
-    icon: Briefcase,
-    submenu: [{ name: "Daftar Karya", href: "/admin/karya" }],
-  },
-  { name: "Dosen", href: "/admin/dosen", icon: Users },
-  { name: "Mahasiswa", href: "/admin/mahasiswa", icon: GraduationCap },
-  { name: "Riset", href: "/admin/riset", icon: Microscope },
+  { name: "Dasbor", href: ADMIN, icon: LayoutDashboard },
+  { name: "Pelatihan", href: ADMIN_COURSES, icon: GraduationCap },
+  { name: "Karya", href: ADMIN_CREATIONS, icon: Briefcase },
+  { name: "Dosen", href: ADMIN_LECTURERS, icon: Users },
+  { name: "Mahasiswa", href: ADMIN_STUDENT, icon: GraduationCap },
+  { name: "Riset", href: ADMIN_RESEARCH, icon: Microscope },
 ];
 
 export function ClientLayout({ children }: { children: ReactNode }) {
@@ -62,20 +54,11 @@ export function ClientLayout({ children }: { children: ReactNode }) {
   if (pathname.startsWith(ADMIN)) {
     return (
       <SidebarProvider defaultOpen={true}>
-        <Sidebar
-          variant="sidebar"
-          className="z-50 border-r-0 bg-[#3b82f6] text-white"
-        >
+        <Sidebar variant="sidebar" className="z-50 border-r-0 bg-[#3b82f6] text-white">
           <SidebarHeader>
             <div className="flex items-center gap-3 px-2 py-4">
               <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white p-1">
-                <Image
-                  height={40}
-                  width={40}
-                  src="/images/mascot.png"
-                  alt="Lab MMT"
-                  className="h-full w-auto object-contain"
-                />
+                <Image height={40} width={40} src="/images/mascot.png" alt="Lab MMT" className="h-full w-auto object-contain" />
               </span>
               <span className="flex flex-col overflow-hidden">
                 <h5 className="truncate text-sm leading-none font-bold text-white">
@@ -118,10 +101,7 @@ export function ClientLayout({ children }: { children: ReactNode }) {
                         </CollapsibleContent>
                       </Collapsible>
                     ) : (
-                      <SidebarMenuButton
-                        asChild
-                        className="text-white hover:bg-white/10 hover:text-white"
-                      >
+                      <SidebarMenuButton asChild className="text-white hover:bg-white/10 hover:text-white">
                         <Link href={item.href || "#"}>
                           <item.icon className="size-4" />
                           <h5 className="font-medium">{item.name}</h5>
@@ -144,7 +124,6 @@ export function ClientLayout({ children }: { children: ReactNode }) {
             </SidebarMenu>
           </SidebarFooter>
         </Sidebar>
-
         <SidebarInset className="bg-[#fdfcf6]">
           <header className="sticky top-0 z-10 flex h-16 shrink-0 items-center justify-between border-b bg-white px-6">
             <div className="flex items-center gap-3">
@@ -154,13 +133,11 @@ export function ClientLayout({ children }: { children: ReactNode }) {
                 Admin Panel
               </h2>
             </div>
-
             <div className="flex items-center gap-4">
               <button className="relative rounded-full p-2 text-slate-500 transition-colors hover:bg-slate-100">
                 <Bell className="size-5" />
                 <span className="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" />
               </button>
-
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button className="group flex items-center gap-3 pl-2 outline-none">
@@ -180,11 +157,7 @@ export function ClientLayout({ children }: { children: ReactNode }) {
                     </Avatar>
                   </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  className="w-56"
-                  align="end"
-                  sideOffset={8}
-                >
+                <DropdownMenuContent className="w-56" align="end" sideOffset={8}>
                   <DropdownMenuLabel className="font-normal">
                     <span className="flex flex-col space-y-1">
                       <p className="text-sm leading-none font-medium">

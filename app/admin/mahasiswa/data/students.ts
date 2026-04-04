@@ -1,12 +1,9 @@
-// students.ts
-import { Prodi } from "@/lib/generated/prisma/enums";
-
 export type Student = {
   id_mahasiswa: number;
   nama_lengkap: string;
   nim: string;
   foto_profil: string;
-  program_studi: Prodi;
+  program_studi: string;
   angkatan: number;
   linkedin?: string | null;
   surel: string;

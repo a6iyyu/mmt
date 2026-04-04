@@ -40,7 +40,6 @@ export const StudentsSchema = z.object({
     .optional()
     .or(z.literal("")),
   email: z
-    .string()
     .email({ message: "Format surel tidak valid." })
     .max(100, { message: "Surel tidak boleh lebih dari 100 karakter." })
     .trim(),

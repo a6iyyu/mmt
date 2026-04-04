@@ -178,7 +178,6 @@ export default function FormulirTambahMahasiswa() {
                     type="number" 
                     placeholder="Cth. 2023" 
                     className="h-12 pl-12" 
-                    // Menghilangkan angka 0 default: jika nilainya undefined/0, tampilkan string kosong
                     value={field.value || ""} 
                     onBlur={field.onBlur}
                     name={field.name}
